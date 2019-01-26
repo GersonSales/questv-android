@@ -15,14 +15,14 @@ class LoginPresenter(var loginView: LoginView?, private val loginInteractor: Log
   override fun onUserNameError() {
     loginView?.apply {
       hideProgress()
-      setUserPasswordError()
+      setUserNameError()
     }
   }
 
   override fun onUserPasswordError() {
     loginView?.apply {
       hideProgress()
-      setUserNameError()
+      setUserPasswordError()
     }
   }
 

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">QuesTv</string>
+    <string name="login">Login</string>
+    <string name="questv">QuesTV</string>
+    <string name="username_error">Invalid Username</string>
+    <string name="password_error">Invalid Password</string>
 </resources>
