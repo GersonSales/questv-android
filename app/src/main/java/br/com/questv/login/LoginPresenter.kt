@@ -1,6 +1,6 @@
 package br.com.questv.login
 
-class LoginPresenter(var loginView: LoginView?, val loginInteractor: LoginInteractor) :
+class LoginPresenter(var loginView: LoginView?, private val loginInteractor: LoginInteractor) :
   LoginInteractor.OnLoginFinishedListener {
 
   fun validateCredentials(username: String, password: String) {
