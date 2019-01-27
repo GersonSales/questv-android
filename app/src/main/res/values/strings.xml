@@ -4,4 +4,5 @@
     <string name="questv">QuesTV</string>
     <string name="username_error">Invalid Username</string>
     <string name="password_error">Invalid Password</string>
+  <string name="seriesname">seriesName</string>
 </resources>
