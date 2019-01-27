@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import br.com.questv.MainActivity
 import br.com.questv.R
+import br.com.questv.ui.home.HomeActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity(), LoginView {
@@ -46,7 +47,7 @@ class LoginActivity : AppCompatActivity(), LoginView {
   }
 
   override fun navigateToHome() {
-    startActivity(Intent(this, MainActivity::class.java))
+    startActivity(Intent(this, HomeActivity::class.java))
     finish()
   }
 
