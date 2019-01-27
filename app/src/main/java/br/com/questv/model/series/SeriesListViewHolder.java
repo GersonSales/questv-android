@@ -23,13 +23,15 @@ public class SeriesListViewHolder extends RecyclerView.ViewHolder {
   }
 
   public void bindRecyclerView() {
-    seriesItemRecyclerView.setAdapter(new SeriesItemAdapter());
-    viewPager.setVisibility(View.GONE);
+    this.seriesItemRecyclerView.setAdapter(new SeriesItemAdapter());
+    this.viewPager.setVisibility(View.GONE);
   }
 
   /*default*/ void bindViewPager() {
     seriesItemRecyclerView.setVisibility(View.GONE);
-    viewPager.setAdapter(new NewsAdapter());
+    final NewsAdapter adapter = new NewsAdapter();
+    viewPager.setAdapter(adapter);
+    this.viewPager.setCurrentItem(adapter.getCount() / 2);
 
   }
 }
