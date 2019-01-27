@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import br.com.questv.R
 import br.com.questv.model.series.SeriesItemAdapter
+import br.com.questv.model.series.SeriesListAdapter
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity(), HomeView {
@@ -16,8 +17,7 @@ class HomeActivity : AppCompatActivity(), HomeView {
   }
 
   private fun initRecyclerView() {
-    rv_home.layoutManager = (LinearLayoutManager(baseContext,
-      LinearLayoutManager.HORIZONTAL, false))
-    rv_home.adapter = SeriesItemAdapter()
+    rv_home.layoutManager = (LinearLayoutManager(baseContext))
+    rv_home.adapter = SeriesListAdapter()
   }
 }

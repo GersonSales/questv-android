@@ -19,7 +19,7 @@ public class SeriesItemAdapter extends RecyclerView.Adapter<SeriesItemViewHolder
     }
 
     private View inflateView(final ViewGroup viewGroup, final LayoutInflater inflater) {
-        return inflater.inflate(R.layout.series_list_item, viewGroup, false);
+        return inflater.inflate(R.layout.series_item, viewGroup, false);
     }
 
     @Override
