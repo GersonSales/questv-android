@@ -16,7 +16,8 @@ class HomeActivity : AppCompatActivity(), HomeView {
   }
 
   private fun initRecyclerView() {
-    rv_home.layoutManager = (LinearLayoutManager(baseContext))
+    rv_home.layoutManager = (LinearLayoutManager(baseContext,
+      LinearLayoutManager.HORIZONTAL, false))
     rv_home.adapter = SeriesAdapter()
   }
 }
