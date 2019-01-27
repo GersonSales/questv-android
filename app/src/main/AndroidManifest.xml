@@ -8,19 +8,20 @@
       android:roundIcon="@mipmap/ic_launcher_round"
       android:supportsRtl="true"
       android:theme="@style/AppTheme">
-    <activity android:name=".ui.aux.AuxActivity">
+    <activity android:name=".ui.AuxActivity">
     </activity>
     <activity android:name=".ui.home.HomeActivity">
-    </activity>
-    <activity android:name=".MainActivity">
-    </activity>
-    <activity android:name=".ui.login.LoginActivity">
       <intent-filter>
         <action android:name="android.intent.action.VIEW"/>
         <action android:name="android.intent.action.MAIN"/>
 
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
+    </activity>
+    <activity android:name=".MainActivity">
+    </activity>
+    <activity android:name=".ui.login.LoginActivity">
+
     </activity>
 
     <meta-data

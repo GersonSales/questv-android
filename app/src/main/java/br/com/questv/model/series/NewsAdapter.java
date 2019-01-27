@@ -2,9 +2,11 @@ package br.com.questv.model.series;
 
 import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 import br.com.questv.R;
 
 public class NewsAdapter extends PagerAdapter {
@@ -14,7 +16,6 @@ public class NewsAdapter extends PagerAdapter {
       R.drawable.gradiant_vector_comic_book_6,
       R.drawable.ic_android_black_24dp
   };
-
 
   @Override
   public int getCount() {
@@ -48,12 +49,19 @@ public class NewsAdapter extends PagerAdapter {
   @NonNull
   @Override
   public Object instantiateItem(@NonNull final ViewGroup container, final int position) {
-    final ImageView imageView = new ImageView(container.getContext());
+    final LayoutInflater inflater = LayoutInflater.from(container.getContext());
+    final View view = inflater.inflate(R.layout.news_item, container, false);
 
+    final ImageView imageView = view.findViewById(R.id.iv_news_item);
     imageView.setImageResource(GalImages[position%GalImages.length]);
 
-    container.addView(imageView);
-    return imageView;
+    final TextView textView = view.findViewById(R.id.tv_news_desc);
+    textView.setText("Description: ".concat(String.valueOf(imageView.getId())));
+
+    container.addView(view, 0);
+
+    return view;
+
   }
 
 

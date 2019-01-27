@@ -1,5 +1,6 @@
 package br.com.questv.model.series;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,9 +14,11 @@ public class SeriesListViewHolder extends RecyclerView.ViewHolder {
   private final ViewPager viewPager;
 
   private final RecyclerView seriesItemRecyclerView;
+  private final Context context;
 
   public SeriesListViewHolder(@NonNull final View itemView) {
     super(itemView);
+    this.context = itemView.getContext();
     this.viewPager = itemView.findViewById(R.id.vp_news);
     this.seriesItemRecyclerView = itemView.findViewById(R.id.rv_series_list);
     this.seriesItemRecyclerView.setLayoutManager(new LinearLayoutManager(itemView.getContext(),
