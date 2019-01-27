@@ -1,12 +1,10 @@
 package br.com.questv.ui.login
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.view.View
-import br.com.questv.MainActivity
 import br.com.questv.R
-import br.com.questv.ui.aux.AuxActivity
 import br.com.questv.ui.home.HomeActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
