@@ -6,13 +6,13 @@ import android.view.View;
 import android.widget.TextView;
 import br.com.questv.R;
 
-public class SeriesViewHolder extends RecyclerView.ViewHolder {
+public class SeriesItemViewHolder extends RecyclerView.ViewHolder {
 
 
     private final TextView seriesName;
     private final TextView seriesAbbreviation;
 
-    public SeriesViewHolder(@NonNull final View itemView) {
+    public SeriesItemViewHolder(@NonNull final View itemView) {
         super(itemView);
         this.seriesName = itemView.findViewById(R.id.tv_series_name);
         this.seriesAbbreviation = itemView.findViewById(R.id.tv_series_abbreviation);

@@ -7,15 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import br.com.questv.R;
 
-public class SeriesAdapter extends RecyclerView.Adapter<SeriesViewHolder> {
+public class SeriesItemAdapter extends RecyclerView.Adapter<SeriesItemViewHolder> {
 
 
     @NonNull
     @Override
-    public SeriesViewHolder onCreateViewHolder(@NonNull final ViewGroup viewGroup, final int viewType) {
+    public SeriesItemViewHolder onCreateViewHolder(@NonNull final ViewGroup viewGroup, final int viewType) {
         final LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
         final View view = inflateView(viewGroup, inflater);
-        return new SeriesViewHolder(view);
+        return new SeriesItemViewHolder(view);
     }
 
     private View inflateView(final ViewGroup viewGroup, final LayoutInflater inflater) {
@@ -23,8 +23,8 @@ public class SeriesAdapter extends RecyclerView.Adapter<SeriesViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final SeriesViewHolder seriesViewHolder, final int position) {
-        seriesViewHolder.bind(getByPosition(position));
+    public void onBindViewHolder(@NonNull final SeriesItemViewHolder seriesItemViewHolder, final int position) {
+        seriesItemViewHolder.bind(getByPosition(position));
     }
 
     @Override
