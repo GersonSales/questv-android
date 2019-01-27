@@ -1,4 +1,4 @@
-package br.com.questv.login
+package br.com.questv.ui.login
 
 class LoginPresenter(var loginView: LoginView?, private val loginInteractor: LoginInteractor) :
   LoginInteractor.OnLoginFinishedListener {

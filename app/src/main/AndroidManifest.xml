@@ -12,7 +12,7 @@
     <activity android:name=".MainActivity">
 
     </activity>
-    <activity android:name=".login.LoginActivity">
+    <activity android:name="br.com.questv.ui.login.LoginActivity">
       <intent-filter>
 
         <action android:name="android.intent.action.VIEW"/>

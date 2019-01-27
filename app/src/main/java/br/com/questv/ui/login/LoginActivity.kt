@@ -1,4 +1,4 @@
-package br.com.questv.login
+package br.com.questv.ui.login
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
