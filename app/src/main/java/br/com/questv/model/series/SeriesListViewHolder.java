@@ -1,6 +1,7 @@
 package br.com.questv.model.series;
 
 import android.support.annotation.NonNull;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -9,20 +10,26 @@ import br.com.questv.R;
 public class SeriesListViewHolder extends RecyclerView.ViewHolder {
 
 
+  private final ViewPager viewPager;
+
   private final RecyclerView seriesItemRecyclerView;
 
   public SeriesListViewHolder(@NonNull final View itemView) {
     super(itemView);
-    seriesItemRecyclerView = itemView.findViewById(R.id.rv_series_list);
-    seriesItemRecyclerView.setLayoutManager(new LinearLayoutManager(itemView.getContext(),
+    this.viewPager = itemView.findViewById(R.id.vp_news);
+    this.seriesItemRecyclerView = itemView.findViewById(R.id.rv_series_list);
+    this.seriesItemRecyclerView.setLayoutManager(new LinearLayoutManager(itemView.getContext(),
         LinearLayoutManager.HORIZONTAL, false));
   }
 
-  private void initRecyclerView() {
+  public void bindRecyclerView() {
     seriesItemRecyclerView.setAdapter(new SeriesItemAdapter());
+    viewPager.setVisibility(View.GONE);
   }
 
-  public void bind() {
-    initRecyclerView();
+  /*default*/ void bindViewPager() {
+    seriesItemRecyclerView.setVisibility(View.GONE);
+    viewPager.setAdapter(new NewsAdapter());
+
   }
 }
