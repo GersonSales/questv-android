@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity(), MainView {
     vp_main_pager.adapter = tabAdapter
     vp_main_pager.addOnPageChangeListener(presenter.getOnPageChangeListener())
     tl_main_swiper.setupWithViewPager(vp_main_pager)
+    tl_main_swiper.setSelectedTabIndicatorHeight(0)
 
     drawItemsTabIcon()
     highLightCurrentItem(0)
