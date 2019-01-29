@@ -49,6 +49,7 @@ class TabAdapter(private val context: Context, fm: FragmentManager): FragmentSta
     imageView.setColorFilter(ContextCompat.getColor(context, R.color.colorAccent), PorterDuff.Mode.SRC_ATOP)
     val textView: TextView = view.findViewById(R.id.tv_tab_title);
     textView.text = mTitleList[position]
+    textView.setTextColor(ContextCompat.getColor(context, R.color.colorAccent))
     return view
   }
 
