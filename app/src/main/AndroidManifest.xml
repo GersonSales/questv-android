@@ -10,7 +10,7 @@
       android:theme="@style/AppTheme">
     <activity android:name=".ui.AuxActivity">
     </activity>
-    <activity android:name=".ui.home.HomeActivity">
+    <activity android:name=".ui.home.HomeFragment">
     </activity>
     <activity android:name=".ui.main.MainActivity">
       <intent-filter>
