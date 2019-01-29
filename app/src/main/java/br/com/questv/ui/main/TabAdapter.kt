@@ -9,6 +9,7 @@ import android.support.v4.content.ContextCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import br.com.questv.R
 
 class TabAdapter(private val context: Context, fm: FragmentManager): FragmentStatePagerAdapter(fm) {
@@ -34,7 +35,9 @@ class TabAdapter(private val context: Context, fm: FragmentManager): FragmentSta
     val inflater = LayoutInflater.from(context)
     val view = inflater.inflate(R.layout.item_tab, null, false);
     val imageView: ImageView = view.findViewById(R.id.iv_tab_item)
+    val textView: TextView = view.findViewById(R.id.tv_tab_title);
     imageView.setImageResource(mIconList[position])
+    textView.text = mTitleList[position]
     return view
   }
 
@@ -44,6 +47,8 @@ class TabAdapter(private val context: Context, fm: FragmentManager): FragmentSta
     val imageView: ImageView = view.findViewById(R.id.iv_tab_item)
     imageView.setImageResource(mIconList[position])
     imageView.setColorFilter(ContextCompat.getColor(context, R.color.colorAccent), PorterDuff.Mode.SRC_ATOP)
+    val textView: TextView = view.findViewById(R.id.tv_tab_title);
+    textView.text = mTitleList[position]
     return view
   }
 
