@@ -1,9 +1,11 @@
 package br.com.questv.ui.main
 
 import android.os.Bundle
+import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
 import br.com.questv.R
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.app_bar.*
 
 class MainActivity : AppCompatActivity(), MainView {
 
@@ -16,6 +18,11 @@ class MainActivity : AppCompatActivity(), MainView {
     this.tabAdapter = presenter.getTabAdapter(this, supportFragmentManager)
 
     setupTabView()
+    setupToolBar()
+  }
+
+  private fun setupToolBar() {
+    setSupportActionBar(tb_main_bar)
   }
 
   private fun setupTabView() {
