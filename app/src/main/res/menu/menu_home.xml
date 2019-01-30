@@ -2,9 +2,16 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android">
 
   <item
+      android:id="@+id/sv_series_search"
+      android:icon="@drawable/ic_search_black_24dp"
+      android:title="@string/series_search"
+      app:actionViewClass="android.support.v7.widget.SearchView"
+      app:showAsAction="always"/>
+
+  <item
       android:id="@+id/mi_user_menu"
       android:icon="@drawable/ic_account_circle_black_24dp"
-      app:showAsAction="always"
+      app:showAsAction="ifRoom"
       android:title="@string/user_account"/>
 
 </menu>

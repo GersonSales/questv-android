@@ -8,6 +8,7 @@ import android.support.v7.widget.SearchView
 import android.view.*
 import br.com.questv.R
 import br.com.questv.model.series.SeriesListAdapter
+import br.com.questv.ui.user.UserFragment
 
 class HomeFragment : Fragment(), HomeView {
 
@@ -29,11 +30,24 @@ class HomeFragment : Fragment(), HomeView {
   }
 
   override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
-    inflater?.inflate(R.menu.menu_main, menu)
+    inflater?.inflate(R.menu.menu_home, menu)
     val menuItem:MenuItem? = menu?.findItem(R.id.sv_series_search)
     val searchView: SearchView = menuItem?.actionView as SearchView
     presenter.setupSearchViewBehavior(searchView)
     super.onPrepareOptionsMenu(menu)
   }
 
+  override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+    when {
+      item?.itemId == R.id.mi_user_menu -> navigateToUserAccount()
+    }
+    return super.onOptionsItemSelected(item)
+  }
+
+  override fun navigateToUserAccount() {
+    fragmentManager?.beginTransaction()
+      ?.setCustomAnimations(R.animator.slide_in_top, R.animator.slide_out_bottom, 0, 0)
+      ?.replace(R.id.fm_main_frame, UserFragment())
+      ?.commit()
+  }
 }
