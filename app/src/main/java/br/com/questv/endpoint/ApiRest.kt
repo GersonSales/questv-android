@@ -9,4 +9,6 @@ interface ApiRest {
   @GET("/series")
   fun getAllSeries(): Call<ArrayList<SeriesDTO>>
 
+
+
 }
