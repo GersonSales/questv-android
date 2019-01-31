@@ -6,13 +6,18 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import br.com.questv.R;
+import org.w3c.dom.Text;
 
 public class SeriesListViewHolder extends RecyclerView.ViewHolder {
 
 
   private final ViewPager viewPager;
 
+  private final TextView textView;
+  private final ImageView imageView;
   private final RecyclerView seriesItemRecyclerView;
   private final Context context;
 
@@ -23,6 +28,8 @@ public class SeriesListViewHolder extends RecyclerView.ViewHolder {
     this.seriesItemRecyclerView = itemView.findViewById(R.id.rv_series_list);
     this.seriesItemRecyclerView.setLayoutManager(new LinearLayoutManager(itemView.getContext(),
         LinearLayoutManager.HORIZONTAL, false));
+    this.textView = itemView.findViewById(R.id.tv_category_name);
+    this.imageView = itemView.findViewById(R.id.iv_category_menu);
   }
 
   public void bindRecyclerView() {
@@ -31,6 +38,9 @@ public class SeriesListViewHolder extends RecyclerView.ViewHolder {
   }
 
   /*default*/ void bindViewPager() {
+    this.viewPager.setVisibility(View.VISIBLE);
+    textView.setVisibility(View.GONE);
+    imageView.setVisibility(View.GONE);
     seriesItemRecyclerView.setVisibility(View.GONE);
     final NewsAdapter adapter = new NewsAdapter();
     viewPager.setAdapter(adapter);

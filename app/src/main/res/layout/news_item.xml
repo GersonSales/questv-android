@@ -8,19 +8,31 @@
   <ImageView
       android:layout_width="0dp"
       android:layout_height="0dp" tools:srcCompat="@tools:sample/avatars"
-      android:id="@+id/iv_news_item" android:layout_marginTop="8dp"
+      android:id="@+id/iv_news_item"
       app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-      android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:layout_marginBottom="8dp"
       app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
-      android:layout_marginEnd="8dp" android:layout_marginRight="8dp"/>
+      app:layout_constraintHorizontal_bias="0.0" app:layout_constraintVertical_bias="1.0"/>
+  <ImageView
+      android:layout_width="0dp"
+      android:layout_height="100dp"
+      android:id="@+id/im_black_gradient"
+      android:contentDescription="@string/black_gradient"
+      app:layout_constraintEnd_toEndOf="@+id/iv_news_item"
+      app:layout_constraintStart_toStartOf="@+id/iv_news_item"
+      app:layout_constraintTop_toTopOf="@+id/iv_news_item"
+      app:layout_constraintBottom_toBottomOf="@+id/iv_news_item"
+      android:background="@drawable/gradient_background" app:layout_constraintHorizontal_bias="1.0"
+      app:layout_constraintVertical_bias="1.0"/>
   <TextView
       android:text="TextView"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content" android:id="@+id/tv_news_desc"
-      android:textSize="16sp"
+      android:textSize="36sp"
       app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
       android:layout_marginEnd="8dp" android:layout_marginRight="8dp" android:layout_marginBottom="8dp"
-      app:layout_constraintHorizontal_bias="0.0"/>
+      app:layout_constraintHorizontal_bias="0.0" android:textStyle="bold"
+      android:textColor="@android:color/white"
+      android:textAllCaps="false" app:fontFamily="@font/"/>
 
 </android.support.constraint.ConstraintLayout>
