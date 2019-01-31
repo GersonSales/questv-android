@@ -14,13 +14,17 @@ import br.com.questv.ui.user.UserFragment
 class HomeFragment : Fragment(), HomeView {
 
   private lateinit var recyclerView: RecyclerView
-  private var presenter = HomePresenter(this, HomeInteractor())
+  private lateinit var presenter: HomePresenter
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
     super.onCreateView(inflater, container, savedInstanceState)
+    setHasOptionsMenu(true)
+
     val view = inflater.inflate(R.layout.activity_home, container, false)
     this.recyclerView = view.findViewById(R.id.rv_home)
-    setHasOptionsMenu(true)
+
+    this.presenter = HomePresenter(this, HomeInteractor())
+
     return view
   }
 

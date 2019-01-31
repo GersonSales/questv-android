@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class ApiClient private constructor() {
   companion object {
 
-    @JvmStatic private val BASE_URL: String = "http://localhost:5000"
+    @JvmStatic private val BASE_URL: String = "http://10.0.2.2:5000"
 
     @JvmStatic private val retrofit: Retrofit = Retrofit
       .Builder()
