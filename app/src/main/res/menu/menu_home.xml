@@ -10,7 +10,7 @@
 
   <item
       android:id="@+id/mi_user_menu"
-      android:icon="@drawable/ic_account_circle_black_24dp"
+      android:icon="@drawable/ic_account_circle_orange_24dp"
       app:showAsAction="ifRoom"
       android:title="@string/user_account"/>
 
