@@ -1,8 +1,15 @@
 package br.com.questv.ui.home
 
 import android.support.v7.widget.SearchView
+import br.com.questv.model.series.dto.SeriesDTO
 
-class HomePresenter(var homeView: HomeView?, private val homeInteractor: HomeInteractor) {
+class HomePresenter(var homeView: HomeView?, private val homeInteractor: HomeInteractor) :
+  HomeInteractor.OnSeriesConsumptionListener{
+
+  init {
+    getAllSeries()
+  }
+
   fun setupSearchViewBehavior(searchView: SearchView) {
     searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
       override fun onQueryTextSubmit(p0: String?): Boolean {
@@ -14,6 +21,21 @@ class HomePresenter(var homeView: HomeView?, private val homeInteractor: HomeInt
       }
 
     })
+  }
 
+
+  private fun getAllSeries() {
+    this.homeView?.showProgress()
+    this.homeInteractor.consumeSeriesApi(this)
+  }
+
+
+  override fun onConsumptionSuccess(series: List<SeriesDTO>?) {
+    homeView?.initRecyclerView(series)
+    this.homeView?.hideProgress()
+  }
+
+  override fun onConsumptionFail() {
+    this.homeView?.showErrorPage()
   }
 }

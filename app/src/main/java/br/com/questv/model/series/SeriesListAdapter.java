@@ -6,9 +6,33 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import br.com.questv.R;
+import br.com.questv.model.series.dto.SeriesDTO;
+
+import java.util.*;
 
 public class SeriesListAdapter extends RecyclerView.Adapter<SeriesListViewHolder> {
 
+
+  private final Map<String, List<SeriesDTO>> categories;
+
+  public SeriesListAdapter(final List<SeriesDTO> seriesDTOList) {
+    this.categories = getCategoryMap(seriesDTOList);
+  }
+
+  private Map<String, List<SeriesDTO>> getCategoryMap(final List<SeriesDTO> seriesDTOList) {
+    final Map<String, List<SeriesDTO>> categoriesMap = new HashMap<>();
+    for (final SeriesDTO seriesDTO : seriesDTOList) {
+      final String category = seriesDTO.getCategory();
+      if (categoriesMap.containsKey(category)) {
+        Objects.requireNonNull(categoriesMap.get(category)).add(seriesDTO);
+      }else {
+        final ArrayList<SeriesDTO> seriesDTOArrayList = new ArrayList<>();
+        seriesDTOArrayList.add(seriesDTO);
+        categoriesMap.put(category, seriesDTOArrayList);
+      }
+    }
+    return categoriesMap;
+  }
 
   @NonNull
   @Override
@@ -36,6 +60,6 @@ public class SeriesListAdapter extends RecyclerView.Adapter<SeriesListViewHolder
 
   @Override
   public int getItemCount() {
-    return 10;
+    return this.categories.keySet().size();
   }
 }

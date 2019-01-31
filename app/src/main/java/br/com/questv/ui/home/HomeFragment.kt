@@ -8,6 +8,7 @@ import android.support.v7.widget.SearchView
 import android.view.*
 import br.com.questv.R
 import br.com.questv.model.series.SeriesListAdapter
+import br.com.questv.model.series.dto.SeriesDTO
 import br.com.questv.ui.user.UserFragment
 
 class HomeFragment : Fragment(), HomeView {
@@ -20,13 +21,12 @@ class HomeFragment : Fragment(), HomeView {
     val view = inflater.inflate(R.layout.activity_home, container, false)
     this.recyclerView = view.findViewById(R.id.rv_home)
     setHasOptionsMenu(true)
-    initRecyclerView()
     return view
   }
 
-  private fun initRecyclerView() {
+  override fun initRecyclerView(series:  List<SeriesDTO>?) {
     this.recyclerView.layoutManager = (LinearLayoutManager(context))
-    this.recyclerView.adapter = SeriesListAdapter()
+    this.recyclerView.adapter = SeriesListAdapter(series)
   }
 
   override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
@@ -49,5 +49,17 @@ class HomeFragment : Fragment(), HomeView {
       ?.setCustomAnimations(R.animator.slide_in_top, R.animator.slide_out_bottom, 0, 0)
       ?.replace(R.id.fm_main_frame, UserFragment())
       ?.commit()
+  }
+
+  override fun showProgress() {
+    println("Loading...")
+  }
+
+  override fun hideProgress() {
+    println("Stop loading...")
+  }
+
+  override fun showErrorPage() {
+    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
   }
 }
