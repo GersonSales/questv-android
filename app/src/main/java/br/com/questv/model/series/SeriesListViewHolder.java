@@ -9,7 +9,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import br.com.questv.R;
+import br.com.questv.model.series.dto.SeriesDTO;
 import org.w3c.dom.Text;
+
+import java.util.List;
 
 public class SeriesListViewHolder extends RecyclerView.ViewHolder {
 
@@ -32,8 +35,9 @@ public class SeriesListViewHolder extends RecyclerView.ViewHolder {
     this.imageView = itemView.findViewById(R.id.iv_category_menu);
   }
 
-  public void bindRecyclerView() {
-    this.seriesItemRecyclerView.setAdapter(new SeriesItemAdapter());
+  /*default*/ void bindRecyclerView(final SeriesByCategory seriesByCategory) {
+    this.textView.setText(seriesByCategory.getCategory());
+    this.seriesItemRecyclerView.setAdapter(new SeriesItemAdapter(seriesByCategory.getSeries()));
     this.viewPager.setVisibility(View.GONE);
   }
 

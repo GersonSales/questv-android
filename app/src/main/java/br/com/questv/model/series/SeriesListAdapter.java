@@ -13,25 +13,30 @@ import java.util.*;
 public class SeriesListAdapter extends RecyclerView.Adapter<SeriesListViewHolder> {
 
 
-  private final Map<String, List<SeriesDTO>> categories;
+  private final List<SeriesByCategory> seriesByCategories;
 
   public SeriesListAdapter(final List<SeriesDTO> seriesDTOList) {
-    this.categories = getCategoryMap(seriesDTOList);
+    this.seriesByCategories = new ArrayList<>();
+    initSeriesByCategory(seriesDTOList);
   }
 
-  private Map<String, List<SeriesDTO>> getCategoryMap(final List<SeriesDTO> seriesDTOList) {
-    final Map<String, List<SeriesDTO>> categoriesMap = new HashMap<>();
+  private void initSeriesByCategory(final List<SeriesDTO> seriesDTOList) {
+    this.seriesByCategories.add(new SeriesByCategory("view-holder-spot", new ArrayList<>()));
     for (final SeriesDTO seriesDTO : seriesDTOList) {
-      final String category = seriesDTO.getCategory();
-      if (categoriesMap.containsKey(category)) {
-        Objects.requireNonNull(categoriesMap.get(category)).add(seriesDTO);
-      }else {
-        final ArrayList<SeriesDTO> seriesDTOArrayList = new ArrayList<>();
-        seriesDTOArrayList.add(seriesDTO);
-        categoriesMap.put(category, seriesDTOArrayList);
+      attachOnCategory(seriesDTO);
+    }
+  }
+
+  private void attachOnCategory(final SeriesDTO seriesDTO) {
+    for (final SeriesByCategory seriesByCategory : this.seriesByCategories) {
+      if (seriesByCategory.getCategory().equalsIgnoreCase(seriesDTO.getCategory())) {
+        seriesByCategory.getSeries().add(seriesDTO);
+        return;
       }
     }
-    return categoriesMap;
+    ArrayList<SeriesDTO> series = new ArrayList<>();
+    series.add(seriesDTO);
+    this.seriesByCategories.add(new SeriesByCategory(seriesDTO.getCategory(), series));
   }
 
   @NonNull
@@ -53,13 +58,13 @@ public class SeriesListAdapter extends RecyclerView.Adapter<SeriesListViewHolder
     if (position == 0) {
       seriesListViewHolder.bindViewPager();
     } else {
-      seriesListViewHolder.bindRecyclerView();
-
+      final SeriesByCategory serriesByCategory = this.seriesByCategories.get(position);
+      seriesListViewHolder.bindRecyclerView(serriesByCategory);
     }
   }
 
   @Override
   public int getItemCount() {
-    return this.categories.keySet().size();
+    return this.seriesByCategories.size();
   }
 }

@@ -6,9 +6,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import br.com.questv.R;
+import br.com.questv.model.series.dto.SeriesDTO;
+
+import java.util.List;
 
 public class SeriesItemAdapter extends RecyclerView.Adapter<SeriesItemViewHolder> {
 
+  private final List<SeriesDTO> series;
+
+  public SeriesItemAdapter(final List<SeriesDTO> seriesDTOS) {
+    this.series = seriesDTOS;
+  }
 
   @NonNull
   @Override
@@ -29,12 +37,12 @@ public class SeriesItemAdapter extends RecyclerView.Adapter<SeriesItemViewHolder
 
   @Override
   public int getItemCount() {
-        return SeriesMock.getInstance().size();
+        return this.series.size();
   }
 
 
   private SeriesModel getByPosition(final int position) {
-    return SeriesMock.getInstance().getByPosition(position);
+    return this.series.get(position).convert();
   }
 
 
