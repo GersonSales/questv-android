@@ -1,5 +1,6 @@
 package br.com.questv.ui.home
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -15,13 +16,18 @@ class HomeFragment : Fragment(), HomeView {
 
   private lateinit var recyclerView: RecyclerView
   private lateinit var presenter: HomePresenter
+  private lateinit var context: Context
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
     super.onCreateView(inflater, container, savedInstanceState)
     setHasOptionsMenu(true)
 
     val view = inflater.inflate(R.layout.activity_home, container, false)
+    this.context = view.context
+
     this.recyclerView = view.findViewById(R.id.rv_home)
+
+
 
     this.presenter = HomePresenter(this, HomeInteractor())
 
@@ -64,6 +70,9 @@ class HomeFragment : Fragment(), HomeView {
   }
 
   override fun showErrorPage() {
-    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+  }
+
+  override fun getContext(): Context {
+    return this.context
   }
 }

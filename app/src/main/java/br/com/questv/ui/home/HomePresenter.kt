@@ -33,9 +33,19 @@ class HomePresenter(var homeView: HomeView?, private val homeInteractor: HomeInt
   override fun onConsumptionSuccess(series: List<SeriesDTO>?) {
     homeView?.initRecyclerView(series)
     this.homeView?.hideProgress()
+    this.homeInteractor.consumeSeriesCovers(series, this, homeView?.getContext())
   }
 
   override fun onConsumptionFail() {
     this.homeView?.showErrorPage()
+  }
+
+  override fun onCoverConsumptionfail(series: SeriesDTO) {
+    TODO("not implemented onCoverConsumptionfail") //To change body of created functions use File | Settings | File Templates.
+
+  }
+
+  override fun onCoverConsumptionSuccess(series: SeriesDTO) {
+    TODO("not implemented onCoverConsumptionSuccess") //To change body of created functions use File | Settings | File Templates.
   }
 }
