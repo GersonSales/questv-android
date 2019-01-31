@@ -58,8 +58,8 @@ public class SeriesListAdapter extends RecyclerView.Adapter<SeriesListViewHolder
     if (position == 0) {
       seriesListViewHolder.bindViewPager();
     } else {
-      final SeriesByCategory serriesByCategory = this.seriesByCategories.get(position);
-      seriesListViewHolder.bindRecyclerView(serriesByCategory);
+      final SeriesByCategory seriesByCategory = this.seriesByCategories.get(position);
+      seriesListViewHolder.bindRecyclerView(seriesByCategory);
     }
   }
 

@@ -1,7 +1,6 @@
 package br.com.questv.ui.home
 
 import android.content.Context
-import android.os.AsyncTask
 import br.com.questv.endpoint.ApiClient
 import br.com.questv.model.series.dto.SeriesDTO
 import br.com.questv.util.FileUtil
@@ -55,7 +54,7 @@ class HomeInteractor {
 
           override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
             if (response.isSuccessful) {
-              seriesItem.categoryUri = FileUtil.writeResponseBodyToDisk(response.body(), context).path!!
+              seriesItem.coverImageUri = FileUtil.writeResponseBodyToDisk(response.body(), context)!!
               println("Here: " + seriesItem.coverImage)
             } else {
               listener.onCoverConsumptionfail(seriesItem)

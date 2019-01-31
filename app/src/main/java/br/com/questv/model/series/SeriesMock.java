@@ -24,7 +24,7 @@ public class SeriesMock {
 
     private void feedList() {
         for (int i = 0; i < 10; i++) {
-            this.seriesModelList.add(new SeriesModel("Series " + i, "Abbreviation " + i));
+            this.seriesModelList.add(new SeriesModel("Series " + i, "Abbreviation " + i, null));
         }
     }
 

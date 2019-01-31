@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import br.com.questv.R;
 import br.com.questv.model.series.dto.SeriesDTO;
 
@@ -13,8 +14,9 @@ import java.util.List;
 public class SeriesItemAdapter extends RecyclerView.Adapter<SeriesItemViewHolder> {
 
   private final List<SeriesDTO> series;
+  private ImageView imageView;
 
-  public SeriesItemAdapter(final List<SeriesDTO> seriesDTOS) {
+  /*default*/ SeriesItemAdapter(final List<SeriesDTO> seriesDTOS) {
     this.series = seriesDTOS;
   }
 
