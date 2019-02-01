@@ -1,6 +1,5 @@
 package br.com.questv.ui.home
 
-import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -9,34 +8,28 @@ import android.support.v7.widget.SearchView
 import android.view.*
 import br.com.questv.R
 import br.com.questv.model.series.SeriesListAdapter
-import br.com.questv.model.series.dto.SeriesDTO
 import br.com.questv.ui.user.UserFragment
 
 class HomeFragment : Fragment(), HomeView {
 
   private lateinit var recyclerView: RecyclerView
   private lateinit var presenter: HomePresenter
-  private lateinit var context: Context
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
     super.onCreateView(inflater, container, savedInstanceState)
     setHasOptionsMenu(true)
 
     val view = inflater.inflate(R.layout.activity_home, container, false)
-    this.context = view.context
 
     this.recyclerView = view.findViewById(R.id.rv_home)
-
-
-
     this.presenter = HomePresenter(this, HomeInteractor())
 
     return view
   }
 
-  override fun initRecyclerView(series:  List<SeriesDTO>?) {
+  override fun initRecyclerView() {
     this.recyclerView.layoutManager = (LinearLayoutManager(context))
-    this.recyclerView.adapter = SeriesListAdapter(series)
+    this.recyclerView.adapter = SeriesListAdapter()
   }
 
   override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
@@ -69,10 +62,6 @@ class HomeFragment : Fragment(), HomeView {
     println("Stop loading...")
   }
 
-  override fun showErrorPage() {
-  }
-
-  override fun getContext(): Context {
-    return this.context
+  override fun navigateToErrorPage() {
   }
 }

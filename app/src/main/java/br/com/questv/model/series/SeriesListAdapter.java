@@ -8,16 +8,17 @@ import android.view.ViewGroup;
 import br.com.questv.R;
 import br.com.questv.model.series.dto.SeriesDTO;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SeriesListAdapter extends RecyclerView.Adapter<SeriesListViewHolder> {
 
 
   private final List<SeriesByCategory> seriesByCategories;
 
-  public SeriesListAdapter(final List<SeriesDTO> seriesDTOList) {
+  public SeriesListAdapter() {
     this.seriesByCategories = new ArrayList<>();
-    initSeriesByCategory(seriesDTOList);
+    initSeriesByCategory(new ArrayList<>());//TODO
   }
 
   private void initSeriesByCategory(final List<SeriesDTO> seriesDTOList) {
