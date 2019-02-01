@@ -10,7 +10,7 @@ class SeriesModel(val id: Long,
                   var coverImage: String,
                   var coverImageUri: Uri?,
                   val promoImage: String,
-                  val promoImageUri: Uri?,
+                  var promoImageUri: Uri?,
                   val seasons: List<Long>,
                   val questions: List<Long>) : Updatable<SeriesModel> {
   override fun update(update: SeriesModel) {

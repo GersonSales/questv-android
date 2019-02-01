@@ -4,7 +4,6 @@ import android.content.Context
 import br.com.questv.endpoint.ApiClient
 import br.com.questv.model.series.SeriesModel
 import br.com.questv.util.FileUtil
-import okhttp3.Headers
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -14,9 +13,7 @@ class SplashInteractor {
   interface OnSeriesConsumptionListener {
     fun onSeriesConsumptionSuccess(series: List<SeriesModel>?)
     fun onSeriesConsumptionFail()
-    fun onSeriesCoverConsumptionFail(series: SeriesModel)
-    fun onSeriesCoverConsumptionSuccess(series: SeriesModel)
-    fun onSeriesCoverConsumptionFinished()
+    fun onSeriesFilesConsumptionFinished()
   }
 
   fun consumeSeriesApi(listener: SplashInteractor.OnSeriesConsumptionListener) {
@@ -38,38 +35,58 @@ class SplashInteractor {
         } else {
           listener.onSeriesConsumptionFail()
         }
-
       }
     })
   }
 
-  fun consumeSeriesCovers(
+
+  fun consumeSeriesFiles(
     series: List<SeriesModel>?,
     listener: SplashInteractor.OnSeriesConsumptionListener,
     context: Context?
   ) {
-    for (seriesItem in series!!) {
-      if (!seriesItem.coverImage.isEmpty()) {
-
-        val coverConsumptionCall: Call<ResponseBody> = ApiClient.instance.getSeriesCover(seriesItem.id.toString())
-        coverConsumptionCall.enqueue(object : Callback<ResponseBody> {
-          override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-            t.printStackTrace()
-            listener.onSeriesCoverConsumptionFail(seriesItem)
-          }
-
-          override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-            val fileName = response.headers().get("Content-Name")
-            if (response.isSuccessful) {
-              seriesItem.coverImageUri = FileUtil.writeResponseBodyToDisk(response.body(), fileName!!, context)!!
-              println("Here: " + seriesItem.coverImage)
-            } else {
-              listener.onSeriesCoverConsumptionFail(seriesItem)
-            }
-          }
-        })
-      }
+    for (seriesModel in series!!) {
+      consumeSeriesCovers(seriesModel, context)
+      consumePromoImages(seriesModel, context)
     }
-    listener.onSeriesCoverConsumptionFinished()
+
+    listener.onSeriesFilesConsumptionFinished()
+  }
+
+
+  private fun consumeSeriesCovers(seriesModel: SeriesModel, context: Context?) {
+    if (!seriesModel.coverImage.isEmpty()) {
+      val coverConsumptionCall: Call<ResponseBody> = ApiClient.instance.getSeriesCover(seriesModel.id.toString())
+      coverConsumptionCall.enqueue(object : Callback<ResponseBody> {
+        override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+          t.printStackTrace()
+        }
+
+        override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+          if (response.isSuccessful) {
+            val fileName = response.headers().get("Content-Name")
+            seriesModel.coverImageUri = FileUtil.writeResponseBodyToDisk(response.body(), fileName!!, context)!!
+          }
+        }
+      })
+    }
+  }
+
+  private fun consumePromoImages(seriesModel: SeriesModel, context: Context?) {
+    if (!seriesModel.promoImage.isEmpty()) {
+      val promoImageConsumptionCall: Call<ResponseBody> = ApiClient.instance.getSeriesPromoImage(seriesModel.id.toString())
+      promoImageConsumptionCall.enqueue(object : Callback<ResponseBody> {
+        override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+          t.printStackTrace()
+        }
+
+        override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+          if (response.isSuccessful) {
+            val fileName = response.headers().get("Content-Name")
+            seriesModel.promoImageUri = FileUtil.writeResponseBodyToDisk(response.body(), fileName!!, context)!!
+          }
+        }
+      })
+    }
   }
 }

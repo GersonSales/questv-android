@@ -25,7 +25,7 @@ public class FileUtil {
 
     assert context != null;
     File root = context.getExternalFilesDir(DIRECTORY_PICTURES);
-    final File file = new File(root, fileName + ".png");
+    final File file = new File(root, fileName);
 
     downloadContent(file, responseBody);
     return getUriFromFile(context, file);
