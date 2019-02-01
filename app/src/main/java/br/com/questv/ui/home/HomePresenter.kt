@@ -46,6 +46,6 @@ class HomePresenter(var homeView: HomeView?, private val homeInteractor: HomeInt
   }
 
   override fun onCoverConsumptionSuccess(series: SeriesDTO) {
-    TODO("not implemented onCoverConsumptionSuccess") //To change body of created functions use File | Settings | File Templates.
+    TODO("not implemented onSeriesCoverConsumptionSuccess") //To change body of created functions use File | Settings | File Templates.
   }
 }

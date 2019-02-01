@@ -6,4 +6,5 @@ class SeriesModel(
   val name: String,
   val abbreviation: String,
   var imageCoverUri: Uri?
-)
+) {
+}
