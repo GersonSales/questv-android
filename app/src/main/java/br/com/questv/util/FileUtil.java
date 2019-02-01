@@ -20,11 +20,10 @@ public class FileUtil {
   private static final String AUTHORITY = "br.com.questv";
 
   public static Uri writeResponseBodyToDisk(@Nullable final ResponseBody responseBody,
-                                            @NotNull final Long id,
+                                            @NotNull final String fileName,
                                             @Nullable Context context) {
 
     assert context != null;
-    String fileName = String.valueOf(id);
     File root = context.getExternalFilesDir(DIRECTORY_PICTURES);
     final File file = new File(root, fileName + ".png");
 

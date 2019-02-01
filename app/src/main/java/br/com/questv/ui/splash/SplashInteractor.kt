@@ -4,6 +4,7 @@ import android.content.Context
 import br.com.questv.endpoint.ApiClient
 import br.com.questv.model.series.SeriesModel
 import br.com.questv.util.FileUtil
+import okhttp3.Headers
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -58,8 +59,9 @@ class SplashInteractor {
           }
 
           override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+            val fileName = response.headers().get("Content-Name")
             if (response.isSuccessful) {
-              seriesItem.coverImageUri = FileUtil.writeResponseBodyToDisk(response.body(), seriesItem.id, context)!!
+              seriesItem.coverImageUri = FileUtil.writeResponseBodyToDisk(response.body(), fileName!!, context)!!
               println("Here: " + seriesItem.coverImage)
             } else {
               listener.onSeriesCoverConsumptionFail(seriesItem)
