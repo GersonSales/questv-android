@@ -9,10 +9,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import br.com.questv.R;
-import br.com.questv.model.series.dto.SeriesDTO;
-import org.w3c.dom.Text;
-
-import java.util.List;
 
 public class SeriesListViewHolder extends RecyclerView.ViewHolder {
 
@@ -22,11 +18,10 @@ public class SeriesListViewHolder extends RecyclerView.ViewHolder {
   private final TextView textView;
   private final ImageView imageView;
   private final RecyclerView seriesItemRecyclerView;
-  private final Context context;
 
-  public SeriesListViewHolder(@NonNull final View itemView) {
+
+  /*default*/ SeriesListViewHolder(@NonNull final View itemView) {
     super(itemView);
-    this.context = itemView.getContext();
     this.viewPager = itemView.findViewById(R.id.vp_news);
     this.seriesItemRecyclerView = itemView.findViewById(R.id.rv_series_list);
     this.seriesItemRecyclerView.setLayoutManager(new LinearLayoutManager(itemView.getContext(),
@@ -35,9 +30,9 @@ public class SeriesListViewHolder extends RecyclerView.ViewHolder {
     this.imageView = itemView.findViewById(R.id.iv_category_menu);
   }
 
-  /*default*/ void bindRecyclerView(final SeriesByCategory seriesByCategory) {
-    this.textView.setText(seriesByCategory.getCategory());
-    this.seriesItemRecyclerView.setAdapter(new SeriesItemAdapter(seriesByCategory.getSeries()));
+  /*default*/ void bindRecyclerView(final String category) {
+    this.textView.setText(category);
+    this.seriesItemRecyclerView.setAdapter(new SeriesItemAdapter(category));
     this.viewPager.setVisibility(View.GONE);
   }
 

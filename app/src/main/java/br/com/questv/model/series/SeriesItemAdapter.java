@@ -13,11 +13,11 @@ import java.util.List;
 
 public class SeriesItemAdapter extends RecyclerView.Adapter<SeriesItemViewHolder> {
 
-  private final List<SeriesDTO> series;
+  private final List<SeriesModel> series;
   private ImageView imageView;
 
-  /*default*/ SeriesItemAdapter(final List<SeriesDTO> seriesDTOS) {
-    this.series = seriesDTOS;
+  /*default*/ SeriesItemAdapter(final String category) {
+    this.series = SeriesMock.getInstance().getByCategory(category);
   }
 
   @NonNull
@@ -44,7 +44,7 @@ public class SeriesItemAdapter extends RecyclerView.Adapter<SeriesItemViewHolder
 
 
   private SeriesModel getByPosition(final int position) {
-    return this.series.get(position).convert();
+    return this.series.get(position);
   }
 
 

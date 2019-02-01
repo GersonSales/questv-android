@@ -66,4 +66,31 @@ public class SeriesMock {
 
     return null;
   }
+
+  public List<String> getCategories() {
+    return new ArrayList<>();
+  }
+
+  public List<SeriesModel> getByCategory(String category) {
+    return new ArrayList<>();
+  }
+
+//  private void initSeriesByCategory(final List<SeriesDTO> seriesDTOList) {
+//    this.seriesCategories.add(new SeriesByCategory("view-holder-spot", new ArrayList<>()));
+//    for (final SeriesDTO seriesDTO : seriesDTOList) {
+//      attachOnCategory(seriesDTO);
+//    }
+//  }
+//
+//  private void attachOnCategory(final SeriesDTO seriesDTO) {
+//    for (final SeriesByCategory seriesByCategory : this.seriesCategories) {
+//      if (seriesByCategory.getCategory().equalsIgnoreCase(seriesDTO.getCategory())) {
+//        seriesByCategory.getSeries().add(seriesDTO);
+//        return;
+//      }
+//    }
+//    ArrayList<SeriesDTO> series = new ArrayList<>();
+//    series.add(seriesDTO);
+//    this.seriesCategories.add(new SeriesByCategory(seriesDTO.getCategory(), series));
+//  }
 }

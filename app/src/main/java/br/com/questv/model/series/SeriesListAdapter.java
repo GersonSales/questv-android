@@ -14,30 +14,12 @@ import java.util.List;
 public class SeriesListAdapter extends RecyclerView.Adapter<SeriesListViewHolder> {
 
 
-  private final List<SeriesByCategory> seriesByCategories;
+  private final List<String> seriesCategories;
 
   public SeriesListAdapter() {
-    this.seriesByCategories = new ArrayList<>();
-    initSeriesByCategory(new ArrayList<>());//TODO
-  }
-
-  private void initSeriesByCategory(final List<SeriesDTO> seriesDTOList) {
-    this.seriesByCategories.add(new SeriesByCategory("view-holder-spot", new ArrayList<>()));
-    for (final SeriesDTO seriesDTO : seriesDTOList) {
-      attachOnCategory(seriesDTO);
-    }
-  }
-
-  private void attachOnCategory(final SeriesDTO seriesDTO) {
-    for (final SeriesByCategory seriesByCategory : this.seriesByCategories) {
-      if (seriesByCategory.getCategory().equalsIgnoreCase(seriesDTO.getCategory())) {
-        seriesByCategory.getSeries().add(seriesDTO);
-        return;
-      }
-    }
-    ArrayList<SeriesDTO> series = new ArrayList<>();
-    series.add(seriesDTO);
-    this.seriesByCategories.add(new SeriesByCategory(seriesDTO.getCategory(), series));
+    this.seriesCategories = new ArrayList<>();
+    this.seriesCategories.add("none");//TODO('remove')
+    this.seriesCategories.addAll(SeriesMock.getInstance().getCategories());
   }
 
   @NonNull
@@ -59,13 +41,13 @@ public class SeriesListAdapter extends RecyclerView.Adapter<SeriesListViewHolder
     if (position == 0) {
       seriesListViewHolder.bindViewPager();
     } else {
-      final SeriesByCategory seriesByCategory = this.seriesByCategories.get(position);
-      seriesListViewHolder.bindRecyclerView(seriesByCategory);
+      final String category = this.seriesCategories.get(position);
+      seriesListViewHolder.bindRecyclerView(category);
     }
   }
 
   @Override
   public int getItemCount() {
-    return this.seriesByCategories.size();
+    return this.seriesCategories.size();
   }
 }

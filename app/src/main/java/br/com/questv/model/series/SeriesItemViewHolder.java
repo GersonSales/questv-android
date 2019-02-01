@@ -10,7 +10,7 @@ import br.com.questv.R;
 
 import java.io.File;
 
-public class SeriesItemViewHolder extends RecyclerView.ViewHolder {
+/*default*/ final class SeriesItemViewHolder extends RecyclerView.ViewHolder {
 
 
   private final TextView seriesName;
