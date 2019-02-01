@@ -2,10 +2,10 @@ package br.com.questv.contract
 
 interface Repository<T> {
   fun save(t: T)
-  fun saveAll(tCollection: Collection<T>)
+  fun saveAll(tList: List<T>)
   fun findById(tId: Long): T
   fun update(t: T)
-  fun updateAll(tCollection: Collection<T>)
+  fun updateAll(tList: List<T>)
   fun deleteById(tId: Long)
-  fun deleteAllById(tIdCollection: Collection<Long>)
+  fun deleteAllById(tIdList: List<Long>)
 }
