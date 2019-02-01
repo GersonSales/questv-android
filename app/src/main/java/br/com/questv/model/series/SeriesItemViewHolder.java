@@ -25,7 +25,7 @@ import java.io.File;
 
   /*default*/ void bind(final SeriesModel seriesModel) {
     this.seriesName.setText(seriesModel.getName());
-    final Uri imageCoverUri = seriesModel.getImageCoverUri();
+    final Uri imageCoverUri = seriesModel.getCoverImageUri();
     if (imageCoverUri != null) {
       this.seriesCover.setImageURI(imageCoverUri);
     }

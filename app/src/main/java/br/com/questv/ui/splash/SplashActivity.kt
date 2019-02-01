@@ -20,11 +20,11 @@ class SplashActivity : AppCompatActivity(), SplashView {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_splash)
     presenter.fetchAllSeries()
+
   }
 
   override fun navigateToMainActivity() {
     Handler().postDelayed(object: Thread() {
-
       override fun run() {
         startActivity(Intent(this@SplashActivity, MainActivity::class.java))
         super.run()
