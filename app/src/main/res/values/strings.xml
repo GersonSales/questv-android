@@ -16,4 +16,5 @@
   <string name="category_name">Category name</string>
   <string name="series_name">Series name</string>
   <string name="black_gradient">Black gratient</string>
+  <string name="splash_screen">Splash Screen</string>
 </resources>

@@ -10,5 +10,4 @@ class SeriesModel(val id: Long,
                   var coverImageUri: Uri?,
                   val promoImage: String,
                   val seasons: List<Long>,
-                  val questions: List<Long>) {
-}
+                  val questions: List<Long>)

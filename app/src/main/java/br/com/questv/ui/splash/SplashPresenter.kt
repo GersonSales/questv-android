@@ -3,11 +3,13 @@ package br.com.questv.ui.splash
 import br.com.questv.model.series.SeriesMock
 import br.com.questv.model.series.SeriesModel
 
-class SplashPresenter(var splashView: SplashView?,
-                      private val splashInteractor: SplashInteractor) : SplashInteractor.OnSeriesConsumptionListener {
+class SplashPresenter(
+  var splashView: SplashView?,
+  private val splashInteractor: SplashInteractor
+) : SplashInteractor.OnSeriesConsumptionListener {
 
 
-  private fun fetchAllSeries() {
+  fun fetchAllSeries() {
     this.splashView?.showProgress()
     this.splashInteractor.consumeSeriesApi(this)
   }

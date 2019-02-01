@@ -5,8 +5,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.support.v7.app.AppCompatActivity
+import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import br.com.questv.R
 import br.com.questv.ui.main.MainActivity
+import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity : AppCompatActivity(), SplashView {
 
@@ -15,7 +19,7 @@ class SplashActivity : AppCompatActivity(), SplashView {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_splash)
-    navigateToMainActivity()
+    presenter.fetchAllSeries()
   }
 
   override fun navigateToMainActivity() {
@@ -29,11 +33,11 @@ class SplashActivity : AppCompatActivity(), SplashView {
   }
 
   override fun showProgress() {
-    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    pb_splash_progress.visibility = VISIBLE
   }
 
   override fun getContext(): Context? {
-    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    return this
   }
 
   override fun navigateToErrorPage() {
@@ -41,6 +45,6 @@ class SplashActivity : AppCompatActivity(), SplashView {
   }
 
   override fun hideProgress() {
-    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    pb_splash_progress.visibility = GONE
   }
 }
