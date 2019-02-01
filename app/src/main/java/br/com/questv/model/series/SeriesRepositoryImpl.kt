@@ -3,48 +3,110 @@ package br.com.questv.model.series
 import android.net.Uri
 import br.com.questv.contract.SeriesRepository
 
-class SeriesRepositoryImpl : SeriesRepository {
-  override fun findByCategory(category: String): List<SeriesModel> {
-    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+class SeriesRepositoryImpl private constructor() : SeriesRepository {
+  companion object {
+    @JvmStatic
+    val instance = SeriesRepositoryImpl()
   }
 
-  override fun findByName(name: String): SeriesModel {
-    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+  private var seriesMap: MutableMap<String, MutableList<SeriesModel>> = HashMap()
+
+
+  override fun findByCategory(category: String): List<SeriesModel> {
+    return this.seriesMap.getValue(category)
+  }
+
+  override fun findByName(name: String): SeriesModel? {
+    for (seriesModel in findAll()) {
+      if (seriesModel.name == name) {
+        return seriesModel
+      }
+    }
+    return null
+  }
+
+  override fun findAll(): List<SeriesModel> {
+    val result: MutableList<SeriesModel> = ArrayList()
+    for (category in this.seriesMap.keys) {
+      result.addAll(this.seriesMap[category]!!)
+    }
+    return result
   }
 
   override fun findAllCoverImages(): List<Uri> {
-    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    val result: MutableList<Uri> = ArrayList()
+    for (seriesModel in findAll()) {
+      result.add(seriesModel.coverImageUri!!)
+    }
+    return result
   }
 
   override fun findAllPromoImages(): List<Uri> {
-    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    val result: MutableList<Uri> = ArrayList()
+    for (seriesModel in findAll()) {
+      result.add(seriesModel.promoImageUri!!)
+    }
+    return result
   }
 
-  override fun save(t: SeriesModel) {
-    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+  override fun save(item: SeriesModel) {
+    val category: String = item.category
+    if (this.seriesMap.containsKey(category)) {
+      this.seriesMap[category]?.add(item)
+    } else {
+      val list: MutableList<SeriesModel> = ArrayList()
+      list.add(item)
+      this.seriesMap[category] = list
+    }
   }
 
-  override fun saveAll(tList: List<SeriesModel>) {
-    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+  override fun saveAll(itemList: List<SeriesModel>) {
+    for (seriesModel in itemList) {
+      save(seriesModel)
+    }
   }
 
-  override fun findById(tId: Long): SeriesModel {
-    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+  override fun findById(itemId: Long): SeriesModel? {
+    for (seriesModel in findAll()) {
+      if (seriesModel.id == itemId) {
+        return seriesModel
+      }
+    }
+    return null
   }
 
-  override fun update(t: SeriesModel) {
-    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+  override fun update(item: SeriesModel) {
+    this.findById(item.id)?.update(item)
   }
 
-  override fun updateAll(tList: List<SeriesModel>) {
-    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+  override fun updateAll(itemList: List<SeriesModel>) {
+    for (seriesModel in itemList) {
+      update(seriesModel)
+    }
   }
 
-  override fun deleteById(tId: Long) {
-    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+  override fun deleteById(itemId: Long) {
+    for (category in this.seriesMap.keys) {
+      val deletedById: Boolean = deleteById(itemId, this.seriesMap[category])
+      if (deletedById) {
+        break
+      }
+    }
   }
 
-  override fun deleteAllById(tIdList: List<Long>) {
-    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+  private fun deleteById(itemId: Long, seriesModelList: MutableList<SeriesModel>?) : Boolean {
+    for (seriesModel in seriesModelList!!) {
+      if (seriesModel.id == itemId) {
+        seriesModelList.remove(seriesModel)
+        return true
+      }
+    }
+    return false
+  }
+
+  override fun deleteAllById(itemIdList: List<Long>) {
+    for (itemId in itemIdList) {
+      deleteById(itemId)
+    }
   }
 }
