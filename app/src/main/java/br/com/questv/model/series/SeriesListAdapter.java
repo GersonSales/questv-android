@@ -18,7 +18,7 @@ public class SeriesListAdapter extends RecyclerView.Adapter<SeriesListViewHolder
   public SeriesListAdapter() {
     this.seriesCategories = new ArrayList<>();
     this.seriesCategories.add("none");//TODO('remove')
-    this.seriesCategories.addAll(SeriesMock.getInstance().getCategories());
+    this.seriesCategories.addAll(SeriesRepositoryImpl.getInstance().findAllCategories());
   }
 
   @NonNull

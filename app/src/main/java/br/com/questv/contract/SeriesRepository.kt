@@ -8,4 +8,6 @@ interface SeriesRepository : Repository<SeriesModel> {
   fun findByName(name: String): SeriesModel?
   fun findAllCoverImages(): List<Uri>
   fun findAllPromoImages(): List<Uri>
+  fun findAllCategories(): Set<String>
+
 }

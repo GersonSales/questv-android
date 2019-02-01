@@ -49,6 +49,10 @@ class SeriesRepositoryImpl private constructor() : SeriesRepository {
     return result
   }
 
+  override fun findAllCategories(): Set<String> {
+    return this.seriesMap.keys
+  }
+
   override fun save(item: SeriesModel) {
     val category: String = item.category
     if (this.seriesMap.containsKey(category)) {

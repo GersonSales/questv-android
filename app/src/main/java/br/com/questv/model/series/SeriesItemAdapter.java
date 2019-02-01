@@ -16,7 +16,7 @@ public class SeriesItemAdapter extends RecyclerView.Adapter<SeriesItemViewHolder
   private ImageView imageView;
 
   /*default*/ SeriesItemAdapter(final String category) {
-    this.series = SeriesMock.getInstance().getByCategory(category);
+    this.series = SeriesRepositoryImpl.getInstance().findByCategory(category);
   }
 
   @NonNull
