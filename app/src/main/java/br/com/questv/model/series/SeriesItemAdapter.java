@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import br.com.questv.R;
-import br.com.questv.model.series.dto.SeriesDTO;
 
 import java.util.List;
 

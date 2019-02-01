@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import br.com.questv.R;
-import br.com.questv.model.series.dto.SeriesDTO;
 
 import java.util.ArrayList;
 import java.util.List;

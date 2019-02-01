@@ -1,7 +1,7 @@
 package br.com.questv.ui.splash
 
 import br.com.questv.model.series.SeriesMock
-import br.com.questv.model.series.dto.SeriesDTO
+import br.com.questv.model.series.SeriesModel
 
 class SplashPresenter(var splashView: SplashView?,
                       private val splashInteractor: SplashInteractor) : SplashInteractor.OnSeriesConsumptionListener {
@@ -12,7 +12,7 @@ class SplashPresenter(var splashView: SplashView?,
     this.splashInteractor.consumeSeriesApi(this)
   }
 
-  override fun onSeriesConsumptionSuccess(series: List<SeriesDTO>?) {
+  override fun onSeriesConsumptionSuccess(series: List<SeriesModel>?) {
     SeriesMock.getInstance().addAll(series)
     this.splashInteractor.consumeSeriesCovers(series, this, splashView?.getContext())
   }
@@ -22,10 +22,10 @@ class SplashPresenter(var splashView: SplashView?,
     this.splashView?.navigateToErrorPage()
   }
 
-  override fun onSeriesCoverConsumptionFail(series: SeriesDTO) {
+  override fun onSeriesCoverConsumptionFail(series: SeriesModel) {
   }
 
-  override fun onSeriesCoverConsumptionSuccess(series: SeriesDTO) {
+  override fun onSeriesCoverConsumptionSuccess(series: SeriesModel) {
     SeriesMock.getInstance().update(series)
   }
 

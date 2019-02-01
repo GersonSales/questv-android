@@ -2,7 +2,7 @@ package br.com.questv.ui.splash
 
 import android.content.Context
 import br.com.questv.endpoint.ApiClient
-import br.com.questv.model.series.dto.SeriesDTO
+import br.com.questv.model.series.SeriesModel
 import br.com.questv.util.FileUtil
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -11,27 +11,27 @@ import retrofit2.Response
 
 class SplashInteractor {
   interface OnSeriesConsumptionListener {
-    fun onSeriesConsumptionSuccess(series: List<SeriesDTO>?)
+    fun onSeriesConsumptionSuccess(series: List<SeriesModel>?)
     fun onSeriesConsumptionFail()
-    fun onSeriesCoverConsumptionFail(series: SeriesDTO)
-    fun onSeriesCoverConsumptionSuccess(series: SeriesDTO)
+    fun onSeriesCoverConsumptionFail(series: SeriesModel)
+    fun onSeriesCoverConsumptionSuccess(series: SeriesModel)
     fun onSeriesCoverConsumptionFinished()
   }
 
   fun consumeSeriesApi(listener: SplashInteractor.OnSeriesConsumptionListener) {
-    val consumptionCall: Call<ArrayList<SeriesDTO>> = ApiClient.instance.getAllSeries()
-    consumptionCall.enqueue(object : Callback<ArrayList<SeriesDTO>> {
-      override fun onFailure(call: Call<ArrayList<SeriesDTO>>, t: Throwable) {
+    val consumptionCall: Call<ArrayList<SeriesModel>> = ApiClient.instance.getAllSeries()
+    consumptionCall.enqueue(object : Callback<ArrayList<SeriesModel>> {
+      override fun onFailure(call: Call<ArrayList<SeriesModel>>, t: Throwable) {
         t.printStackTrace()
         listener.onSeriesConsumptionFail()
       }
 
       override fun onResponse(
-        call: Call<ArrayList<SeriesDTO>>,
-        response: Response<ArrayList<SeriesDTO>>
+        call: Call<ArrayList<SeriesModel>>,
+        response: Response<ArrayList<SeriesModel>>
       ) {
         if (response.isSuccessful) {
-          val series: ArrayList<SeriesDTO>? = response.body()
+          val series: ArrayList<SeriesModel>? = response.body()
           listener.onSeriesConsumptionSuccess(series)
 
         } else {
@@ -43,7 +43,7 @@ class SplashInteractor {
   }
 
   fun consumeSeriesCovers(
-    series: List<SeriesDTO>?,
+    series: List<SeriesModel>?,
     listener: SplashInteractor.OnSeriesConsumptionListener,
     context: Context?
   ) {

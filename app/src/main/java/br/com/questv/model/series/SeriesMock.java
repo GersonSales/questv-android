@@ -1,6 +1,5 @@
 package br.com.questv.model.series;
 
-import br.com.questv.model.series.dto.SeriesDTO;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -24,13 +23,6 @@ public class SeriesMock {
 
   private SeriesMock() {
     this.seriesModelList = new ArrayList<>();
-    feedList();
-  }
-
-  private void feedList() {
-    for (int i = 0; i < 10; i++) {
-      this.seriesModelList.add(new SeriesModel("Series " + i, "Abbreviation " + i, null));
-    }
   }
 
   public SeriesModel getByPosition(final int position) {
@@ -44,13 +36,11 @@ public class SeriesMock {
     return this.seriesModelList.size();
   }
 
-  public void addAll(@Nullable List<SeriesDTO> series) {
-    for (final SeriesDTO seriesDTO : Objects.requireNonNull(series)) {
-      seriesModelList.add(seriesDTO.convert());
-    }
+  public void addAll(@Nullable List<SeriesModel> series) {
+    seriesModelList.addAll(Objects.requireNonNull(series));
   }
 
-  public void update(@NotNull SeriesDTO series) {
+  public void update(@NotNull SeriesModel series) {
     final SeriesModel seriesModel = findById(series.getId());
 //    seriesModel.update(series.convert()); TODO
 
