@@ -3,7 +3,6 @@ package br.com.questv.util;
 import android.content.Context;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.os.Environment;
 import android.support.v4.content.FileProvider;
 import android.util.Log;
 import okhttp3.ResponseBody;
@@ -11,7 +10,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.*;
-import java.nio.file.Files;
 import java.util.Objects;
 
 import static android.content.ContentValues.TAG;
@@ -20,11 +18,6 @@ import static android.os.Environment.DIRECTORY_PICTURES;
 public class FileUtil {
 
   private static final String AUTHORITY = "br.com.questv";
-  private static final String FAILURE = "Failure";
-  private static final String JPG = "jpg";
-  private static final String UNDERSCORE = "_";
-  private static final String PNG = "png";
-
 
   public static Uri writeResponseBodyToDisk(@Nullable final ResponseBody responseBody,
                                             @NotNull final Long id,
@@ -35,18 +28,19 @@ public class FileUtil {
     File root = context.getExternalFilesDir(DIRECTORY_PICTURES);
     final File file = new File(root, fileName + ".png");
 
+    downloadContent(file, responseBody);
+    return getUriFromFile(context, file);
+  }
+
+  private static void downloadContent(final File file, final ResponseBody responseBody) {
     if (!file.exists()) {
       try {
         file.createNewFile();
         new Asynchronous(file).execute(responseBody);
-        return getUriFromFile(context, file);
-
       } catch (IOException e) {
         e.printStackTrace();
       }
     }
-
-    return getUriFromFile(context, root);
   }
 
   private static Uri getUriFromFile(final Context context, final File file) {

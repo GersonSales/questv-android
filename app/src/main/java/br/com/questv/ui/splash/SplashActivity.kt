@@ -24,12 +24,7 @@ class SplashActivity : AppCompatActivity(), SplashView {
   }
 
   override fun navigateToMainActivity() {
-    Handler().postDelayed(object: Thread() {
-      override fun run() {
-        startActivity(Intent(this@SplashActivity, MainActivity::class.java))
-        super.run()
-      }
-    }, 2000)
+    startActivity(Intent(this@SplashActivity, MainActivity::class.java))
   }
 
   override fun showProgress() {
