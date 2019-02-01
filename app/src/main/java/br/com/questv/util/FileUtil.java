@@ -1,6 +1,5 @@
 package br.com.questv.util;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -8,12 +7,11 @@ import android.os.Environment;
 import android.support.v4.content.FileProvider;
 import android.util.Log;
 import okhttp3.ResponseBody;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.*;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+import java.nio.file.Files;
 import java.util.Objects;
 
 import static android.content.ContentValues.TAG;
@@ -25,17 +23,30 @@ public class FileUtil {
   private static final String FAILURE = "Failure";
   private static final String JPG = "jpg";
   private static final String UNDERSCORE = "_";
+  private static final String PNG = "png";
 
 
-  public static Uri writeResponseBodyToDisk(@Nullable ResponseBody responseBody, @Nullable Context context) {
+  public static Uri writeResponseBodyToDisk(@Nullable final ResponseBody responseBody,
+                                            @NotNull final Long id,
+                                            @Nullable Context context) {
 
     assert context != null;
-//    File futureStudioIconFile = new File(context.getExternalFilesDir() + File.separator + "image.png");
-    final File file = createImageFile(context);
+    String fileName = String.valueOf(id);
+    File root = context.getExternalFilesDir(DIRECTORY_PICTURES);
+    final File file = new File(root, fileName + ".png");
 
-    new Asynchronous(file).execute(responseBody);
-    return getUriFromFile(context, file);
+    if (!file.exists()) {
+      try {
+        file.createNewFile();
+        new Asynchronous(file).execute(responseBody);
+        return getUriFromFile(context, file);
 
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    }
+
+    return getUriFromFile(context, root);
   }
 
   private static Uri getUriFromFile(final Context context, final File file) {
@@ -44,40 +55,6 @@ public class FileUtil {
     }
     return null;
   }
-
-  private static File createImageFile(final Context context) {
-    if (context != null) {
-      return createMediaFile(context.getExternalFilesDir(DIRECTORY_PICTURES + "/image"), JPG);
-    }
-    return Environment.getExternalStorageDirectory();
-  }
-
-  private static File createMediaFile(final File storageDirectory,
-                                      final String extension) {
-    final @SuppressLint("SimpleDateFormat") String timeStamp =
-        new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-
-    final String fileName = extension.toUpperCase(Locale.getDefault()) +
-        UNDERSCORE + timeStamp + UNDERSCORE;
-    return createMediaFile(storageDirectory, fileName, extension);
-  }
-
-  private static File createMediaFile(final File storageDirectory, final String fileName,
-                                      final String extension) {
-    File mediaFile = null;
-    try {
-      mediaFile = File.createTempFile(
-          fileName + "-",  /* prefix */
-          "." + extension,         /* suffix */
-          storageDirectory      /* directory */
-      );
-
-    } catch (IOException e) {
-      Log.e(FAILURE, e.getMessage(), e);
-    }
-    return mediaFile;
-  }
-
 
   static class Asynchronous extends AsyncTask<ResponseBody, Void, Void> {
     private final File file;

@@ -59,7 +59,7 @@ class SplashInteractor {
 
           override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
             if (response.isSuccessful) {
-              seriesItem.coverImageUri = FileUtil.writeResponseBodyToDisk(response.body(), context)!!
+              seriesItem.coverImageUri = FileUtil.writeResponseBodyToDisk(response.body(), seriesItem.id, context)!!
               println("Here: " + seriesItem.coverImage)
             } else {
               listener.onSeriesCoverConsumptionFail(seriesItem)
