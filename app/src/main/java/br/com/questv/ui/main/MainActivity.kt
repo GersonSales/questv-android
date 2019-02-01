@@ -9,6 +9,8 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import br.com.questv.R
+import com.nostra13.universalimageloader.core.ImageLoader
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar.*
 
@@ -21,6 +23,8 @@ class MainActivity : AppCompatActivity(), MainView {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
     this.tabAdapter = presenter.getTabAdapter(this, supportFragmentManager)
+
+    ImageLoader.getInstance().init(ImageLoaderConfiguration.createDefault(this))
 
     setupTabView()
     setupToolBar()

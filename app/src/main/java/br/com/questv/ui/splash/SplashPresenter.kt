@@ -16,7 +16,9 @@ class SplashPresenter(
 
   override fun onSeriesConsumptionSuccess(series: List<SeriesModel>?) {
     SeriesRepositoryImpl.instance.saveAll(series!!)
-    this.splashInteractor.consumeSeriesFiles(series, this, splashView?.getContext())
+    this.splashView?.navigateToMainActivity()
+
+//    this.splashInteractor.consumeSeriesFiles(series, this, splashView?.getContext())
   }
 
   override fun onSeriesConsumptionFail() {

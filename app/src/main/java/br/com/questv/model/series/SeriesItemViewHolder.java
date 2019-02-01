@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import br.com.questv.R;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import java.io.File;
 
@@ -25,11 +27,10 @@ import java.io.File;
 
   /*default*/ void bind(final SeriesModel seriesModel) {
     this.seriesName.setText(seriesModel.getName());
-    final Uri imageCoverUri = seriesModel.getCoverImageUri();
-    if (imageCoverUri != null) {
-      this.seriesCover.setImageURI(imageCoverUri);
-    }
 
+    ImageLoader imageLoader = ImageLoader.getInstance();
+    String url = seriesModel.getCoverImageUrl();
+    imageLoader.displayImage(url.replace("localhost", "10.0.2.2"), this.seriesCover);
 
   }
 }

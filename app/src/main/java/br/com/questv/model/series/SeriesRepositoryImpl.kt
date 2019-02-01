@@ -36,7 +36,7 @@ class SeriesRepositoryImpl private constructor() : SeriesRepository {
   override fun findAllCoverImages(): List<Uri> {
     val result: MutableList<Uri> = ArrayList()
     for (seriesModel in findAll()) {
-      result.add(seriesModel.coverImageUri!!)
+//      result.add(seriesModel.coverImageUrl!!)
     }
     return result
   }

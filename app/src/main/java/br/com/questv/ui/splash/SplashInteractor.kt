@@ -65,7 +65,7 @@ class SplashInteractor {
         override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
           if (response.isSuccessful) {
             val fileName = response.headers().get("Content-Name")
-            seriesModel.coverImageUri = FileUtil.writeResponseBodyToDisk(response.body(), fileName!!, context)!!
+//            seriesModel.coverImageUrl = FileUtil.writeResponseBodyToDisk(response.body(), fileName!!, context)!!
           }
         }
       })
