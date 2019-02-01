@@ -24,6 +24,7 @@ class HomeFragment : Fragment(), HomeView {
     this.recyclerView = view.findViewById(R.id.rv_home)
     this.presenter = HomePresenter(this, HomeInteractor())
 
+    initRecyclerView()
     return view
   }
 

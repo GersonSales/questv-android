@@ -22,7 +22,7 @@
   <ImageView
       android:layout_width="130dp"
       android:layout_height="195dp"
-      app:srcCompat="@drawable/tbbt_cover"
+      app:srcCompat="@drawable/no_cover_available"
       android:id="@+id/iv_series_cover"
       android:scaleType="centerCrop"
       app:layout_constraintTop_toTopOf="parent"

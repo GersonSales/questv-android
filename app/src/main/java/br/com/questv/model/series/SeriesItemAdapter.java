@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import br.com.questv.R;
 
 import java.util.List;
@@ -13,7 +12,6 @@ import java.util.List;
 public class SeriesItemAdapter extends RecyclerView.Adapter<SeriesItemViewHolder> {
 
   private final List<SeriesModel> series;
-  private ImageView imageView;
 
   /*default*/ SeriesItemAdapter(final String category) {
     this.series = SeriesRepositoryImpl.getInstance().findByCategory(category);
