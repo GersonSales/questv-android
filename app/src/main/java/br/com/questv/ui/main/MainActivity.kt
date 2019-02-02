@@ -1,6 +1,7 @@
 package br.com.questv.ui.main
 
 import android.os.Bundle
+import android.support.v4.app.FragmentManager
 import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.SearchView
@@ -59,5 +60,10 @@ class MainActivity : AppCompatActivity(), MainView {
     drawItemsTabIcon()
     tl_main_swiper.getTabAt(position)?.customView = null
     tl_main_swiper.getTabAt(position)?.customView = tabAdapter.getSelectedTabItemView(position)
+  }
+
+  override fun onBackPressed() {
+    if (!supportFragmentManager.popBackStackImmediate())
+      super.onBackPressed()
   }
 }

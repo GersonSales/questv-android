@@ -23,6 +23,7 @@ class SplashActivity : AppCompatActivity(), SplashView {
 
   override fun navigateToMainActivity() {
     startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+    finish()
   }
 
   override fun showProgress() {
