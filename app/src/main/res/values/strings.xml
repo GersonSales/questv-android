@@ -18,4 +18,5 @@
   <string name="black_gradient">Black gratient</string>
   <string name="splash_screen">Splash Screen</string>
   <string name="series">Series</string>
+  <string name="none"/>
 </resources>

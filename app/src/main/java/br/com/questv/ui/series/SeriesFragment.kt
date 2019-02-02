@@ -10,7 +10,7 @@ import br.com.questv.R
 import br.com.questv.model.series.SeriesModel
 import br.com.questv.resource.Strings.SERIES_KEY
 
-class SeriesFragment() : Fragment() {
+class SeriesFragment : Fragment() {
 
   override fun onCreateView(inflater: LayoutInflater,
                             container: ViewGroup?,

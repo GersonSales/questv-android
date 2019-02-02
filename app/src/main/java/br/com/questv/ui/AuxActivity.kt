@@ -1,13 +1,26 @@
 package br.com.questv.ui
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
+import android.view.Menu
 import br.com.questv.R
+import kotlinx.android.synthetic.main.activity_aux.*
 
 class AuxActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.news_item)
+    setContentView(R.layout.activity_aux)
+    setupToolBar()
   }
+
+  private fun setupToolBar() {
+    setSupportActionBar(tb_aux_bar)
+  }
+
+  override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    menuInflater.inflate(R.menu.menu_home, menu)
+    return true
+  }
+
 }
