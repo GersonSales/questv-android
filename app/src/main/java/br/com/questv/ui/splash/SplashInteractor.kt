@@ -13,7 +13,6 @@ class SplashInteractor {
   interface OnSeriesConsumptionListener {
     fun onSeriesConsumptionSuccess(series: List<SeriesModel>?)
     fun onSeriesConsumptionFail()
-    fun onSeriesFilesConsumptionFinished()
   }
 
   fun consumeSeriesApi(listener: SplashInteractor.OnSeriesConsumptionListener) {
@@ -49,8 +48,6 @@ class SplashInteractor {
       consumeSeriesCovers(seriesModel, context)
       consumePromoImages(seriesModel, context)
     }
-
-    listener.onSeriesFilesConsumptionFinished()
   }
 
 

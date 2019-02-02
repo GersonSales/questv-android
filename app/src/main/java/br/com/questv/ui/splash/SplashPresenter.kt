@@ -17,17 +17,10 @@ class SplashPresenter(
   override fun onSeriesConsumptionSuccess(series: List<SeriesModel>?) {
     SeriesRepositoryImpl.instance.saveAll(series!!)
     this.splashView?.navigateToMainActivity()
-
-//    this.splashInteractor.consumeSeriesFiles(series, this, splashView?.getContext())
   }
 
   override fun onSeriesConsumptionFail() {
     this.splashView?.hideProgress()
     this.splashView?.navigateToErrorPage()
-  }
-
-  override fun onSeriesFilesConsumptionFinished() {
-    this.splashView?.hideProgress()
-    this.splashView?.navigateToMainActivity()
   }
 }
