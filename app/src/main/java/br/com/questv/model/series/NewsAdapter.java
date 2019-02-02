@@ -8,21 +8,20 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import br.com.questv.R;
+import br.com.questv.contract.OnItemClickListener;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.List;
 
 public class NewsAdapter extends PagerAdapter {
 
-  private int[] GalImages = new int[] {
-      R.drawable.twd_slide_01,
-      R.drawable.st_slide_01,
-      R.drawable.tbbt_slide_02,
-      R.drawable.dn_slide_01
-  };
-
+  private final OnItemClickListener<SeriesModel> onItemClickListener;
 
   private List<SeriesModel> releases = SeriesRepositoryImpl.getInstance().findReleases();
+
+  public NewsAdapter(final OnItemClickListener<SeriesModel> onItemClickListener) {
+    this.onItemClickListener = onItemClickListener;
+  }
 
   @Override
   public int getCount() {
@@ -59,12 +58,13 @@ public class NewsAdapter extends PagerAdapter {
     final LayoutInflater inflater = LayoutInflater.from(container.getContext());
     final View view = inflater.inflate(R.layout.news_item, container, false);
     if (this.releases.size() == 0) return view;
+    final SeriesModel seriesModel = this.releases.get(getRealPosition(position));
 
     final ImageView imageView = view.findViewById(R.id.iv_news_item);
+    imageView.setOnClickListener((i) -> onItemClickListener.onClick(seriesModel));
     imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
     final ImageLoader imageLoader = ImageLoader.getInstance();
-    final SeriesModel seriesModel = this.releases.get(getRealPosition(position));
     final String url = seriesModel.getPromoImageUrl();
     if (url != null)
       imageLoader.displayImage(url.replace("localhost", "10.0.2.2"), imageView);

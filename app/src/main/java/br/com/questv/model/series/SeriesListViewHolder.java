@@ -36,12 +36,12 @@ public class SeriesListViewHolder extends RecyclerView.ViewHolder {
     this.viewPager.setVisibility(View.GONE);
   }
 
-  /*default*/ void bindViewPager() {
+  /*default*/ void bindViewPager(OnItemClickListener<SeriesModel> onItemClickListener) {
     this.viewPager.setVisibility(View.VISIBLE);
     textView.setVisibility(View.GONE);
     imageView.setVisibility(View.GONE);
     seriesItemRecyclerView.setVisibility(View.GONE);
-    final NewsAdapter adapter = new NewsAdapter();
+    final NewsAdapter adapter = new NewsAdapter(onItemClickListener);
     viewPager.setAdapter(adapter);
     this.viewPager.setCurrentItem(adapter.getCount() / 2);
 

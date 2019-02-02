@@ -41,7 +41,7 @@ public class SeriesListAdapter extends RecyclerView.Adapter<SeriesListViewHolder
   @Override
   public void onBindViewHolder(@NonNull final SeriesListViewHolder seriesListViewHolder, final int position) {
     if (position == 0) {
-      seriesListViewHolder.bindViewPager();
+      seriesListViewHolder.bindViewPager(onItemClickListener);
     } else {
       final String category = this.seriesCategories.get(position);
       seriesListViewHolder.bindRecyclerView(category, onItemClickListener);
