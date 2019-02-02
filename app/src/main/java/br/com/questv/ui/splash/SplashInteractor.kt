@@ -1,10 +1,7 @@
 package br.com.questv.ui.splash
 
-import android.content.Context
 import br.com.questv.endpoint.ApiClient
 import br.com.questv.model.series.SeriesModel
-import br.com.questv.util.FileUtil
-import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

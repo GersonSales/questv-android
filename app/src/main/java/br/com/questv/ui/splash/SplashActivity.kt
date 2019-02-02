@@ -3,9 +3,7 @@ package br.com.questv.ui.splash
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import android.support.v7.app.AppCompatActivity
-import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import br.com.questv.R

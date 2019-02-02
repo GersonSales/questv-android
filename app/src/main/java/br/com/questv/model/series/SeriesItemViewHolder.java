@@ -1,6 +1,5 @@
 package br.com.questv.model.series;
 
-import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -8,9 +7,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import br.com.questv.R;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-
-import java.io.File;
 
 /*default*/ final class SeriesItemViewHolder extends RecyclerView.ViewHolder {
 
@@ -30,7 +26,8 @@ import java.io.File;
 
     ImageLoader imageLoader = ImageLoader.getInstance();
     String url = seriesModel.getCoverImageUrl();
-    imageLoader.displayImage(url.replace("localhost", "10.0.2.2"), this.seriesCover);
+    if (url != null)
+      imageLoader.displayImage(url.replace("localhost", "10.0.2.2"), this.seriesCover);
 
   }
 }

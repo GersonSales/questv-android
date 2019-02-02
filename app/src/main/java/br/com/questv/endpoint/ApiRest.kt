@@ -11,14 +11,4 @@ interface ApiRest {
 
   @GET("/series")
   fun getAllSeries(): Call<ArrayList<SeriesModel>>
-
-  @Streaming
-  @GET("/series/{seriesId}/cover")
-  fun getSeriesCover(@Path("seriesId") seriesId: String) : Call<ResponseBody>
-
-  @Streaming
-  @GET("/series/{seriesId}/promoImage")
-  fun getSeriesPromoImage(@Path("seriesId") seriesId: String): Call<ResponseBody>
-
-
 }
