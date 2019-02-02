@@ -1,6 +1,5 @@
 package br.com.questv.model.series;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,6 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import br.com.questv.R;
+import br.com.questv.contract.OnItemClickListener;
 
 public class SeriesListViewHolder extends RecyclerView.ViewHolder {
 
@@ -30,9 +30,9 @@ public class SeriesListViewHolder extends RecyclerView.ViewHolder {
     this.imageView = itemView.findViewById(R.id.iv_category_menu);
   }
 
-  /*default*/ void bindRecyclerView(final String category) {
+  /*default*/ void bindRecyclerView(final String category, final OnItemClickListener<SeriesModel> onItemClickListener) {
     this.textView.setText(category);
-    this.seriesItemRecyclerView.setAdapter(new SeriesItemAdapter(category));
+    this.seriesItemRecyclerView.setAdapter(new SeriesItemAdapter(category, onItemClickListener));
     this.viewPager.setVisibility(View.GONE);
   }
 

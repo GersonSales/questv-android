@@ -6,15 +6,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import br.com.questv.R;
+import br.com.questv.contract.OnItemClickListener;
 
 import java.util.List;
 
 public class SeriesItemAdapter extends RecyclerView.Adapter<SeriesItemViewHolder> {
 
   private final List<SeriesModel> series;
+  private final OnItemClickListener<SeriesModel> onItemClickListener;
 
-  /*default*/ SeriesItemAdapter(final String category) {
+  /*default*/ SeriesItemAdapter(final String category, final OnItemClickListener<SeriesModel> onItemClickListener) {
     this.series = SeriesRepositoryImpl.getInstance().findByCategory(category);
+    this.onItemClickListener = onItemClickListener;
   }
 
   @NonNull
@@ -31,7 +34,7 @@ public class SeriesItemAdapter extends RecyclerView.Adapter<SeriesItemViewHolder
 
   @Override
   public void onBindViewHolder(@NonNull final SeriesItemViewHolder seriesItemViewHolder, final int position) {
-    seriesItemViewHolder.bind(getByPosition(position));
+    seriesItemViewHolder.bind(getByPosition(position), onItemClickListener);
   }
 
   @Override
@@ -43,6 +46,9 @@ public class SeriesItemAdapter extends RecyclerView.Adapter<SeriesItemViewHolder
   private SeriesModel getByPosition(final int position) {
     return this.series.get(position);
   }
+
+
+
 
 
 }

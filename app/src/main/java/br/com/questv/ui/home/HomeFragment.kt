@@ -7,10 +7,12 @@ import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.SearchView
 import android.view.*
 import br.com.questv.R
+import br.com.questv.contract.OnItemClickListener
 import br.com.questv.model.series.SeriesListAdapter
+import br.com.questv.model.series.SeriesModel
 import br.com.questv.ui.user.UserFragment
 
-class HomeFragment : Fragment(), HomeView {
+class HomeFragment : Fragment(), HomeView, OnItemClickListener<SeriesModel> {
 
   private lateinit var recyclerView: RecyclerView
   private lateinit var presenter: HomePresenter
@@ -30,12 +32,12 @@ class HomeFragment : Fragment(), HomeView {
 
   override fun initRecyclerView() {
     this.recyclerView.layoutManager = (LinearLayoutManager(context))
-    this.recyclerView.adapter = SeriesListAdapter()
+    this.recyclerView.adapter = SeriesListAdapter(this)
   }
 
   override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
     inflater?.inflate(R.menu.menu_home, menu)
-    val menuItem:MenuItem? = menu?.findItem(R.id.sv_series_search)
+    val menuItem: MenuItem? = menu?.findItem(R.id.sv_series_search)
     val searchView: SearchView = menuItem?.actionView as SearchView
     presenter.setupSearchViewBehavior(searchView)
     super.onPrepareOptionsMenu(menu)
@@ -53,6 +55,14 @@ class HomeFragment : Fragment(), HomeView {
       ?.setCustomAnimations(R.animator.slide_in_top, R.animator.slide_out_bottom, 0, 0)
       ?.replace(R.id.fm_main_frame, UserFragment())
       ?.commit()
+  }
+
+  override fun onClick(item: SeriesModel) {
+    navigateToSeriesDetails(item)
+  }
+
+  override fun navigateToSeriesDetails(seriesModel: SeriesModel) {
+    println("navigateToSeriesDetails: " + seriesModel.name)
   }
 
   override fun showProgress() {

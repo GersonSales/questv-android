@@ -1,15 +1,13 @@
 package br.com.questv.model.series;
 
-import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import br.com.questv.R;
+import br.com.questv.contract.OnItemClickListener;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.FailReason;
-import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 /*default*/ final class SeriesItemViewHolder extends RecyclerView.ViewHolder {
 
@@ -24,7 +22,9 @@ import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
   }
 
 
-  /*default*/ void bind(final SeriesModel seriesModel) {
+  /*default*/ void bind(final SeriesModel seriesModel, final OnItemClickListener<SeriesModel> onItemClickListener) {
+    this.seriesCover.setOnClickListener(v -> onItemClickListener.onClick(seriesModel));
+
     this.seriesName.setText(seriesModel.getName());
 
     ImageLoader imageLoader = ImageLoader.getInstance();
@@ -35,4 +35,6 @@ import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
     }
 
   }
+
+
 }

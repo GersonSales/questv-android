@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import br.com.questv.R;
+import br.com.questv.contract.OnItemClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +15,11 @@ public class SeriesListAdapter extends RecyclerView.Adapter<SeriesListViewHolder
 
 
   private final List<String> seriesCategories;
+  private final OnItemClickListener<SeriesModel> onItemClickListener;
 
-  public SeriesListAdapter() {
+  public SeriesListAdapter(final OnItemClickListener<SeriesModel> onItemClickListener) {
     this.seriesCategories = new ArrayList<>();
+    this.onItemClickListener = onItemClickListener;
     this.seriesCategories.add("none");//TODO('remove')
     this.seriesCategories.addAll(SeriesRepositoryImpl.getInstance().findAllCategories());
   }
@@ -41,7 +44,7 @@ public class SeriesListAdapter extends RecyclerView.Adapter<SeriesListViewHolder
       seriesListViewHolder.bindViewPager();
     } else {
       final String category = this.seriesCategories.get(position);
-      seriesListViewHolder.bindRecyclerView(category);
+      seriesListViewHolder.bindRecyclerView(category, onItemClickListener);
     }
   }
 

@@ -15,6 +15,8 @@
       android:supportsRtl="true"
       android:theme="@style/AppTheme"
       tools:targetApi="24">
+    <activity android:name=".ui.series.SeriesActivity">
+    </activity>
     <activity android:name=".ui.splash.SplashActivity">
       <intent-filter>
         <action android:name="android.intent.action.VIEW"/>
@@ -28,7 +30,6 @@
     <activity
         android:name=".ui.main.MainActivity"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
     </activity>
     <activity android:name=".ui.login.LoginActivity">
     </activity>
