@@ -1,5 +1,6 @@
 package br.com.questv.endpoint
 
+import br.com.questv.model.season.SeasonModel
 import br.com.questv.model.series.SeriesModel
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -11,4 +12,7 @@ interface ApiRest {
 
   @GET("/series")
   fun getAllSeries(): Call<ArrayList<SeriesModel>>
+
+  @GET("/series/{seriesId}/season")
+  fun getAllSeasonsBySeries(@Path("seriesId") seriesId: Long): Call<ArrayList<SeasonModel>>
 }
