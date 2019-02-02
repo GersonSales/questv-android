@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                              xmlns:app="http://schemas.android.com/apk/res-auto"
-                                             xmlns:tools="http://schemas.android.com/tools"
                                              android:layout_width="wrap_content"
                                              android:layout_height="wrap_content"
                                              android:layout_margin="5dp"
@@ -20,13 +19,12 @@
       app:layout_constraintBottom_toBottomOf="parent"
       android:textColor="@color/colorWhite"/>
   <ImageView
-      android:layout_width="130dp"
-      android:layout_height="195dp"
+      android:layout_width="115dp"
+      android:layout_height="170dp"
       app:srcCompat="@drawable/no_cover_available"
       android:id="@+id/iv_series_cover"
-      android:scaleType="centerCrop"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-  />
+      android:background="@color/colorGrayLight" android:scaleType="centerCrop"/>
 </android.support.constraint.ConstraintLayout>

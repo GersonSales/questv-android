@@ -1,6 +1,5 @@
 package br.com.questv.model.series
 
-import android.net.Uri
 import br.com.questv.contract.SeriesRepository
 
 class SeriesRepositoryImpl private constructor() : SeriesRepository {
@@ -25,6 +24,17 @@ class SeriesRepositoryImpl private constructor() : SeriesRepository {
     return null
   }
 
+  override fun findReleases(): List<SeriesModel> {
+    val result: MutableList<SeriesModel> = ArrayList()
+    for (seriesModel in findAll()) {
+      if (seriesModel.isRelease) {
+        result.add(seriesModel)
+      }
+
+    }
+    return result
+  }
+
   override fun findAll(): List<SeriesModel> {
     val result: MutableList<SeriesModel> = ArrayList()
     for (category in this.seriesMap.keys) {
@@ -33,18 +43,18 @@ class SeriesRepositoryImpl private constructor() : SeriesRepository {
     return result
   }
 
-  override fun findAllCoverImages(): List<Uri> {
-    val result: MutableList<Uri> = ArrayList()
+  override fun findAllCoverImages(): List<String> {
+    val result: MutableList<String> = ArrayList()
     for (seriesModel in findAll()) {
-//      result.add(seriesModel.coverImageUrl!!)
+      result.add(seriesModel.coverImageUrl!!)
     }
     return result
   }
 
-  override fun findAllPromoImages(): List<Uri> {
-    val result: MutableList<Uri> = ArrayList()
+  override fun findAllPromoImages(): List<String> {
+    val result: MutableList<String> = ArrayList()
     for (seriesModel in findAll()) {
-      result.add(seriesModel.promoImageUri!!)
+      result.add(seriesModel.promoImageUrl!!)
     }
     return result
   }
@@ -98,7 +108,7 @@ class SeriesRepositoryImpl private constructor() : SeriesRepository {
     }
   }
 
-  private fun deleteById(itemId: Long, seriesModelList: MutableList<SeriesModel>?) : Boolean {
+  private fun deleteById(itemId: Long, seriesModelList: MutableList<SeriesModel>?): Boolean {
     for (seriesModel in seriesModelList!!) {
       if (seriesModel.id == itemId) {
         seriesModelList.remove(seriesModel)

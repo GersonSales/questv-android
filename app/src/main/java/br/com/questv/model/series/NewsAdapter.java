@@ -8,6 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import br.com.questv.R;
+import com.nostra13.universalimageloader.core.ImageLoader;
+
+import java.util.List;
 
 public class NewsAdapter extends PagerAdapter {
 
@@ -17,6 +20,9 @@ public class NewsAdapter extends PagerAdapter {
       R.drawable.tbbt_slide_02,
       R.drawable.dn_slide_01
   };
+
+
+  private List<SeriesModel> releases = SeriesRepositoryImpl.getInstance().findReleases();
 
   @Override
   public int getCount() {
@@ -52,21 +58,31 @@ public class NewsAdapter extends PagerAdapter {
   public Object instantiateItem(@NonNull final ViewGroup container, final int position) {
     final LayoutInflater inflater = LayoutInflater.from(container.getContext());
     final View view = inflater.inflate(R.layout.news_item, container, false);
+    if (this.releases.size() == 0) return view;
 
     final ImageView imageView = view.findViewById(R.id.iv_news_item);
-    imageView.setImageResource(GalImages[position%GalImages.length]);
     imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-//    imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+
+    final ImageLoader imageLoader = ImageLoader.getInstance();
+    final SeriesModel seriesModel = this.releases.get(getRealPosition(position));
+    final String url = seriesModel.getPromoImageUrl();
+    if (url != null)
+      imageLoader.displayImage(url.replace("localhost", "10.0.2.2"), imageView);
 
     final TextView textView = view.findViewById(R.id.tv_news_desc);
-    textView.setText(container.getContext().getString(R.string.series_name));
+    textView.setText(seriesModel.getName());
+
+    final TextView releaseCategory = view.findViewById(R.id.tv_release_category);
+    releaseCategory .setText(seriesModel.getCategory());
 
     container.addView(view, 0);
 
     return view;
-
   }
 
+  private int getRealPosition(int position) {
+    return position%this.releases.size();
+  }
 
 
 }
