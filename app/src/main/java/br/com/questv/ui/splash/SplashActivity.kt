@@ -35,7 +35,7 @@ class SplashActivity : AppCompatActivity(), SplashView {
   }
 
   override fun navigateToErrorPage() {
-    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    println("Navigate to error page")
   }
 
   override fun hideProgress() {
