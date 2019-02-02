@@ -1,16 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                              xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
                                              android:layout_width="match_parent"
-                                             android:layout_height="match_parent"
->
+                                             android:layout_height="wrap_content"
+                                             android:background="@color/colorGray">
 
   <TextView
-      android:text="TextView"
+      android:text="1"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/tv_season_number" android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="16dp" android:layout_marginStart="16dp"
+      android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
+      app:layout_constraintHorizontal_bias="0.0" android:textSize="16sp" android:textStyle="bold"
+      android:textColor="@color/colorAccent"/>
+  <TextView
+      android:text="Season one"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:id="@+id/tv_season_name" android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
       android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
-      app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:layout_marginRight="8dp"/>
+      app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
+      app:layout_constraintStart_toEndOf="@+id/tv_season_number" android:layout_marginLeft="24dp"
+      android:layout_marginStart="24dp" app:layout_constraintHorizontal_bias="0.0" android:textSize="18sp"
+      android:textColor="@color/colorWhite" android:textStyle="bold"/>
+  <ImageButton
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content" app:srcCompat="@drawable/ic_play_arrow_black_24dp"
+      android:id="@+id/ib_season_play"
+      android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
+      android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent" android:layout_marginEnd="8dp"
+      app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
+      android:background="@null"
+      android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="@+id/guideline3"
+      android:layout_marginLeft="8dp" app:layout_constraintHorizontal_bias="1.0"/>
+  <ProgressBar
+      style="?android:attr/progressBarStyleHorizontal"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:id="@+id/progressBar" android:layout_marginTop="8dp"
+      app:layout_constraintTop_toBottomOf="@+id/tv_season_name"
+      app:layout_constraintStart_toStartOf="@+id/tv_season_name"
+      android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
+      android:layout_marginEnd="8dp" android:layout_marginRight="8dp" android:layout_marginBottom="8dp"
+      app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.0" android:max="50"
+      android:progress="27" app:layout_constraintEnd_toStartOf="@+id/guideline3"/>
+  <android.support.constraint.Guideline
+      android:orientation="vertical"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content" android:id="@+id/guideline3" app:layout_constraintGuide_percent="0.65"/>
+  <ImageView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content" app:srcCompat="@drawable/ic_star_black_36dp"
+      android:id="@+id/imageView"
+      app:layout_constraintStart_toStartOf="@+id/guideline3" android:layout_marginLeft="8dp"
+      android:layout_marginStart="8dp" android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
+      android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toStartOf="@+id/ib_season_play" android:layout_marginEnd="8dp"
+      android:layout_marginRight="8dp" app:layout_constraintHorizontal_bias="0.9"/>
 </android.support.constraint.ConstraintLayout>

@@ -52,6 +52,9 @@ class SeriesFragment : Fragment(), SeriesView {
     val seriesName: TextView = view.findViewById(R.id.tv_series_details_name)
     seriesName.text = seriesModel.name
 
+    val seriesCategory: TextView = view.findViewById(R.id.tv_series_details_category)
+    seriesCategory.text = seriesModel.category
+
     this.progressBar = view.findViewById(R.id.pb_season_recycler)
   }
 

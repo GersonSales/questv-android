@@ -7,6 +7,7 @@ import br.com.questv.R
 
 class SeasonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
   fun bind(seasonModel: SeasonModel) {
+    itemView.findViewById<TextView>(R.id.tv_season_number)?.text = seasonModel.number.toString()
     itemView.findViewById<TextView>(R.id.tv_season_name)?.text = seasonModel.name
   }
 
