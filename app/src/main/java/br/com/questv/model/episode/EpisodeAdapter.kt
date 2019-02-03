@@ -9,6 +9,10 @@ import br.com.questv.R
 class EpisodeAdapter(private val episodeList: List<EpisodeModel>) :
   RecyclerView.Adapter<EpisodeViewHolder>() {
 
+  init {
+    episodeList.sortedBy { episodeModel -> episodeModel.number }
+  }
+
   override fun onCreateViewHolder(viewGroup: ViewGroup, position: Int): EpisodeViewHolder {
     val inflater: LayoutInflater = LayoutInflater.from(viewGroup.context)
     val view: View = inflateView(viewGroup, inflater)

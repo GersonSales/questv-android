@@ -12,6 +12,7 @@ class SeasonAdapter(private val seasonList: ArrayList<SeasonModel>) :
   override fun onCreateViewHolder(viewGroup: ViewGroup, p1: Int): SeasonViewHolder {
     val inflater: LayoutInflater = LayoutInflater.from(viewGroup.context)
     val view: View = inflateView(viewGroup, inflater)
+    seasonList.sortBy { seasonModel -> seasonModel.number }
     return SeasonViewHolder(view)
   }
 

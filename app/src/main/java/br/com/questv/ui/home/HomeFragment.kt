@@ -13,6 +13,7 @@ import br.com.questv.model.series.SeriesModel
 import br.com.questv.resource.Strings
 import br.com.questv.resource.Strings.HOME_FRAGMENT_TAG
 import br.com.questv.resource.Strings.SERIES_KEY
+import br.com.questv.ui.series.SeriesBgFragment
 import br.com.questv.ui.series.SeriesFragment
 import br.com.questv.ui.user.UserFragment
 
@@ -67,15 +68,15 @@ class HomeFragment : Fragment(), HomeView, OnItemClickListener<SeriesModel> {
   }
 
   override fun navigateToSeriesDetails(seriesModel: SeriesModel) {
-    val seriesFragment = SeriesFragment()
+    val seriesBgFragment = SeriesBgFragment()
     val bundle = Bundle()
     bundle.putSerializable(SERIES_KEY, seriesModel)
-    seriesFragment.arguments = bundle
+    seriesBgFragment.arguments = bundle
 
     fragmentManager?.beginTransaction()
       ?.setCustomAnimations(R.animator.fade_in, R.animator.fade_out, 0, 0)
       ?.addToBackStack(HOME_FRAGMENT_TAG)
-      ?.replace(R.id.fm_main_frame2, seriesFragment)
+      ?.replace(R.id.fm_main_frame2, seriesBgFragment)
       ?.remove(this)
       ?.commit()
   }
