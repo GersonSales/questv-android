@@ -1,4 +1,4 @@
 package br.com.questv.model.episode
 
-class EpisodeModel(val id: Long, val seasonId: Long, var name: String) {
+class EpisodeModel(val id: Long, val seasonId: Long, var name: String, val  number: Int) {
 }
