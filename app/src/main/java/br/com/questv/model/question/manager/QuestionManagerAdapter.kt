@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
-import br.com.questv.model.question.QuestionFragment
+import br.com.questv.ui.question.QuestionFragment
 import br.com.questv.model.question.QuestionModel
 import br.com.questv.resource.Strings.QUESTION_KEY
 
