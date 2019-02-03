@@ -19,4 +19,10 @@
   <string name="splash_screen">Splash Screen</string>
   <string name="series">Series</string>
   <string name="none"/>
+  <string name="question_description">Question description</string>
+  <string name="left_question">lef question</string>
+  <string name="right_question">Right question</string>
+  <string name="answer">Answer</string>
+  <string name="_8">8</string>
+  <string name="answer_number_circle">Answer number circle</string>
 </resources>
