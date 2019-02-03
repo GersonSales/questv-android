@@ -12,7 +12,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import br.com.questv.R
 
-class TabAdapter(private val context: Context, fm: FragmentManager): FragmentStatePagerAdapter(fm) {
+class TabAdapter(private val context: Context, fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
 
   private val mFragmentList = mutableListOf<Fragment>()
   private val mTitleList = mutableListOf<String>()

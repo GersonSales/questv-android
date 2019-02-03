@@ -25,4 +25,9 @@
   <string name="answer">Answer</string>
   <string name="_8">8</string>
   <string name="answer_number_circle">Answer number circle</string>
+  <string name="gradient_background">gradient background</string>
+  <string name="comedy">Comedy</string>
+  <string name="the_big_bang_theory">The Big Bang Theory</string>
+  <string name="play_background">play background</string>
+  <string name="play_series_questions">play series questions</string>
 </resources>

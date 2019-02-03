@@ -1,6 +1,7 @@
 package br.com.questv.endpoint
 
 import br.com.questv.model.episode.EpisodeModel
+import br.com.questv.model.question.QuestionModel
 import br.com.questv.model.season.SeasonModel
 import br.com.questv.model.series.SeriesModel
 import okhttp3.ResponseBody
@@ -20,4 +21,7 @@ interface ApiRest {
 
   @GET("/season/{seasonId}/episode")
   fun getAllEpisodesBySeason(@Path("seasonId") seasonId: Long): Call<ArrayList<EpisodeModel>>
+
+  @GET("/question")
+  fun getAllQuestions(): Call<ArrayList<QuestionModel>>
 }

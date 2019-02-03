@@ -8,4 +8,5 @@ interface SeriesView {
   fun hideProgress()
   fun showErrorMessage(message: String?)
   fun initSeasonRecycler(seasonList: ArrayList<SeasonModel>)
+  fun navigateToQuestionManager()
 }

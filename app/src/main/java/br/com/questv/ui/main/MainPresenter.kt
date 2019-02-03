@@ -17,7 +17,7 @@ class MainPresenter(var mainView: MainView?, private val mainInteractor: MainInt
   }
 
 
-  fun getTabAdapter(context: Context, fragmentManager: FragmentManager) : TabAdapter{
+  fun getTabAdapter(context: Context, fragmentManager: FragmentManager): TabAdapter {
     val tabAdapter = TabAdapter(context, fragmentManager)
 
     tabAdapter.addFragment(HomeFragment(), "home", R.drawable.ic_home_black_24dp)
