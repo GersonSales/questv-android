@@ -12,7 +12,6 @@
       android:layout_height="wrap_content"
       android:id="@+id/tv_season_number" android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="16dp" android:layout_marginStart="16dp"
-      android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
       app:layout_constraintHorizontal_bias="0.0" android:textSize="16sp" android:textStyle="bold"
       android:textColor="@color/colorAccent"/>
@@ -21,7 +20,6 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:id="@+id/tv_season_name" android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
-      android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
       app:layout_constraintStart_toEndOf="@+id/tv_season_number" android:layout_marginLeft="24dp"
       android:layout_marginStart="24dp" app:layout_constraintHorizontal_bias="0.0" android:textSize="18sp"
@@ -31,7 +29,7 @@
       android:layout_height="wrap_content" app:srcCompat="@drawable/ic_play_arrow_black_24dp"
       android:id="@+id/ib_season_play"
       android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
-      android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent" android:layout_marginEnd="8dp"
+      android:layout_marginEnd="8dp"
       app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="8dp"
       android:background="@null"
       android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="@+id/guideline3"
@@ -44,20 +42,40 @@
       app:layout_constraintTop_toBottomOf="@+id/tv_season_name"
       app:layout_constraintStart_toStartOf="@+id/tv_season_name"
       android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
-      android:layout_marginEnd="8dp" android:layout_marginRight="8dp" android:layout_marginBottom="8dp"
-      app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.0" android:max="50"
+      android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
+      android:max="50"
       android:progress="27" app:layout_constraintEnd_toStartOf="@+id/guideline3"/>
   <android.support.constraint.Guideline
       android:orientation="vertical"
       android:layout_width="wrap_content"
-      android:layout_height="wrap_content" android:id="@+id/guideline3" app:layout_constraintGuide_percent="0.65"/>
+      android:layout_height="wrap_content" android:id="@+id/guideline3" app:layout_constraintGuide_percent="0.649635"
+      app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+  />
   <ImageView
       android:layout_width="wrap_content"
       android:layout_height="wrap_content" app:srcCompat="@drawable/ic_star_black_36dp"
       android:id="@+id/imageView"
       app:layout_constraintStart_toStartOf="@+id/guideline3" android:layout_marginLeft="8dp"
       android:layout_marginStart="8dp" android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
-      android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toStartOf="@+id/ib_season_play" android:layout_marginEnd="8dp"
       android:layout_marginRight="8dp" app:layout_constraintHorizontal_bias="0.9"/>
+  <View
+      android:id="@+id/divider3"
+      android:layout_width="395dp"
+      android:layout_height="1dp"
+      android:background="?android:attr/listDivider"
+      android:layout_marginTop="8dp"
+      app:layout_constraintTop_toBottomOf="@+id/progressBar" app:layout_constraintEnd_toEndOf="parent"
+      android:layout_marginEnd="8dp" android:layout_marginRight="8dp" app:layout_constraintStart_toStartOf="parent"
+      android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:layout_marginBottom="8dp"
+      app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.0"/>
+  <android.support.v7.widget.RecyclerView
+      android:layout_width="395dp"
+      android:layout_height="167dp"
+      android:id="@+id/rv_episode_list"
+      android:visibility="visible"
+      app:layout_constraintTop_toBottomOf="@+id/divider3"
+      android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
+      app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:layout_marginRight="8dp"/>
 </android.support.constraint.ConstraintLayout>

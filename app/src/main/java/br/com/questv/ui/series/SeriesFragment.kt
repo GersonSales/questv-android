@@ -87,5 +87,6 @@ class SeriesFragment : Fragment(), SeriesView {
   override fun initSeasonRecycler(seasonList: ArrayList<SeasonModel>) {
     rv_series_seasons_details.layoutManager = (LinearLayoutManager(context))
     rv_series_seasons_details.adapter = SeasonAdapter(seasonList)
+    rv_series_seasons_details.setHasFixedSize(true)
   }
 }
