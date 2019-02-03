@@ -91,6 +91,8 @@ class SeriesFragment : Fragment(), SeriesView {
     val bundle = Bundle()
     bundle.putSerializable(QUESTION_OWNER_ID, seriesModel.id)
     questionManagerFragment.arguments = bundle
+    bundle.putAll(arguments)
+
     fragmentManager?.beginTransaction()
       ?.addToBackStack(SERIES_FRAGMENT_TAG)
       ?.replace(R.id.fl_series_screen, questionManagerFragment)

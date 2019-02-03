@@ -33,5 +33,7 @@ class AnswerAdapter(
     return AnswerViewHolder(view)
   }
 
+
+
   override fun getItemCount() = this.answersMap.keys.size
 }

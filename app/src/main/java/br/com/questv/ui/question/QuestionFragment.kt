@@ -1,6 +1,7 @@
 package br.com.questv.ui.question
 
 import android.os.Bundle
+import android.support.constraint.ConstraintLayout
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -18,14 +19,17 @@ import br.com.questv.resource.Strings.QUESTION_KEY
 
 class QuestionFragment : Fragment(), AnswerViewHolder.OnAnsweredQuestionListener {
   interface OnQuestionInteractionListener {
-    fun onCorrectAnswered()
-    fun onWrongAnswered()
-    fun onClickPreviousQuestion()
-    fun onClickNextQuestion()
+    fun onCorrectAnswered(currentIndex: Int)
+    fun onWrongAnswered(currentIndex: Int)
+    fun onClickPreviousQuestion(currentIndex: Int)
+    fun onClickNextQuestion(currentIndex: Int)
   }
 
 
   private lateinit var listener: OnQuestionInteractionListener
+  private lateinit var questionModel: QuestionModel
+  private lateinit var questionAnswers: RecyclerView
+  private var positionOnManager = 0
 
   override fun onCreateView(
     inflater: LayoutInflater,
@@ -33,11 +37,13 @@ class QuestionFragment : Fragment(), AnswerViewHolder.OnAnsweredQuestionListener
     savedInstanceState: Bundle?
   ): View? {
 
-    val questionModel: QuestionModel = arguments!!.get(QUESTION_KEY) as QuestionModel
+    this.questionModel = arguments!!.get(QUESTION_KEY) as QuestionModel
     this.listener = arguments!!.get(Strings.QUESTION_MANAGER_FRAGMENT_KEY) as OnQuestionInteractionListener
+    this.positionOnManager = arguments!!.getInt(Strings.QUESTION_FRAGMENT_POSITION)
+
 
     val view = inflater.inflate(R.layout.fragment_question, container, false)
-    initView(questionModel, view)
+    initView(this.questionModel, view)
     return view
   }
 
@@ -47,24 +53,32 @@ class QuestionFragment : Fragment(), AnswerViewHolder.OnAnsweredQuestionListener
 
     initNavigatorButtons(view)
 
-    val questionAnswers: RecyclerView = view.findViewById(R.id.rv_question_answers)
+    questionAnswers = view.findViewById(R.id.rv_question_answers)
     questionAnswers.layoutManager = LinearLayoutManager(context)
     questionAnswers.adapter = AnswerAdapter(questionModel.answers, this)
   }
 
   private fun initNavigatorButtons(view: View) {
     val previousQuestionButton: ImageButton = view.findViewById(R.id.ib_previous_question)
-    previousQuestionButton.setOnClickListener { this.listener.onClickPreviousQuestion() }
+    previousQuestionButton.setOnClickListener { this.listener.onClickPreviousQuestion(this.positionOnManager) }
 
     val nextQuestionButton: ImageButton = view.findViewById(R.id.ib_next_question)
-    nextQuestionButton.setOnClickListener {this.listener.onClickNextQuestion()}
+    nextQuestionButton.setOnClickListener { this.listener.onClickNextQuestion(this.positionOnManager) }
   }
 
   override fun onCorrectAnswer() {
-    this.listener.onCorrectAnswered()
+    this.listener.onCorrectAnswered(this.positionOnManager)
   }
 
   override fun onWrongAnswer() {
-    this.listener.onWrongAnswered()
+    this.listener.onWrongAnswered(this.positionOnManager)
   }
+
+  private fun disableView() {
+    val layout: ConstraintLayout = view!!.findViewById(R.id.cl_question_fragment)
+    for(itemIndex in 0..layout.childCount) {
+      layout.getChildAt(itemIndex)?.isEnabled = false
+    }
+  }
+
 }

@@ -7,4 +7,9 @@ interface QuestionManagerView {
   fun showProgress()
   fun hideProgress()
   fun showErrorMessage(message: String)
+  fun navigateToPreviousQuestion(currentIndex: Int)
+  fun navigateToNextQuestion(currentIndex: Int)
+  fun disableCurrentQuestion(currentIndex: Int)
+  fun navigateToScore()
+  fun navigateToItsCaller()
 }
