@@ -10,4 +10,6 @@
     <color name="colorGrayLight">#5C5C66</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlue">#0025FF</color>
+    <color name="colorGreen">#41A845</color>
+    <color name="colorRed">#B13737</color>
 </resources>
