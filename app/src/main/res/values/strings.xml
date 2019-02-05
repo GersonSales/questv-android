@@ -30,4 +30,7 @@
   <string name="the_big_bang_theory">The Big Bang Theory</string>
   <string name="play_background">play background</string>
   <string name="play_series_questions">play series questions</string>
+
+  <!-- TODO: Remove or change this placeholder text -->
+  <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

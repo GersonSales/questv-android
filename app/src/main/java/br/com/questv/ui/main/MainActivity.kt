@@ -63,7 +63,6 @@ class MainActivity : AppCompatActivity(), MainView {
   }
 
   override fun onBackPressed() {
-    if (!supportFragmentManager.popBackStackImmediate())
-      super.onBackPressed()
+    super.onBackPressed()
   }
 }

@@ -10,11 +10,9 @@ import br.com.questv.R
 import br.com.questv.contract.OnItemClickListener
 import br.com.questv.model.series.SeriesListAdapter
 import br.com.questv.model.series.SeriesModel
-import br.com.questv.resource.Strings
 import br.com.questv.resource.Strings.HOME_FRAGMENT_TAG
 import br.com.questv.resource.Strings.SERIES_KEY
 import br.com.questv.ui.series.SeriesBgFragment
-import br.com.questv.ui.series.SeriesFragment
 import br.com.questv.ui.user.UserFragment
 
 class HomeFragment : Fragment(), HomeView, OnItemClickListener<SeriesModel> {
@@ -59,7 +57,7 @@ class HomeFragment : Fragment(), HomeView, OnItemClickListener<SeriesModel> {
     fragmentManager?.beginTransaction()
       ?.setCustomAnimations(R.animator.slide_in_top, R.animator.slide_out_bottom, 0, 0)
       ?.addToBackStack(HOME_FRAGMENT_TAG)
-      ?.replace(R.id.fm_main_frame, UserFragment())
+      ?.replace(R.id.fl_main_frame, UserFragment())
       ?.commit()
   }
 
@@ -75,9 +73,8 @@ class HomeFragment : Fragment(), HomeView, OnItemClickListener<SeriesModel> {
 
     fragmentManager?.beginTransaction()
       ?.setCustomAnimations(R.animator.fade_in, R.animator.fade_out, 0, 0)
+      ?.replace(R.id.fl_main_frame2, seriesBgFragment)
       ?.addToBackStack(HOME_FRAGMENT_TAG)
-      ?.replace(R.id.fm_main_frame2, seriesBgFragment)
-      ?.remove(this)
       ?.commit()
   }
 

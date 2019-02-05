@@ -15,13 +15,13 @@ interface ApiRest {
   @GET("/series")
   fun getAllSeries(): Call<ArrayList<SeriesModel>>
 
-  @GET("/series/{seriesId}/season")
+  @GET("/series/{seriesId}/seasons")
   fun getAllSeasonsBySeries(@Path("seriesId") seriesId: Long): Call<ArrayList<SeasonModel>>
 
 
-  @GET("/season/{seasonId}/episode")
+  @GET("/seasons/{seasonId}/episodes")
   fun getAllEpisodesBySeason(@Path("seasonId") seasonId: Long): Call<ArrayList<EpisodeModel>>
 
-  @GET("/question")
-  fun getAllQuestions(): Call<ArrayList<QuestionModel>>
+  @GET("/questionables/{questionableId}/questions?recursive=false")
+  fun getAllQuestionsOfQuestionable(@Path("questionableId") questionableId: Long): Call<ArrayList<QuestionModel>>
 }

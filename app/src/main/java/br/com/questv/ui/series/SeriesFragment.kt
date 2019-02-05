@@ -16,7 +16,6 @@ import br.com.questv.resource.Strings.*
 import br.com.questv.ui.home.HomeFragment
 import br.com.questv.ui.question.manager.QuestionManagerFragment
 import com.nostra13.universalimageloader.core.ImageLoader
-import kotlinx.android.synthetic.main.fragment_series.*
 import kotlinx.android.synthetic.main.series_details.*
 
 class SeriesFragment : Fragment(), SeriesView {
@@ -55,6 +54,7 @@ class SeriesFragment : Fragment(), SeriesView {
   }
 
 
+
   override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
     inflater?.inflate(R.menu.menu_series_details, menu)
     super.onPrepareOptionsMenu(menu)
@@ -64,9 +64,11 @@ class SeriesFragment : Fragment(), SeriesView {
     fragmentManager?.beginTransaction()
       ?.remove(this)
       ?.setCustomAnimations(R.animator.fade_out, R.animator.fade_out, 0, 0)
-      ?.replace(R.id.fm_main_frame2, HomeFragment())
+      ?.replace(R.id.fl_main_frame2, HomeFragment())
       ?.commit()
   }
+
+
 
   override fun showProgress() {
     progressBar.visibility = VISIBLE
@@ -90,12 +92,13 @@ class SeriesFragment : Fragment(), SeriesView {
     val questionManagerFragment = QuestionManagerFragment()
     val bundle = Bundle()
     bundle.putSerializable(QUESTION_OWNER_ID, seriesModel.id)
-    questionManagerFragment.arguments = bundle
     bundle.putAll(arguments)
+    questionManagerFragment.arguments = bundle
 
-    fragmentManager?.beginTransaction()
-      ?.addToBackStack(SERIES_FRAGMENT_TAG)
+    fragmentManager
+      ?.beginTransaction()
       ?.replace(R.id.fl_series_screen, questionManagerFragment)
+      ?.addToBackStack(SERIES_FRAGMENT_TAG)
       ?.commit()
   }
 }

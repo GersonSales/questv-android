@@ -51,19 +51,9 @@ class QuestionFragment : Fragment(), AnswerViewHolder.OnAnsweredQuestionListener
     val questionDescription: TextView = view.findViewById(R.id.tv_question_description)
     questionDescription.text = questionModel.description
 
-    initNavigatorButtons(view)
-
     questionAnswers = view.findViewById(R.id.rv_question_answers)
     questionAnswers.layoutManager = LinearLayoutManager(context)
     questionAnswers.adapter = AnswerAdapter(questionModel.answers, this)
-  }
-
-  private fun initNavigatorButtons(view: View) {
-    val previousQuestionButton: ImageButton = view.findViewById(R.id.ib_previous_question)
-    previousQuestionButton.setOnClickListener { this.listener.onClickPreviousQuestion(this.positionOnManager) }
-
-    val nextQuestionButton: ImageButton = view.findViewById(R.id.ib_next_question)
-    nextQuestionButton.setOnClickListener { this.listener.onClickNextQuestion(this.positionOnManager) }
   }
 
   override fun onCorrectAnswer() {
