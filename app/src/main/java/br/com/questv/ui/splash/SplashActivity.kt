@@ -15,10 +15,9 @@ class SplashActivity : AppCompatActivity(), SplashView {
   private val presenter = SplashPresenter(this, SplashInteractor())
 
   override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_splash)
+    super.onCreate(savedInstanceState)
     presenter.fetchAllSeries()
-
   }
 
   override fun navigateToMainActivity() {

@@ -35,8 +35,8 @@ class SeriesBgFragment : Fragment() {
     seriesPromo = view.findViewById(R.id.iv_series_details_promo)
     val imageLoader = ImageLoader.getInstance()
     val imageUrl = when {
-      !seriesModel.promoImageUrl!!.isEmpty() -> seriesModel.promoImageUrl
-      else -> seriesModel.coverImageUrl
+      !seriesModel.getPromoImageUrl()!!.isEmpty() -> seriesModel.getPromoImageUrl()
+      else -> seriesModel.getCoverImageUrl()
     }
 
     imageLoader.displayImage(imageUrl!!.replace("localhost", "10.0.2.2"), seriesPromo)

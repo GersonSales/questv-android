@@ -7,7 +7,7 @@ class SeriesPresenter(private var seriesView: SeriesView,
                       private val seriesInteractor: SeriesInteractor) : SeriesInteractor.OnSeriesConsumptionListener{
   fun fetchAllSeasons(seriesModel: SeriesModel) {
     seriesView.showProgress()
-    this.seriesInteractor.consumeSeasonApi(seriesModel.id, this)
+    this.seriesInteractor.consumeSeasonApi(seriesModel.getId(), this)
   }
 
   override fun onConsumptionSuccess(seasonList: ArrayList<SeasonModel>) {

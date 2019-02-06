@@ -7,18 +7,20 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import br.com.questv.R
+import kotlinx.android.synthetic.main.fragment_score.*
 
 class ScoreFragment : Fragment() {
 
 
   override fun onAttach(context: Context?) {
-    println("onAttach")
+    println("ScoreFragment: onAttach")
     super.onAttach(context)
   }
 
   override fun onAttach(activity: Activity?) {
-    println("onAttach")
+    println("ScoreFragment: onAttach")
     super.onAttach(activity)
   }
 
@@ -28,47 +30,54 @@ class ScoreFragment : Fragment() {
     container: ViewGroup?, savedInstanceState: Bundle?
   ):
       View? {
-    println("onCreateView")
-    return inflater.inflate(R.layout.fragment_score, container, false)
+    val view = inflater.inflate(R.layout.fragment_score, container, false)
+    println("ScoreFragment: onCreateView")
+    view.findViewById<TextView>(R.id.textView2).setOnClickListener {
+      fragmentManager
+        ?.beginTransaction()
+        ?.remove(this)
+        ?.commit()
+    }
+    return view
   }
 
   override fun onActivityCreated(savedInstanceState: Bundle?) {
-    println("onActivityCreated")
+    println("ScoreFragment: onActivityCreated")
     super.onActivityCreated(savedInstanceState)
   }
 
   override fun onStart() {
-    println("onStart")
+    println("ScoreFragment: onStart")
     super.onStart()
   }
 
   override fun onResume() {
-    println("onResume")
+    println("ScoreFragment: onResume")
     super.onResume()
   }
 
   override fun onPause() {
-    println("onPause")
+    println("ScoreFragment: onPause")
     super.onPause()
   }
 
   override fun onStop() {
-    println("onStop")
+    println("ScoreFragment: onStop")
     super.onStop()
   }
 
   override fun onDestroyView() {
-    println("onDestroyView")
+    println("ScoreFragment: onDestroyView")
     super.onDestroyView()
   }
 
   override fun onDestroy() {
-    println("onDestroy")
+    println("ScoreFragment: onDestroy")
     super.onDestroy()
   }
 
   override fun onDetach() {
-    println("onDetach")
+    println("ScoreFragment: onDetach")
     super.onDetach()
   }
 

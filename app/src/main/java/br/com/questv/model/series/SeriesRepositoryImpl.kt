@@ -46,7 +46,7 @@ class SeriesRepositoryImpl private constructor() : SeriesRepository {
   override fun findAllCoverImages(): List<String> {
     val result: MutableList<String> = ArrayList()
     for (seriesModel in findAll()) {
-      result.add(seriesModel.coverImageUrl!!)
+      result.add(seriesModel.getCoverImageUrl()!!)
     }
     return result
   }
@@ -54,7 +54,7 @@ class SeriesRepositoryImpl private constructor() : SeriesRepository {
   override fun findAllPromoImages(): List<String> {
     val result: MutableList<String> = ArrayList()
     for (seriesModel in findAll()) {
-      result.add(seriesModel.promoImageUrl!!)
+      result.add(seriesModel.getPromoImageUrl()!!)
     }
     return result
   }
@@ -82,7 +82,7 @@ class SeriesRepositoryImpl private constructor() : SeriesRepository {
 
   override fun findById(itemId: Long): SeriesModel? {
     for (seriesModel in findAll()) {
-      if (seriesModel.id == itemId) {
+      if (seriesModel.getId() == itemId) {
         return seriesModel
       }
     }
@@ -90,7 +90,7 @@ class SeriesRepositoryImpl private constructor() : SeriesRepository {
   }
 
   override fun update(item: SeriesModel) {
-    this.findById(item.id)?.update(item)
+    this.findById(item.getId())?.update(item)
   }
 
   override fun updateAll(itemList: List<SeriesModel>) {
@@ -110,7 +110,7 @@ class SeriesRepositoryImpl private constructor() : SeriesRepository {
 
   private fun deleteById(itemId: Long, seriesModelList: MutableList<SeriesModel>?): Boolean {
     for (seriesModel in seriesModelList!!) {
-      if (seriesModel.id == itemId) {
+      if (seriesModel.getId() == itemId) {
         seriesModelList.remove(seriesModel)
         return true
       }

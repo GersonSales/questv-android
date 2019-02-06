@@ -11,7 +11,6 @@ import br.com.questv.R
 import br.com.questv.model.season.SeasonAdapter
 import br.com.questv.model.season.SeasonModel
 import br.com.questv.model.series.SeriesModel
-import br.com.questv.resource.Strings
 import br.com.questv.resource.Strings.*
 import br.com.questv.ui.home.HomeFragment
 import br.com.questv.ui.question.manager.QuestionManagerFragment
@@ -39,9 +38,9 @@ class SeriesFragment : Fragment(), SeriesView {
 
   private fun initView(view: View, seriesModel: SeriesModel) {
     setHasOptionsMenu(true)
-
+    initViewImageView(view)
     val playSeriesQuestions = view.findViewById<ImageButton>(R.id.ib_play_series_questions)
-    playSeriesQuestions.setOnClickListener {navigateToQuestionManager() }
+    playSeriesQuestions.setOnClickListener { navigateToQuestionManager() }
 
 
     val seriesName: TextView = view.findViewById(R.id.tv_series_details_name)
@@ -53,6 +52,18 @@ class SeriesFragment : Fragment(), SeriesView {
     this.progressBar = view.findViewById(R.id.pb_season_recycler)
   }
 
+
+  private fun initViewImageView(view: View) {
+    val seriesPromo: ImageView = view.findViewById(R.id.iv_series_details_promo2)
+    val imageLoader = ImageLoader.getInstance()
+    val imageUrl = when {
+      !seriesModel.getPromoImageUrl()!!.isEmpty() -> seriesModel.getPromoImageUrl()
+      else -> seriesModel.getCoverImageUrl()
+    }
+
+    imageLoader.displayImage(imageUrl!!.replace("localhost", "10.0.2.2"), seriesPromo)
+    seriesPromo.scaleType = ImageView.ScaleType.CENTER_CROP
+  }
 
 
   override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
@@ -67,7 +78,6 @@ class SeriesFragment : Fragment(), SeriesView {
       ?.replace(R.id.fl_main_frame2, HomeFragment())
       ?.commit()
   }
-
 
 
   override fun showProgress() {
@@ -91,13 +101,14 @@ class SeriesFragment : Fragment(), SeriesView {
   override fun navigateToQuestionManager() {
     val questionManagerFragment = QuestionManagerFragment()
     val bundle = Bundle()
-    bundle.putSerializable(QUESTION_OWNER_ID, seriesModel.id)
+    bundle.putSerializable(QUESTIONABLE_ID, seriesModel)
     bundle.putAll(arguments)
     questionManagerFragment.arguments = bundle
 
     fragmentManager
       ?.beginTransaction()
-      ?.replace(R.id.fl_series_screen, questionManagerFragment)
+      ?.setCustomAnimations(R.animator.fade_in, R.animator.fade_out, 0, 0)
+      ?.replace(R.id.fl_main_frame2, questionManagerFragment)
       ?.addToBackStack(SERIES_FRAGMENT_TAG)
       ?.commit()
   }

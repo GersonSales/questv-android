@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity(), MainView {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
+
     setContentView(R.layout.activity_main)
     this.tabAdapter = presenter.getTabAdapter(this, supportFragmentManager)
 
@@ -29,7 +30,11 @@ class MainActivity : AppCompatActivity(), MainView {
 
     setupTabView()
     setupToolBar()
+
+
   }
+
+
 
   private fun setupToolBar() {
     setSupportActionBar(tb_main_bar)
