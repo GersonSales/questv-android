@@ -48,19 +48,27 @@ class QuestionFragment : Fragment(), AnswerViewHolder.OnAnsweredQuestionListener
   }
 
   private fun initView(questionModel: QuestionModel, view: View) {
+    println(questionModel)
     val questionDescription: TextView = view.findViewById(R.id.tv_question_description)
     questionDescription.text = questionModel.description
 
     questionAnswers = view.findViewById(R.id.rv_question_answers)
     questionAnswers.layoutManager = LinearLayoutManager(context)
-    questionAnswers.adapter = AnswerAdapter(questionModel.answers, this)
+    val isClickable = !questionModel.isAnswered
+    questionAnswers.adapter = AnswerAdapter(questionModel.answers, this, isClickable )
   }
 
   override fun onCorrectAnswer() {
+    markThisAsAnswered()
     this.listener.onCorrectAnswered(this.positionOnManager)
   }
 
+  private fun markThisAsAnswered() {
+    this.questionModel.isAnswered = true
+  }
+
   override fun onWrongAnswer() {
+    markThisAsAnswered()
     this.listener.onWrongAnswered(this.positionOnManager)
   }
 

@@ -18,7 +18,6 @@ class AnswerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     itemView.findViewById<TextView>(R.id.tv_question_answer_item)!!.text = answerModel.description
     val answerRow: ConstraintLayout = itemView.findViewById(R.id.cl_answer_row)
     answerRow.setOnClickListener {
-
       if (answerModel.isCorrect) {
         val colorCorrect = ContextCompat.getColor(itemView.context, R.color.colorGreen)
         answerRow.setBackgroundColor(colorCorrect)

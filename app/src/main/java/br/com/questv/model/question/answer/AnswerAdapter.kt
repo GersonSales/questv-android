@@ -9,7 +9,8 @@ import br.com.questv.R
 
 class AnswerAdapter(
   private val answersMap: Map<String, Boolean>,
-  private val listener: AnswerViewHolder.OnAnsweredQuestionListener
+  private val listener: AnswerViewHolder.OnAnsweredQuestionListener,
+  private val isClickable: Boolean
 ) :
   RecyclerView.Adapter<AnswerViewHolder>() {
 
@@ -30,8 +31,11 @@ class AnswerAdapter(
   override fun onCreateViewHolder(viewGroup: ViewGroup, position: Int): AnswerViewHolder {
     val inflater: LayoutInflater = LayoutInflater.from(viewGroup.context)
     val view: View = inflater.inflate(R.layout.answer_row, viewGroup, false)
+    view.isEnabled = isClickable
     return AnswerViewHolder(view)
   }
+
+
 
 
 
