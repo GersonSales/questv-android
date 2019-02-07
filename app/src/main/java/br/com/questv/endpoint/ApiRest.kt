@@ -22,6 +22,6 @@ interface ApiRest {
   @GET("/seasons/{seasonId}/episodes")
   fun getAllEpisodesBySeason(@Path("seasonId") seasonId: Long): Call<ArrayList<EpisodeModel>>
 
-  @GET("/questionables/{questionableId}/questions?recursive=false")
+  @GET("/questionables/{questionableId}/questions?recursive=true")
   fun getAllQuestionsOfQuestionable(@Path("questionableId") questionableId: Long): Call<ArrayList<QuestionModel>>
 }

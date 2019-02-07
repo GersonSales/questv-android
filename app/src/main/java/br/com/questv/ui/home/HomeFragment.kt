@@ -6,13 +6,13 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.SearchView
 import android.view.*
+import androidx.navigation.fragment.NavHostFragment
 import br.com.questv.R
 import br.com.questv.contract.OnItemClickListener
 import br.com.questv.model.series.SeriesListAdapter
 import br.com.questv.model.series.SeriesModel
 import br.com.questv.resource.Strings.HOME_FRAGMENT_TAG
 import br.com.questv.resource.Strings.SERIES_KEY
-import br.com.questv.ui.series.SeriesFragment
 import br.com.questv.ui.user.UserFragment
 
 class HomeFragment : Fragment(), HomeView, OnItemClickListener<SeriesModel> {
@@ -24,7 +24,7 @@ class HomeFragment : Fragment(), HomeView, OnItemClickListener<SeriesModel> {
     super.onCreateView(inflater, container, savedInstanceState)
     setHasOptionsMenu(true)
 
-    val view = inflater.inflate(R.layout.activity_home, container, false)
+    val view = inflater.inflate(R.layout.fragment_home, container, false)
 
     this.recyclerView = view.findViewById(R.id.rv_home)
     this.presenter = HomePresenter(this, HomeInteractor())
@@ -66,17 +66,24 @@ class HomeFragment : Fragment(), HomeView, OnItemClickListener<SeriesModel> {
   }
 
   override fun navigateToSeriesDetails(seriesModel: SeriesModel) {
-    val seriesFragment = SeriesFragment()
     val bundle = Bundle()
     bundle.putSerializable(SERIES_KEY, seriesModel)
-    seriesFragment.arguments = bundle
 
-    fragmentManager
-      ?.beginTransaction()
-      ?.setCustomAnimations(R.animator.fade_in, R.animator.fade_out, 0, 0)
-      ?.add(R.id.fl_main_frame2, seriesFragment)
-      ?.addToBackStack(HOME_FRAGMENT_TAG)
-      ?.commit()
+    NavHostFragment.findNavController(this).navigate(R.id.seriesFragment, bundle)
+//    Navigation.createNavigateOnClickListener(R.id.questionManagerFragment, null)
+//
+//
+//    val seriesFragment = SeriesFragment()
+//    val bundle = Bundle()
+//    bundle.putSerializable(SERIES_KEY, seriesModel)
+//    seriesFragment.arguments = bundle
+//
+//    fragmentManager
+//      ?.beginTransaction()
+//      ?.setCustomAnimations(R.animator.fade_in, R.animator.fade_out, 0, 0)
+//      ?.add(R.id.fl_main_frame2, seriesFragment)
+//      ?.addToBackStack(HOME_FRAGMENT_TAG)
+//      ?.commit()
   }
 
   override fun showProgress() {

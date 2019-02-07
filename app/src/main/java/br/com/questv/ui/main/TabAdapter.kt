@@ -33,7 +33,7 @@ class TabAdapter(private val context: Context, fm: FragmentManager) : FragmentSt
 
   fun getTabItemView(position: Int): View {
     val inflater = LayoutInflater.from(context)
-    val view = inflater.inflate(R.layout.item_tab, null, false);
+    val view = inflater.inflate(R.layout.item_tab, null, false)
     val imageView: ImageView = view.findViewById(R.id.iv_tab_item)
     val textView: TextView = view.findViewById(R.id.tv_tab_title)
     imageView.setImageResource(mIconList[position])

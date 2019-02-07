@@ -1,7 +1,5 @@
 package br.com.questv.ui.question.manager
 
-import android.app.Activity
-import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.support.v4.app.Fragment
@@ -10,16 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
+import androidx.navigation.NavOptions
+import androidx.navigation.fragment.NavHostFragment
 import br.com.questv.R
 import br.com.questv.contract.Questionable
 import br.com.questv.model.question.QuestionModel
 import br.com.questv.model.question.manager.QuestionManagerAdapter
-import br.com.questv.resource.Strings
-import br.com.questv.resource.Strings.*
-import br.com.questv.ui.ScoreFragment
-import br.com.questv.ui.series.SeriesFragment
+import br.com.questv.resource.Strings.QUESTIONABLE_ID
 import com.nostra13.universalimageloader.core.ImageLoader
 import kotlinx.android.synthetic.main.fragment_question_manager.*
 
@@ -115,15 +111,13 @@ class QuestionManagerFragment : Fragment(), QuestionManagerView {
   }
 
   override fun navigateToScore() {
-    val scoreFragment = ScoreFragment()
-
-
-    fragmentManager
-      ?.beginTransaction()
-      ?.setCustomAnimations(R.animator.fade_in, R.animator.fade_out, 0, 0)
-      ?.replace(R.id.fl_main_frame2, scoreFragment)
-      ?.commit()
-
+    NavHostFragment.findNavController(this).navigate(
+      R.id.scoreFragment, null, NavOptions.Builder()
+        .setPopUpTo(
+          R.id.questionManagerFragment,
+          true
+        ).build()
+    )
   }
 
   override fun navigateToItsCaller() {
@@ -138,61 +132,5 @@ class QuestionManagerFragment : Fragment(), QuestionManagerView {
     val count = this.questionManagerAdapter.count
     return count > 0
         && (index in 0..(count - 1))
-  }
-
-
-  override fun onAttach(context: Context?) {
-    println("QuestionManagerFragment: onAttach")
-    super.onAttach(context)
-  }
-
-  override fun onAttach(activity: Activity?) {
-    println("QuestionManagerFragment: onAttach")
-    super.onAttach(activity)
-  }
-
-  override fun onActivityCreated(savedInstanceState: Bundle?) {
-    println("QuestionManagerFragment: onActivityCreated")
-    super.onActivityCreated(savedInstanceState)
-  }
-
-  override fun onStart() {
-    println("QuestionManagerFragment: onStart")
-    super.onStart()
-  }
-
-  override fun onResume() {
-    println("QuestionManagerFragment: onResume")
-    super.onResume()
-  }
-
-  override fun onPause() {
-    println("QuestionManagerFragment: onPause")
-    super.onPause()
-  }
-
-  override fun onStop() {
-    println("QuestionManagerFragment: onStop")
-    super.onStop()
-  }
-
-  override fun onDestroyView() {
-    println("QuestionManagerFragment: onDestroyView")
-    super.onDestroyView()
-  }
-
-  override fun onDestroy() {
-    println("QuestionManagerFragment: onDestroy")
-    super.onDestroy()
-  }
-
-  override fun onDetach() {
-    println("QuestionManagerFragment: onDetach")
-    super.onDetach()
-  }
-
-  override fun onViewStateRestored(savedInstanceState: Bundle?) {
-    println("QuestionManagerFragment: onViewStateRestored")
-    super.onViewStateRestored(savedInstanceState)
   }
 }

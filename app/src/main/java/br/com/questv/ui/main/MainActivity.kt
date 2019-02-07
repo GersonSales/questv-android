@@ -1,19 +1,12 @@
 package br.com.questv.ui.main
 
 import android.os.Bundle
-import android.support.v4.app.FragmentManager
-import android.support.v7.app.ActionBar
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.SearchView
-import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
+import androidx.navigation.Navigation.findNavController
 import br.com.questv.R
 import com.nostra13.universalimageloader.core.ImageLoader
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.app_bar.*
 
 class MainActivity : AppCompatActivity(), MainView {
 
@@ -30,7 +23,6 @@ class MainActivity : AppCompatActivity(), MainView {
 
     setupTabView()
     setupToolBar()
-
 
   }
 
@@ -68,6 +60,13 @@ class MainActivity : AppCompatActivity(), MainView {
   }
 
   override fun onBackPressed() {
-    super.onBackPressed()
+    if (!onSupportNavigateUp()) {
+      super.onBackPressed()
+    }
   }
+
+  override fun onSupportNavigateUp()
+      = findNavController(findViewById(R.id.nv_fg_home)).navigateUp()
+
+
 }

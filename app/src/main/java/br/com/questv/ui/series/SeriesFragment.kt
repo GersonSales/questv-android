@@ -7,6 +7,7 @@ import android.view.*
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.*
+import androidx.navigation.fragment.NavHostFragment
 import br.com.questv.R
 import br.com.questv.model.season.SeasonAdapter
 import br.com.questv.model.season.SeasonModel
@@ -72,11 +73,11 @@ class SeriesFragment : Fragment(), SeriesView {
   }
 
   override fun navigateToHome() {
-    fragmentManager?.beginTransaction()
-      ?.remove(this)
-      ?.setCustomAnimations(R.animator.fade_out, R.animator.fade_out, 0, 0)
-      ?.replace(R.id.fl_main_frame2, HomeFragment())
-      ?.commit()
+//    fragmentManager?.beginTransaction()
+//      ?.remove(this)
+//      ?.setCustomAnimations(R.animator.fade_out, R.animator.fade_out, 0, 0)
+//      ?.replace(R.id.fl_main_frame2, HomeFragment())
+//      ?.commit()
   }
 
 
@@ -99,17 +100,22 @@ class SeriesFragment : Fragment(), SeriesView {
   }
 
   override fun navigateToQuestionManager() {
-    val questionManagerFragment = QuestionManagerFragment()
     val bundle = Bundle()
     bundle.putSerializable(QUESTIONABLE_ID, seriesModel)
     bundle.putAll(arguments)
-    questionManagerFragment.arguments = bundle
 
-    fragmentManager
-      ?.beginTransaction()
-      ?.setCustomAnimations(R.animator.fade_in, R.animator.fade_out, 0, 0)
-      ?.replace(R.id.fl_main_frame2, questionManagerFragment)
-      ?.addToBackStack(SERIES_FRAGMENT_TAG)
-      ?.commit()
+    NavHostFragment.findNavController(this).navigate(R.id.questionManagerFragment, bundle)
+//    val questionManagerFragment = QuestionManagerFragment()
+//    val bundle = Bundle()
+//    bundle.putSerializable(QUESTIONABLE_ID, seriesModel)
+//    bundle.putAll(arguments)
+//    questionManagerFragment.arguments = bundle
+//
+//    fragmentManager
+//      ?.beginTransaction()
+//      ?.setCustomAnimations(R.animator.fade_in, R.animator.fade_out, 0, 0)
+//      ?.replace(R.id.fl_main_frame2, questionManagerFragment)
+//      ?.addToBackStack(SERIES_FRAGMENT_TAG)
+//      ?.commit()
   }
 }
