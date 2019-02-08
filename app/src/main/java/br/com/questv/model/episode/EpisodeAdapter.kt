@@ -6,11 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import br.com.questv.R
 
-class EpisodeAdapter(private val episodeList: List<EpisodeModel>) :
+class EpisodeAdapter(private var episodeList: List<EpisodeModel>) :
   RecyclerView.Adapter<EpisodeViewHolder>() {
 
   init {
-    episodeList.sortedBy { episodeModel -> episodeModel.number }
+    episodeList = episodeList.sortedBy { episodeModel -> episodeModel.number }
+
   }
 
   override fun onCreateViewHolder(viewGroup: ViewGroup, position: Int): EpisodeViewHolder {

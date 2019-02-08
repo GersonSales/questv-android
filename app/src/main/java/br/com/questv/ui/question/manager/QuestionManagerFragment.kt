@@ -64,6 +64,13 @@ class QuestionManagerFragment : Fragment(), QuestionManagerView {
   override fun initViewPager(questions: List<QuestionModel>) {
     questionManagerAdapter = QuestionManagerAdapter(questions, fragmentManager!!, this)
     vp_question_swapper.adapter = questionManagerAdapter
+    updateCounter()
+
+  }
+
+  private fun updateCounter() {
+    tv_current_question.text = (vp_question_swapper.currentItem + 1).toString()
+    tv_questions_count.text = questionManagerAdapter.count.toString()
   }
 
   private fun initNavigatorButtons(view: View) {
@@ -110,6 +117,7 @@ class QuestionManagerFragment : Fragment(), QuestionManagerView {
       object : Thread() {
         override fun run() {
           vp_question_swapper.currentItem = index
+          updateCounter()
           enableInteraction()
         }
       }, if (delay) 1000 else 0L
