@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.TextView
 import br.com.questv.R
+import br.com.questv.model.user.TempUser
 
 class AnswerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
   interface OnAnsweredQuestionListener {
@@ -17,17 +18,36 @@ class AnswerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     itemView.findViewById<TextView>(R.id.tv_answer_item_number)!!.text = answerModel.number.toString()
     itemView.findViewById<TextView>(R.id.tv_question_answer_item)!!.text = answerModel.description
     val answerRow: ConstraintLayout = itemView.findViewById(R.id.cl_answer_row)
-    answerRow.setOnClickListener {
+
+    val userHasAnswered = TempUser.hasAnswered(answerModel)
+
+
+    if (userHasAnswered) {
+
+
       if (answerModel.isCorrect) {
         val colorCorrect = ContextCompat.getColor(itemView.context, R.color.colorGreen)
         answerRow.setBackgroundColor(colorCorrect)
-        listener.onCorrectAnswer()
-
       } else {
         val colorWrong = ContextCompat.getColor(itemView.context, R.color.colorRed)
         answerRow.setBackgroundColor(colorWrong)
-        listener.onWrongAnswer()
+      }
+    } else {
 
+      answerRow.setOnClickListener {
+        TempUser.attachAnsweredQuestion(answerModel)
+
+        if (answerModel.isCorrect) {
+          val colorCorrect = ContextCompat.getColor(itemView.context, R.color.colorGreen)
+          answerRow.setBackgroundColor(colorCorrect)
+          listener.onCorrectAnswer()
+
+        } else {
+          val colorWrong = ContextCompat.getColor(itemView.context, R.color.colorRed)
+          answerRow.setBackgroundColor(colorWrong)
+          listener.onWrongAnswer()
+
+        }
       }
     }
   }

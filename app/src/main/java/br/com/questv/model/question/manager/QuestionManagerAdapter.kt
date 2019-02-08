@@ -53,4 +53,7 @@ class QuestionManagerAdapter(
     this.questionManagerView.navigateToNextQuestion(currentIndex ,true)
     println("onWrongAnswered")
   }
+
+
+
 }

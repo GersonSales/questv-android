@@ -16,6 +16,7 @@ import br.com.questv.model.question.answer.AnswerViewHolder
 import br.com.questv.resource.Strings
 import br.com.questv.resource.Strings.QUESTION_KEY
 
+
 class QuestionFragment : Fragment(), AnswerViewHolder.OnAnsweredQuestionListener {
   interface OnAnswerListener {
     fun onCorrectAnswered(currentIndex: Int)
@@ -51,7 +52,6 @@ class QuestionFragment : Fragment(), AnswerViewHolder.OnAnsweredQuestionListener
     questionAnswers = view.findViewById(R.id.rv_question_answers)
     questionAnswers.layoutManager = LinearLayoutManager(context)
     val answers = questionModel.answers
-    println("questionModel $questionModel")
 
     questionAnswers.adapter = AnswerAdapter(answers, this)
   }
@@ -66,14 +66,18 @@ class QuestionFragment : Fragment(), AnswerViewHolder.OnAnsweredQuestionListener
   }
 
   override fun onWrongAnswer() {
+    questionAnswers.isLayoutFrozen = true
     markThisAsAnswered()
     this.listener.onWrongAnswered(this.positionOnManager)
   }
 
   private fun disableView() {
     val layout: ConstraintLayout = view!!.findViewById(R.id.cl_question_fragment)
-    for(itemIndex in 0..layout.childCount) {
-      layout.getChildAt(itemIndex)?.isEnabled = false
+    for (itemIndex in 0..layout.childCount) {
+      val childAt = layout.getChildAt(itemIndex)
+      println("Disabling $childAt")
+
+      childAt?.isEnabled = false
     }
   }
 

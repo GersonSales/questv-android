@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
@@ -101,10 +102,12 @@ class QuestionManagerFragment : Fragment(), QuestionManagerView {
   }
 
   private fun navigateToIndexDelayed(index: Int, delay: Boolean) {
+    disableInteraction()
     Handler().postDelayed(
       object : Thread() {
         override fun run() {
           vp_question_swapper.currentItem = index
+          enableInteraction()
         }
       }, if (delay) 1000 else 0L
     )
@@ -132,5 +135,16 @@ class QuestionManagerFragment : Fragment(), QuestionManagerView {
     val count = this.questionManagerAdapter.count
     return count > 0
         && (index in 0..(count - 1))
+  }
+
+  private fun disableInteraction() {
+    activity!!.window.setFlags(
+      WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+      WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+    )
+  }
+
+  private fun enableInteraction() {
+    activity!!.window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
   }
 }
