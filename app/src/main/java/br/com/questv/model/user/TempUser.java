@@ -38,4 +38,14 @@ public class TempUser {
     }
     return result;
   }
+
+  public static int getCorrectAnsweredCount() {
+    int result = 0;
+
+    for (final AnswerModel answerModel : answered) {
+      if (answerModel.isCorrect()) result++;
+    }
+
+    return result;
+  }
 }

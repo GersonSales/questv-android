@@ -1,6 +1,7 @@
 package br.com.questv.resource;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class Strings {
   public static final String SERIES_KEY = "series_key";
@@ -16,4 +17,6 @@ public class Strings {
   public static final String QUESTION_FRAGMENT_POSITION = "question_position";
   public static final String SERIES_BG_FRAGMENT_TAG = "series_bg_fragment_tag";
   public static final String SCORE_FRAGMENT_TAG = "SCORE_FRAGMENT_TAG";
+  public static final String CORRECT_ANSWERED_QUESTIONS = "CORRECT_ANSWERED_QUESTIONS";
+  public static final String TOTAL_OF_QUESTIONS = "TOTAL_OF_QUESTIONS";
 }

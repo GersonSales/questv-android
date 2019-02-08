@@ -16,6 +16,9 @@ import br.com.questv.R
 import br.com.questv.contract.Questionable
 import br.com.questv.model.question.QuestionModel
 import br.com.questv.model.question.manager.QuestionManagerAdapter
+import br.com.questv.model.user.TempUser
+import br.com.questv.resource.Strings
+import br.com.questv.resource.Strings.CORRECT_ANSWERED_QUESTIONS
 import br.com.questv.resource.Strings.QUESTIONABLE_ID
 import com.nostra13.universalimageloader.core.ImageLoader
 import kotlinx.android.synthetic.main.fragment_question_manager.*
@@ -114,13 +117,19 @@ class QuestionManagerFragment : Fragment(), QuestionManagerView {
   }
 
   override fun navigateToScore() {
-    NavHostFragment.findNavController(this).navigate(
-      R.id.scoreFragment, null, NavOptions.Builder()
-        .setPopUpTo(
-          R.id.questionManagerFragment,
-          true
-        ).build()
-    )
+    val bundle = Bundle()
+    bundle.putInt(CORRECT_ANSWERED_QUESTIONS, TempUser.getCorrectAnsweredCount())
+    bundle.putInt(Strings.TOTAL_OF_QUESTIONS, questionManagerAdapter.count)
+
+
+    NavHostFragment.findNavController(this)
+      .navigate(
+        R.id.scoreFragment, bundle, NavOptions.Builder()
+          .setPopUpTo(
+            R.id.questionManagerFragment,
+            true
+          ).build()
+      )
   }
 
   override fun navigateToItsCaller() {
