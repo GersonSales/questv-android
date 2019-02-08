@@ -1,5 +1,6 @@
 package br.com.questv.model.question
 
+import br.com.questv.model.question.answer.AnswerModel
 import java.io.Serializable
 
 class QuestionModel(
@@ -8,13 +9,29 @@ class QuestionModel(
   val description: String,
   val difficult: Long,
   val reward: Long,
-  val answers: Map<String, Boolean>,
+  private val _answers: Map<Long, Map<String, Boolean>>,
   var isAnswered: Boolean
 ) : Serializable {
+
+  val answers: MutableList<AnswerModel>
+    get() {
+      val result: MutableList<AnswerModel> = mutableListOf()
+      for ((position, id) in _answers.keys.withIndex()) {
+        for (answer in _answers.getValue(id).keys) {
+          val isCorrect = _answers.getValue(id)[answer]
+          result.add(AnswerModel(id, position + 1, answer, isCorrect!!))
+        }
+      }
+      return result
+    }
+
+
   /**
    * Returns a string representation of the object.
    */
   override fun toString(): String {
-    return "Question{id: $id, description: $description, isAnswered: $isAnswered}"
+    return "Question{id: $id, description: $description, isAnswered: $isAnswered answers: $answers}"
   }
+
+
 }

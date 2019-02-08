@@ -64,10 +64,10 @@ class QuestionManagerFragment : Fragment(), QuestionManagerView {
 
   private fun initNavigatorButtons(view: View) {
     val previousQuestionButton: ImageButton = view.findViewById(R.id.ib_previous_question)
-    previousQuestionButton.setOnClickListener { navigateToPreviousQuestion(vp_question_swapper.currentItem) }
+    previousQuestionButton.setOnClickListener { navigateToPreviousQuestion(vp_question_swapper.currentItem, false) }
 
     val nextQuestionButton: ImageButton = view.findViewById(R.id.ib_next_question)
-    nextQuestionButton.setOnClickListener { navigateToNextQuestion(vp_question_swapper.currentItem) }
+    nextQuestionButton.setOnClickListener { navigateToNextQuestion(vp_question_swapper.currentItem, false) }
   }
 
   override fun showProgress() {
@@ -82,31 +82,31 @@ class QuestionManagerFragment : Fragment(), QuestionManagerView {
     Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
   }
 
-  override fun navigateToPreviousQuestion(currentIndex: Int) {
+  override fun navigateToPreviousQuestion(currentIndex: Int, delayed: Boolean) {
     val previous = currentIndex - 1
     if (isAValidIndex(previous)) {
-      navigateToIndexDelayed(previous)
+      navigateToIndexDelayed(previous, delayed)
     } else {
       navigateToItsCaller()
     }
   }
 
-  override fun navigateToNextQuestion(currentIndex: Int) {
+  override fun navigateToNextQuestion(currentIndex: Int, delayed: Boolean) {
     val nextIndex = currentIndex + 1
     if (isAValidIndex(nextIndex)) {
-      navigateToIndexDelayed(nextIndex)
+      navigateToIndexDelayed(nextIndex, delayed)
     } else {
       navigateToScore()
     }
   }
 
-  private fun navigateToIndexDelayed(index: Int) {
+  private fun navigateToIndexDelayed(index: Int, delay: Boolean) {
     Handler().postDelayed(
       object : Thread() {
         override fun run() {
           vp_question_swapper.currentItem = index
         }
-      }, 0
+      }, if (delay) 1000 else 0L
     )
   }
 

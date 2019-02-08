@@ -8,7 +8,6 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import android.widget.TextView
 import br.com.questv.R
 import br.com.questv.model.question.QuestionModel
@@ -18,15 +17,13 @@ import br.com.questv.resource.Strings
 import br.com.questv.resource.Strings.QUESTION_KEY
 
 class QuestionFragment : Fragment(), AnswerViewHolder.OnAnsweredQuestionListener {
-  interface OnQuestionInteractionListener {
+  interface OnAnswerListener {
     fun onCorrectAnswered(currentIndex: Int)
     fun onWrongAnswered(currentIndex: Int)
-    fun onClickPreviousQuestion(currentIndex: Int)
-    fun onClickNextQuestion(currentIndex: Int)
   }
 
 
-  private lateinit var listener: OnQuestionInteractionListener
+  private lateinit var listener: OnAnswerListener
   private lateinit var questionModel: QuestionModel
   private lateinit var questionAnswers: RecyclerView
   private var positionOnManager = 0
@@ -38,7 +35,7 @@ class QuestionFragment : Fragment(), AnswerViewHolder.OnAnsweredQuestionListener
   ): View? {
 
     this.questionModel = arguments!!.get(QUESTION_KEY) as QuestionModel
-    this.listener = arguments!!.get(Strings.QUESTION_MANAGER_FRAGMENT_KEY) as OnQuestionInteractionListener
+    this.listener = arguments!!.get(Strings.QUESTION_MANAGER_FRAGMENT_KEY) as OnAnswerListener
     this.positionOnManager = arguments!!.getInt(Strings.QUESTION_FRAGMENT_POSITION)
 
 
@@ -48,14 +45,15 @@ class QuestionFragment : Fragment(), AnswerViewHolder.OnAnsweredQuestionListener
   }
 
   private fun initView(questionModel: QuestionModel, view: View) {
-    println(questionModel)
     val questionDescription: TextView = view.findViewById(R.id.tv_question_description)
     questionDescription.text = questionModel.description
 
     questionAnswers = view.findViewById(R.id.rv_question_answers)
     questionAnswers.layoutManager = LinearLayoutManager(context)
-    val isClickable = !questionModel.isAnswered
-    questionAnswers.adapter = AnswerAdapter(questionModel.answers, this, isClickable )
+    val answers = questionModel.answers
+    println("questionModel $questionModel")
+
+    questionAnswers.adapter = AnswerAdapter(answers, this)
   }
 
   override fun onCorrectAnswer() {

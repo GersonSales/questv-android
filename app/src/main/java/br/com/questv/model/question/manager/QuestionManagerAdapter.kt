@@ -17,7 +17,7 @@ class QuestionManagerAdapter(
 ) :
   FragmentStatePagerAdapter(fragmentManager),
   Serializable,
-  QuestionFragment.OnQuestionInteractionListener {
+  QuestionFragment.OnAnswerListener {
 
   private val fragmentList = mutableListOf<Fragment>()
 
@@ -44,25 +44,13 @@ class QuestionManagerAdapter(
 
   override fun onCorrectAnswered(currentIndex: Int) {
     this.questionManagerView.disableCurrentQuestion(currentIndex)
-    this.questionManagerView.navigateToNextQuestion(currentIndex)
+    this.questionManagerView.navigateToNextQuestion(currentIndex, true)
     println("onCorrectAnswered")
   }
 
   override fun onWrongAnswered(currentIndex: Int) {
     this.questionManagerView.disableCurrentQuestion(currentIndex)
-    this.questionManagerView.navigateToNextQuestion(currentIndex)
+    this.questionManagerView.navigateToNextQuestion(currentIndex ,true)
     println("onWrongAnswered")
   }
-
-  override fun onClickPreviousQuestion(currentIndex: Int) {
-    this.questionManagerView.navigateToPreviousQuestion(currentIndex)
-    println("onClickPreviousQuestion")
-  }
-
-  override fun onClickNextQuestion(currentIndex: Int) {
-    this.questionManagerView.navigateToNextQuestion(currentIndex)
-    println("onClickNextQuestion")
-  }
-
-
 }
