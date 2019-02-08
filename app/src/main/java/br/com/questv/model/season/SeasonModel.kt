@@ -1,4 +1,19 @@
 package br.com.questv.model.season
 
-class SeasonModel(val id: Long, val seriesId: Long, val number: Int, val name: String, var isExpanded: Boolean) {
+import br.com.questv.contract.Questionable
+
+class SeasonModel(
+  private val id: Long,
+  val seriesId: Long,
+  val number: Int,
+  val name: String,
+  var isExpanded: Boolean
+) : Questionable {
+
+  override fun getId() = id
+
+  override fun getPromoImageUrl() = ""
+
+  override fun getCoverImageUrl() = ""
+
 }

@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import br.com.questv.R
 
-class SeasonAdapter(private val seasonList: ArrayList<SeasonModel>) :
+class SeasonAdapter(
+  private val seasonList: ArrayList<SeasonModel>,
+  private val listener: SeasonViewHolder.OnInteractionListener) :
   RecyclerView.Adapter<SeasonViewHolder>() {
 
   override fun onCreateViewHolder(viewGroup: ViewGroup, p1: Int): SeasonViewHolder {
@@ -27,6 +29,6 @@ class SeasonAdapter(private val seasonList: ArrayList<SeasonModel>) :
       seasonModel.isExpanded = !seasonModel.isExpanded
       notifyItemChanged(position)
     }
-    seasonViewHolder.bind(seasonModel)
+    seasonViewHolder.bind(seasonModel, listener)
   }
 }

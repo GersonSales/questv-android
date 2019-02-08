@@ -1,5 +1,6 @@
 package br.com.questv.ui.series
 
+import br.com.questv.contract.Questionable
 import br.com.questv.model.season.SeasonModel
 
 interface SeriesView {
@@ -8,5 +9,5 @@ interface SeriesView {
   fun hideProgress()
   fun showErrorMessage(message: String?)
   fun initSeasonRecycler(seasonList: ArrayList<SeasonModel>)
-  fun navigateToQuestionManager()
+  fun navigateToQuestionManager(questionable: Questionable)
 }

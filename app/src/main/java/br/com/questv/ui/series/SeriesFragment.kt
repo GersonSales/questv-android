@@ -9,8 +9,10 @@ import android.view.View.VISIBLE
 import android.widget.*
 import androidx.navigation.fragment.NavHostFragment
 import br.com.questv.R
+import br.com.questv.contract.Questionable
 import br.com.questv.model.season.SeasonAdapter
 import br.com.questv.model.season.SeasonModel
+import br.com.questv.model.season.SeasonViewHolder
 import br.com.questv.model.series.SeriesModel
 import br.com.questv.resource.Strings.*
 import br.com.questv.ui.home.HomeFragment
@@ -18,7 +20,8 @@ import br.com.questv.ui.question.manager.QuestionManagerFragment
 import com.nostra13.universalimageloader.core.ImageLoader
 import kotlinx.android.synthetic.main.series_details.*
 
-class SeriesFragment : Fragment(), SeriesView {
+class SeriesFragment : Fragment(), SeriesView, SeasonViewHolder.OnInteractionListener {
+
 
   private val presenter = SeriesPresenter(this, SeriesInteractor())
   private lateinit var progressBar: ProgressBar
@@ -41,7 +44,7 @@ class SeriesFragment : Fragment(), SeriesView {
     setHasOptionsMenu(true)
     initViewImageView(view)
     val playSeriesQuestions = view.findViewById<ImageButton>(R.id.ib_play_series_questions)
-    playSeriesQuestions.setOnClickListener { navigateToQuestionManager() }
+    playSeriesQuestions.setOnClickListener { navigateToQuestionManager(seriesModel) }
 
 
     val seriesName: TextView = view.findViewById(R.id.tv_series_details_name)
@@ -95,13 +98,13 @@ class SeriesFragment : Fragment(), SeriesView {
 
   override fun initSeasonRecycler(seasonList: ArrayList<SeasonModel>) {
     rv_series_seasons_details.layoutManager = (LinearLayoutManager(context))
-    rv_series_seasons_details.adapter = SeasonAdapter(seasonList)
+    rv_series_seasons_details.adapter = SeasonAdapter(seasonList, this)
     rv_series_seasons_details.setHasFixedSize(true)
   }
 
-  override fun navigateToQuestionManager() {
+  override fun navigateToQuestionManager(questionable: Questionable) {
     val bundle = Bundle()
-    bundle.putSerializable(QUESTIONABLE_ID, seriesModel)
+    bundle.putSerializable(QUESTIONABLE_ID, questionable)
     bundle.putAll(arguments)
 
     NavHostFragment.findNavController(this).navigate(R.id.questionManagerFragment, bundle)
@@ -117,5 +120,9 @@ class SeriesFragment : Fragment(), SeriesView {
 //      ?.replace(R.id.fl_main_frame2, questionManagerFragment)
 //      ?.addToBackStack(SERIES_FRAGMENT_TAG)
 //      ?.commit()
+  }
+
+  override fun onClickPlayListener(seasonModel: SeasonModel) {
+    navigateToQuestionManager(seasonModel)
   }
 }
