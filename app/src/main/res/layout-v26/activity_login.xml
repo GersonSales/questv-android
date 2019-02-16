@@ -18,7 +18,8 @@
       app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="32dp"
       android:layout_marginStart="32dp"
       app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
-      app:layout_constraintHorizontal_bias="0.503" android:autofillHints="" tools:ignore="LabelFor"/>
+      app:layout_constraintHorizontal_bias="0.503" android:autofillHints="" tools:ignore="LabelFor"
+      android:text="userPassword"/>
   <EditText
       android:layout_width="0dp"
       android:layout_height="wrap_content"
@@ -30,7 +31,7 @@
       app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="32dp"
       android:layout_marginStart="32dp"
       app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
-      android:importantForAutofill="no" tools:ignore="LabelFor"/>
+      android:importantForAutofill="no" tools:ignore="LabelFor" android:text="user2"/>
   <Button
       android:text="@string/login"
       android:layout_width="0dp"

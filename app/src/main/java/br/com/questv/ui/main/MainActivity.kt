@@ -26,8 +26,6 @@ class MainActivity : AppCompatActivity(), MainView {
 
   }
 
-
-
   private fun setupToolBar() {
     setSupportActionBar(tb_main_bar)
   }

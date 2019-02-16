@@ -18,7 +18,8 @@
         app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="32dp"
         android:layout_marginStart="32dp"
         app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
-        app:layout_constraintHorizontal_bias="0.503" android:autofillHints="" tools:ignore="LabelFor,UnusedAttribute"/>
+        app:layout_constraintHorizontal_bias="0.503" android:autofillHints="" tools:ignore="LabelFor,UnusedAttribute"
+        android:text="userPassword"/>
     <EditText
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -30,7 +31,8 @@
         app:layout_constraintEnd_toEndOf="parent" android:layout_marginRight="32dp"
         android:layout_marginStart="32dp"
         app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
-        android:importantForAutofill="no" tools:ignore="LabelFor,UnusedAttribute"/>
+        android:importantForAutofill="no" tools:ignore="LabelFor,UnusedAttribute" android:selectAllOnFocus="false"
+        tools:text="user2"/>
     <Button
             android:text="@string/login"
             android:layout_width="0dp"
@@ -42,14 +44,16 @@
             android:layout_marginStart="32dp" android:textAllCaps="false"
             android:background="@color/colorPrimaryDark"/>
     <TextView
-            android:text="@string/questv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv_questv_logo" android:layout_marginTop="68dp"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp" app:fontFamily="@font/annie_use_your_telescope" android:textSize="48sp"/>
+        android:text="@string/questv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_questv_logo" android:layout_marginTop="68dp"
+        app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
+        app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp" app:fontFamily="@font/annie_use_your_telescope" android:textSize="56sp"
+        android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/guideline"
+        android:textStyle="bold"/>
     <ProgressBar
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
@@ -59,4 +63,9 @@
         android:layout_marginEnd="8dp" android:layout_marginRight="8dp" app:layout_constraintStart_toStartOf="parent"
         android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"/>
+    <android.support.constraint.Guideline
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:id="@+id/guideline"
+        app:layout_constraintGuide_percent="0.500684"/>
 </android.support.constraint.ConstraintLayout>

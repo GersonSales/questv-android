@@ -1,11 +1,16 @@
 package br.com.questv.ui.login
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import br.com.questv.R
+import br.com.questv.security.SecurityConstants.AUTH_PREFERENCE
+import br.com.questv.security.SecurityConstants.AUTH_TAG
+import br.com.questv.security.Token
 import br.com.questv.ui.home.HomeFragment
+import br.com.questv.ui.main.MainActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity(), LoginView {
@@ -45,8 +50,13 @@ class LoginActivity : AppCompatActivity(), LoginView {
     et_password.error = getString(R.string.password_error)
   }
 
-  override fun navigateToHome() {
-    startActivity(Intent(this, HomeFragment::class.java))
+  override fun navigateToHome(token: Token) {
+    val sharedPreferences = getSharedPreferences(AUTH_PREFERENCE, Context.MODE_PRIVATE) ?: return
+    with(sharedPreferences.edit()) {
+      putString(AUTH_TAG, token.token)
+      apply()
+    }
+    startActivity(Intent(this, MainActivity::class.java))
     finish()
   }
 

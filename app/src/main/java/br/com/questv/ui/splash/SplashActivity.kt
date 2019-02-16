@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import br.com.questv.R
+import br.com.questv.ui.login.LoginActivity
 import br.com.questv.ui.main.MainActivity
 import kotlinx.android.synthetic.main.activity_splash.*
 
@@ -21,7 +22,7 @@ class SplashActivity : AppCompatActivity(), SplashView {
   }
 
   override fun navigateToMainActivity() {
-    startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+    startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
     finish()
   }
 
