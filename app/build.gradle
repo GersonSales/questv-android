@@ -53,4 +53,8 @@ dependencies {
 
     implementation "android.arch.navigation:navigation-fragment:$nav_version" // use -ktx for Kotlin
     implementation "android.arch.navigation:navigation-ui:$nav_version" // use -ktx for Kotlin
+
+//    Auth0
+    implementation 'com.auth0.android:jwtdecode:1.2.0'
+
 }
