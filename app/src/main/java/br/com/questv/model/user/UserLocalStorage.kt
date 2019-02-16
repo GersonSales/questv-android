@@ -7,12 +7,11 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class UserLocalStorage(private val context: Context) {
+class UserLocalStorage(context: Context) {
   interface OnUserDetailsConsumptionListener {
     fun onUserDetailsSuccess()
     fun onUserDetailsFail()
   }
-
 
   private val SP_NAME = ""
 
@@ -52,6 +51,28 @@ class UserLocalStorage(private val context: Context) {
       }
       apply()
     }
+    getLoggedUserInfo()
+  }
+
+
+  fun logout() {
+    this.sharedPreferences.edit().apply {
+      clear()
+      apply()
+    }
+  }
+
+  private fun getLoggedUserInfo(): UserModel {
+    val id = this.sharedPreferences.getString("id", "")
+    val firstName = this.sharedPreferences.getString("firstName", "")
+    val lastName = this.sharedPreferences.getString("lastName", "")
+    val username = this.sharedPreferences.getString("username", "")
+    val email = this.sharedPreferences.getString("email", "")
+    val password = this.sharedPreferences.getString("password", "")
+    val answeredQuestions = this.sharedPreferences.getString("answeredQuestions", "")
+
+
+    return UserModel(id!!, firstName!!, lastName!!, username!!, email!!, password!!, HashMap<String, String>());
   }
 
 
