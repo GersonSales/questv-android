@@ -3,15 +3,10 @@
 
   <item
       android:id="@+id/sv_series_search"
+      android:orderInCategory="1"
       android:icon="@drawable/ic_search_black_24dp"
       android:title="@string/series_search"
       app:actionViewClass="android.support.v7.widget.SearchView"
       app:showAsAction="always"/>
-
-  <item
-      android:id="@+id/mi_user_menu"
-      android:icon="@drawable/ic_account_circle_orange_24dp"
-      app:showAsAction="ifRoom"
-      android:title="@string/user_account"/>
 
 </menu>
