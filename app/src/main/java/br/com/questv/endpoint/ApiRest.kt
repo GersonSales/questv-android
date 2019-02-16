@@ -16,14 +16,14 @@ interface ApiRest {
   fun getAllSeries(): Call<ArrayList<SeriesModel>>
 
   @GET("/series/{seriesId}/seasons")
-  fun getAllSeasonsBySeries(@Path("seriesId") seriesId: Long): Call<ArrayList<SeasonModel>>
+  fun getAllSeasonsBySeries(@Path("seriesId") seriesId: String): Call<ArrayList<SeasonModel>>
 
 
   @GET("/seasons/{seasonId}/episodes")
-  fun getAllEpisodesBySeason(@Path("seasonId") seasonId: Long): Call<ArrayList<EpisodeModel>>
+  fun getAllEpisodesBySeason(@Path("seasonId") seasonId: String): Call<ArrayList<EpisodeModel>>
 
   @GET("/questionables/{questionableId}/questions?recursive=true")
-  fun getAllQuestionsOfQuestionable(@Path("questionableId") questionableId: Long): Call<ArrayList<QuestionModel>>
+  fun getAllQuestionsOfQuestionable(@Path("questionableId") questionableId: String): Call<ArrayList<QuestionModel>>
 
   @POST("/login")
   fun login(@Body login: LoginModel): Call<ResponseBody>

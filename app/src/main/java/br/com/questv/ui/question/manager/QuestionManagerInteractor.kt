@@ -12,7 +12,7 @@ class QuestionManagerInteractor {
     fun onConsumptionFail(throwable: Throwable)
   }
 
-  fun consumeQuestionsApi(ownerId: Long, listener: OnQuestionConsumptionListener) {
+  fun consumeQuestionsApi(ownerId: String, listener: OnQuestionConsumptionListener) {
     val consumptionCall: Call<ArrayList<QuestionModel>> = ApiClient.instance.getAllQuestionsOfQuestionable(ownerId)
     consumptionCall.enqueue(object : Callback<ArrayList<QuestionModel>> {
       /**

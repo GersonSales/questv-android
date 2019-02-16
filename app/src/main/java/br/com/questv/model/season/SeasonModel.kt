@@ -3,8 +3,8 @@ package br.com.questv.model.season
 import br.com.questv.contract.Questionable
 
 class SeasonModel(
-  private val id: Long,
-  val seriesId: Long,
+  private val id: String,
+  val seriesId: String,
   val number: Int,
   val name: String,
   var isExpanded: Boolean

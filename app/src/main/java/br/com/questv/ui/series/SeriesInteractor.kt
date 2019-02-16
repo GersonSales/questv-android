@@ -13,7 +13,7 @@ class SeriesInteractor {
   }
 
 
-  fun consumeSeasonApi(seriesId: Long, listener: OnSeriesConsumptionListener) {
+  fun consumeSeasonApi(seriesId: String, listener: OnSeriesConsumptionListener) {
     val consumptionCall: Call<ArrayList<SeasonModel>> = ApiClient.instance.getAllSeasonsBySeries(seriesId)
     consumptionCall.enqueue(object : Callback<ArrayList<SeasonModel>> {
       override fun onFailure(call: Call<ArrayList<SeasonModel>>, throwable: Throwable) {

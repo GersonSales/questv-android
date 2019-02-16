@@ -8,7 +8,7 @@ class QuestionManagerPresenter(
 ) :
   QuestionManagerInteractor.OnQuestionConsumptionListener {
 
-  fun fetchAllQuestions(questionOwnerId: Long) {
+  fun fetchAllQuestions(questionOwnerId: String) {
     this.questionManagerInteractor.consumeQuestionsApi(questionOwnerId, this)
   }
 

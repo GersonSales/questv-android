@@ -4,8 +4,8 @@ import br.com.questv.model.question.answer.AnswerModel
 import java.io.Serializable
 
 class QuestionModel(
-  val id: Long,
-  val ownerId: Long,
+  val id: String,
+  val ownerId: String,
   val description: String,
   val difficult: Long,
   val reward: Long,

@@ -80,7 +80,7 @@ class SeriesRepositoryImpl private constructor() : SeriesRepository {
     }
   }
 
-  override fun findById(itemId: Long): SeriesModel? {
+  override fun findById(itemId: String): SeriesModel? {
     for (seriesModel in findAll()) {
       if (seriesModel.getId() == itemId) {
         return seriesModel
@@ -99,7 +99,7 @@ class SeriesRepositoryImpl private constructor() : SeriesRepository {
     }
   }
 
-  override fun deleteById(itemId: Long) {
+  override fun deleteById(itemId: String) {
     for (category in this.seriesMap.keys) {
       val deletedById: Boolean = deleteById(itemId, this.seriesMap[category])
       if (deletedById) {
@@ -108,7 +108,7 @@ class SeriesRepositoryImpl private constructor() : SeriesRepository {
     }
   }
 
-  private fun deleteById(itemId: Long, seriesModelList: MutableList<SeriesModel>?): Boolean {
+  private fun deleteById(itemId: String, seriesModelList: MutableList<SeriesModel>?): Boolean {
     for (seriesModel in seriesModelList!!) {
       if (seriesModel.getId() == itemId) {
         seriesModelList.remove(seriesModel)
@@ -118,7 +118,7 @@ class SeriesRepositoryImpl private constructor() : SeriesRepository {
     return false
   }
 
-  override fun deleteAllById(itemIdList: List<Long>) {
+  override fun deleteAllById(itemIdList: List<String>) {
     for (itemId in itemIdList) {
       deleteById(itemId)
     }
