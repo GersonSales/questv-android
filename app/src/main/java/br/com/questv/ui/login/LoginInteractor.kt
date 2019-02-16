@@ -1,10 +1,9 @@
 package br.com.questv.ui.login
 
-import android.content.SharedPreferences
 import br.com.questv.endpoint.ApiClient
 import br.com.questv.model.user.LoginModel
 import br.com.questv.security.SecurityConstants.AUTH_TAG
-import br.com.questv.security.Token
+import com.auth0.android.jwt.JWT
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -13,7 +12,7 @@ class LoginInteractor {
   interface OnLoginFinishedListener {
     fun onUserNameError()
     fun onUserPasswordError()
-    fun onSuccess(token: Token)
+    fun onSuccess(token: JWT)
   }
 
   fun login(username: String, password: String, listener: OnLoginFinishedListener) {
@@ -34,8 +33,7 @@ class LoginInteractor {
 
       override fun onResponse(call: Call<ResponseBody>, response: retrofit2.Response<ResponseBody>) {
         if (response.isSuccessful) {
-          val token = Token(response.headers()[AUTH_TAG]!!)
-          listener.onSuccess(token)
+          listener.onSuccess(JWT(response.headers()[AUTH_TAG]!!))
         } else {
           listener.onUserPasswordError()
         }

@@ -50,12 +50,7 @@ class LoginActivity : AppCompatActivity(), LoginView {
     et_password.error = getString(R.string.password_error)
   }
 
-  override fun navigateToHome(token: Token) {
-    val sharedPreferences = getSharedPreferences(AUTH_PREFERENCE, Context.MODE_PRIVATE) ?: return
-    with(sharedPreferences.edit()) {
-      putString(AUTH_TAG, token.token)
-      apply()
-    }
+  override fun navigateToHome() {
     startActivity(Intent(this, MainActivity::class.java))
     finish()
   }
@@ -63,5 +58,9 @@ class LoginActivity : AppCompatActivity(), LoginView {
   override fun onDestroy() {
     this.presenter.onDestroy()
     super.onDestroy()
+  }
+
+  override fun getContext(): Context {
+    return this
   }
 }

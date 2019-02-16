@@ -5,6 +5,7 @@ import br.com.questv.model.question.QuestionModel
 import br.com.questv.model.season.SeasonModel
 import br.com.questv.model.series.SeriesModel
 import br.com.questv.model.user.LoginModel
+import br.com.questv.model.user.UserModel
 import okhttp3.Response
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -27,4 +28,9 @@ interface ApiRest {
 
   @POST("/login")
   fun login(@Body login: LoginModel): Call<ResponseBody>
+
+
+  @GET("/users/{userId}")
+  fun getUserById(@Path("userId") userId: String,
+                  @Header("Authorization") auth: String): Call<UserModel>
 }
