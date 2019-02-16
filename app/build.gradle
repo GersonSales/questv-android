@@ -49,7 +49,7 @@ dependencies {
     implementation files('libs/universal-image-loader-1.9.5.jar')
 
 //    ArchNavigation
-    def nav_version = "1.0.0-beta01"
+    def nav_version = "1.0.0-beta02"
 
     implementation "android.arch.navigation:navigation-fragment:$nav_version" // use -ktx for Kotlin
     implementation "android.arch.navigation:navigation-ui:$nav_version" // use -ktx for Kotlin
