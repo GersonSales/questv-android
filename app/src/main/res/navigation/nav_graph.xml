@@ -24,4 +24,6 @@
             android:label="QuestionFragment"/>
   <fragment android:id="@+id/scoreFragment" android:name="br.com.questv.ui.ScoreFragment"
             android:label="ScoreFragment"/>
+  <fragment android:id="@+id/user_account_fragment" android:name="br.com.questv.ui.user.UserFragment"
+            android:label="UserFragment"/>
 </navigation>

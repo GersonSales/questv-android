@@ -46,14 +46,6 @@ class HomeFragment : Fragment(), HomeView, OnItemClickListener<SeriesModel> {
     super.onPrepareOptionsMenu(menu)
   }
 
-  override fun navigateToUserAccount() {
-    fragmentManager?.beginTransaction()
-      ?.setCustomAnimations(R.animator.slide_in_top, R.animator.slide_out_bottom, 0, 0)
-      ?.addToBackStack(HOME_FRAGMENT_TAG)
-      ?.replace(R.id.fl_main_frame, UserFragment())
-      ?.commit()
-  }
-
   override fun onClick(item: SeriesModel) {
     navigateToSeriesDetails(item)
   }
@@ -61,9 +53,7 @@ class HomeFragment : Fragment(), HomeView, OnItemClickListener<SeriesModel> {
   override fun navigateToSeriesDetails(seriesModel: SeriesModel) {
     val bundle = Bundle()
     bundle.putSerializable(SERIES_KEY, seriesModel)
-
     NavHostFragment.findNavController(this).navigate(R.id.seriesFragment, bundle)
-
   }
 
   override fun showProgress() {
