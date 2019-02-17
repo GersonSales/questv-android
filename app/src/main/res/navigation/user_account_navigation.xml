@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/user_account_navigation" app:startDestination="@id/userFragment">
+
+  <fragment android:id="@+id/userFragment" android:name="br.com.questv.ui.user.UserFragment"
+            android:label="UserFragment">
+    <action android:id="@+id/action_userFragment_to_userProfile" app:destination="@id/user_profile_fragment"/>
+  </fragment>
+  <fragment android:id="@+id/user_profile_fragment" android:name="br.com.questv.ui.user.profile.UserProfile"
+            android:label="UserProfile"/>
+</navigation>

@@ -5,10 +5,9 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import androidx.navigation.Navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
 import br.com.questv.R
 import br.com.questv.resource.Strings
-import br.com.questv.ui.user.UserFragment
+import br.com.questv.ui.user.UserNavigationFragment
 import com.nostra13.universalimageloader.core.ImageLoader
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration
 import kotlinx.android.synthetic.main.activity_main.*
@@ -85,12 +84,14 @@ class MainActivity : AppCompatActivity(), MainView {
     supportFragmentManager?.beginTransaction()
       ?.setCustomAnimations(R.animator.slide_in_top, R.animator.slide_out_bottom, 0, 0)
       ?.addToBackStack(Strings.HOME_FRAGMENT_TAG)
-      ?.replace(R.id.fl_main_frame, UserFragment())
+      ?.replace(R.id.fl_main_frame, UserNavigationFragment())
       ?.commit()
   }
 
 
   override fun onSupportNavigateUp() = findNavController(findViewById(R.id.nv_fg_home)).navigateUp()
 
-
+  override fun navigateToUserProfile() {
+    println("navigateToUserProfile")
+  }
 }

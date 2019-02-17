@@ -19,4 +19,5 @@ public class Strings {
   public static final String SCORE_FRAGMENT_TAG = "SCORE_FRAGMENT_TAG";
   public static final String CORRECT_ANSWERED_QUESTIONS = "CORRECT_ANSWERED_QUESTIONS";
   public static final String TOTAL_OF_QUESTIONS = "TOTAL_OF_QUESTIONS";
+  public static final String MAIN_VIEW_LISTENER = "MAIN_VIEW_LISTENER";
 }

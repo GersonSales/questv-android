@@ -1,5 +1,8 @@
 package br.com.questv.ui.main
 
-interface MainView {
-  fun highLightCurrentItem(position: Int);
+import java.io.Serializable
+
+interface MainView : Serializable{
+  fun highLightCurrentItem(position: Int)
+  fun navigateToUserProfile()
 }

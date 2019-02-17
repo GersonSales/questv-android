@@ -11,9 +11,7 @@ import br.com.questv.R
 import br.com.questv.contract.OnItemClickListener
 import br.com.questv.model.series.SeriesListAdapter
 import br.com.questv.model.series.SeriesModel
-import br.com.questv.resource.Strings.HOME_FRAGMENT_TAG
 import br.com.questv.resource.Strings.SERIES_KEY
-import br.com.questv.ui.user.UserFragment
 
 class HomeFragment : Fragment(), HomeView, OnItemClickListener<SeriesModel> {
 
