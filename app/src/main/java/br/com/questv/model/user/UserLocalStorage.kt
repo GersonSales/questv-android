@@ -62,7 +62,7 @@ class UserLocalStorage(context: Context) {
     }
   }
 
-  private fun getLoggedUserInfo(): UserModel {
+  fun getLoggedUserInfo(): UserModel {
     val id = this.sharedPreferences.getString("id", "")
     val firstName = this.sharedPreferences.getString("firstName", "")
     val lastName = this.sharedPreferences.getString("lastName", "")

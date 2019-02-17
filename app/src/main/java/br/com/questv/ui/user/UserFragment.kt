@@ -1,5 +1,6 @@
 package br.com.questv.ui.user
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -9,7 +10,9 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.navigation.fragment.NavHostFragment
 import br.com.questv.R
+import br.com.questv.model.user.UserLocalStorage
 import br.com.questv.resource.Strings
+import br.com.questv.ui.login.LoginActivity
 import br.com.questv.ui.main.MainView
 
 class UserFragment : Fragment(), UserView {
@@ -27,7 +30,12 @@ class UserFragment : Fragment(), UserView {
   private fun bindComponentsBehavior(view: View) {
     view.findViewById<TextView>(R.id.tv_user_profile_opt).setOnClickListener {
       NavHostFragment.findNavController(this).navigate(R.id.user_profile_fragment)
-//      exitFromStack()
+    }
+
+    view.findViewById<TextView>(R.id.tv_switch_acc_opt).setOnClickListener {
+      activity!!.finish()
+      UserLocalStorage(context!!).logout()
+      startActivity(Intent(context, LoginActivity::class.java))
     }
   }
 

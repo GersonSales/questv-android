@@ -1,13 +1,13 @@
 package br.com.questv.model.user
 
 class UserModel(
-  private val id: String,
-  private val firstName: String,
-  private val lastName: String,
-  private val username: String,
-  private val email: String,
-  private val password: String,
-  private val answeredQuestions: Map<String, String>
+  val id: String,
+  val firstName: String,
+  val lastName: String,
+  val username: String,
+  val email: String,
+  val password: String,
+  val answeredQuestions: Map<String, String>
 ) {
   fun asKeySet(): Map<String, String> {
     val result = mutableMapOf<String, String>()
