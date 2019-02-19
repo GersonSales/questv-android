@@ -25,7 +25,13 @@ android {
         sourceCompatibility = '1.8'
         targetCompatibility = '1.8'
     }
+    repositories {
+        maven { url 'https://jitpack.io' }
+
+    }
 }
+
+
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
@@ -56,5 +62,10 @@ dependencies {
 
 //    Auth0
     implementation 'com.auth0.android:jwtdecode:1.2.0'
+
+//    Charts
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0-alpha'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+
 
 }
