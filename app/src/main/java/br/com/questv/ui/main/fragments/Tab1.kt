@@ -1,5 +1,6 @@
 package br.com.questv.ui.main.fragments
 
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -31,7 +32,7 @@ class Tab1 : Fragment() {
     entries.add(PieEntry(26f, "Correct"))
     entries.add(PieEntry(12f, "Wrong"))
 
-    val dataSet = PieDataSet(entries, "Answers")
+    val dataSet = PieDataSet(entries, "")
     dataSet.valueTextSize = 24f
 
     val colors = mutableListOf<Int>()
@@ -50,12 +51,12 @@ class Tab1 : Fragment() {
 
     pieChart.description.text = "Pie chart of answered questions"
     pieChart.description.textSize = 10f
+    pieChart.description.textColor = Color.WHITE
 
     pieChart.legend.textSize = 14f
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
       pieChart.setHoleColor(context?.getColor(R.color.colorGray)!!)
       pieChart.legend.textColor = context?.getColor(R.color.colorWhite)!!
-      pieChart.description.textColor = context?.getColor(R.color.colorWhite)!!
     }
     pieChart.invalidate()
   }
