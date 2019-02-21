@@ -38,9 +38,9 @@ class Tab1 : Fragment() {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
       colors.add(context?.getColor(R.color.colorGreen)!!)
       colors.add(context?.getColor(R.color.colorRed)!!)
+      dataSet.colors = colors
     }
 
-    dataSet.colors = colors
 
     val data = PieData(dataSet)
     data.setValueFormatter(DecimalDataFormatter())
