@@ -4,6 +4,7 @@ import android.content.Context
 import android.support.v4.app.FragmentManager
 import android.support.v4.view.ViewPager
 import br.com.questv.R
+import br.com.questv.ui.dashboard.DashboardFragment
 import br.com.questv.ui.home.HomeFragment
 import br.com.questv.ui.home.IntroducerFragment
 import br.com.questv.ui.main.fragments.Tab1
@@ -22,7 +23,7 @@ class MainPresenter(var mainView: MainView?, private val mainInteractor: MainInt
     val tabAdapter = TabAdapter(context, fragmentManager)
 
     tabAdapter.addFragment(IntroducerFragment(), "home", R.drawable.ic_home_black_24dp)
-    tabAdapter.addFragment(Tab1(), "Dashboard", R.drawable.ic_show_chart_black_24dp)
+    tabAdapter.addFragment(DashboardFragment(), "Dashboard", R.drawable.ic_show_chart_black_24dp)
     tabAdapter.addFragment(Tab2(), "Questions", R.drawable.ic_wb_incandescent_black_24dp)
     tabAdapter.addFragment(Tab3(), "Badges", R.drawable.ic_assistant_photo_black_24dp)
 
