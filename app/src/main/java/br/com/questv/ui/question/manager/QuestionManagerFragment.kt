@@ -65,7 +65,6 @@ class QuestionManagerFragment : Fragment(), QuestionManagerView {
     questionManagerAdapter = QuestionManagerAdapter(questions, fragmentManager!!, this)
     vp_question_swapper.adapter = questionManagerAdapter
     updateCounter()
-
   }
 
   private fun updateCounter() {

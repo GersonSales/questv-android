@@ -27,7 +27,7 @@ class SeriesRepositoryImpl private constructor() : SeriesRepository {
   override fun findReleases(): List<SeriesModel> {
     val result: MutableList<SeriesModel> = ArrayList()
     for (seriesModel in findAll()) {
-      if (seriesModel.isRelease) {
+      if (!seriesModel.isRelease) {
         result.add(seriesModel)
       }
 
