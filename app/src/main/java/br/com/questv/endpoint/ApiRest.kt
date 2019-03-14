@@ -23,8 +23,9 @@ interface ApiRest {
   @GET("/seasons/{seasonId}/episodes")
   fun getAllEpisodesBySeason(@Path("seasonId") seasonId: String): Call<ArrayList<EpisodeModel>>
 
-  @GET("/questionables/{questionableId}/questions?recursive=true")
-  fun getAllQuestionsOfQuestionable(@Path("questionableId") questionableId: String): Call<ArrayList<QuestionModel>>
+  @GET("/questionable/{questionableId}/questions?recursive=true")
+  fun getAllQuestionsOfQuestionable(@Path("questionableId") questionableId: String,
+                                    @Header("Authorization") auth: String): Call<ArrayList<QuestionModel>>
 
   @POST("/login")
   fun login(@Body login: LoginModel): Call<ResponseBody>

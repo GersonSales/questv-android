@@ -8,8 +8,8 @@ class QuestionManagerPresenter(
 ) :
   QuestionManagerInteractor.OnQuestionConsumptionListener {
 
-  fun fetchAllQuestions(questionOwnerId: String) {
-    this.questionManagerInteractor.consumeQuestionsApi(questionOwnerId, this)
+  fun fetchAllQuestions(questionOwnerId: String, auth: String) {
+    this.questionManagerInteractor.consumeQuestionsApi(questionOwnerId, this, auth)
   }
 
   override fun onConsumptionSuccess(questions: ArrayList<QuestionModel>) {

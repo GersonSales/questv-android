@@ -17,6 +17,7 @@ import br.com.questv.contract.Questionable
 import br.com.questv.model.question.QuestionModel
 import br.com.questv.model.question.manager.QuestionManagerAdapter
 import br.com.questv.model.user.TempUser
+import br.com.questv.model.user.UserLocalStorage
 import br.com.questv.resource.Strings
 import br.com.questv.resource.Strings.CORRECT_ANSWERED_QUESTIONS
 import br.com.questv.resource.Strings.QUESTIONABLE_ID
@@ -44,7 +45,9 @@ class QuestionManagerFragment : Fragment(), QuestionManagerView {
     initViewImageView(view)
     initNavigatorButtons(view)
 
-    presenter.fetchAllQuestions(questionable.getId())
+    val auth = UserLocalStorage(context!!).getLoggedUserToken()
+
+    presenter.fetchAllQuestions(questionable.getId(), auth!!)
 
     super.onViewCreated(view, savedInstanceState)
   }

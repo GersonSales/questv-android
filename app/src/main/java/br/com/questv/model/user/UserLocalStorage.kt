@@ -32,6 +32,10 @@ class UserLocalStorage(context: Context) {
 
       override fun onResponse(call: Call<UserModel>, response: Response<UserModel>) {
         if (response.isSuccessful) {
+          sharedPreferences.edit().apply() {
+            putString("auth", auth)
+            apply()
+          }
           response.body().let {
             updateStoredUserInfo(it!!)
             listener.onUserDetailsSuccess()
@@ -42,6 +46,8 @@ class UserLocalStorage(context: Context) {
       }
     })
   }
+
+  fun getLoggedUserToken() = sharedPreferences.getString("auth", "")
 
   private fun updateStoredUserInfo(userModel: UserModel) {
     this.sharedPreferences.edit().apply {

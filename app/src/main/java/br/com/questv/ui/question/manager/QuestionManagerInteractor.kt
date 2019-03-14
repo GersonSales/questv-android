@@ -12,8 +12,12 @@ class QuestionManagerInteractor {
     fun onConsumptionFail(throwable: Throwable)
   }
 
-  fun consumeQuestionsApi(ownerId: String, listener: OnQuestionConsumptionListener) {
-    val consumptionCall: Call<ArrayList<QuestionModel>> = ApiClient.instance.getAllQuestionsOfQuestionable(ownerId)
+  fun consumeQuestionsApi(
+    ownerId: String,
+    listener: OnQuestionConsumptionListener,
+    auth: String
+  ) {
+    val consumptionCall: Call<ArrayList<QuestionModel>> = ApiClient.instance.getAllQuestionsOfQuestionable(ownerId, auth)
     consumptionCall.enqueue(object : Callback<ArrayList<QuestionModel>> {
       /**
        * Invoked when a network exception occurred talking to the server or when an unexpected
