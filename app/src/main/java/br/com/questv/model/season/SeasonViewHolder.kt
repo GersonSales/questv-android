@@ -11,6 +11,7 @@ import br.com.questv.R
 import br.com.questv.endpoint.ApiClient
 import br.com.questv.model.episode.EpisodeAdapter
 import br.com.questv.model.episode.EpisodeModel
+import br.com.questv.model.user.UserLocalStorage
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -32,17 +33,17 @@ class SeasonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     itemView.findViewById<ImageButton>(R.id.ib_season_play).setOnClickListener { listener.onClickPlayListener(seasonModel)}
     recyclerView = itemView.findViewById(R.id.rv_episode_list)
     this.seasonModel = seasonModel
-    getAllEpisodesFromSeason()
+    getAllEpisodesFromSeason(UserLocalStorage(context).getLoggedUserToken())
   }
 
 
-  private fun getAllEpisodesFromSeason() {
+  private fun getAllEpisodesFromSeason(auth: String) {
     val consumptionCall: Call<ArrayList<EpisodeModel>> =
-      ApiClient.instance.getAllEpisodesBySeason(seasonModel.getId())
+      ApiClient.instance.getAllEpisodesBySeason(seasonModel.ownerId, seasonModel.number.toString(), auth)
 
     consumptionCall.enqueue(object : Callback<ArrayList<EpisodeModel>> {
       override fun onFailure(call: Call<ArrayList<EpisodeModel>>, t: Throwable) {
-
+          t.printStackTrace()
       }
 
       override fun onResponse(call: Call<ArrayList<EpisodeModel>>,

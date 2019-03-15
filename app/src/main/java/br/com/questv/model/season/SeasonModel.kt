@@ -4,7 +4,7 @@ import br.com.questv.contract.Questionable
 
 class SeasonModel(
   private val id: String,
-  val seriesId: String,
+  val ownerId: String,
   val number: Int,
   val name: String,
   var isExpanded: Boolean

@@ -20,10 +20,7 @@ class SplashInteractor {
         listener.onSeriesConsumptionFail()
       }
 
-      override fun onResponse(
-        call: Call<ArrayList<SeriesModel>>,
-        response: Response<ArrayList<SeriesModel>>
-      ) {
+      override fun onResponse(call: Call<ArrayList<SeriesModel>>, response: Response<ArrayList<SeriesModel>>) {
         if (response.isSuccessful) {
           val series: ArrayList<SeriesModel>? = response.body()
           listener.onSeriesConsumptionSuccess(series)
