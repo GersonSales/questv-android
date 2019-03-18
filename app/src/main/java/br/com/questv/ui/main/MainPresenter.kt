@@ -22,7 +22,7 @@ class MainPresenter(var mainView: MainView?, private val mainInteractor: MainInt
     val tabAdapter = TabAdapter(context, fragmentManager)
 
     tabAdapter.addFragment(IntroducerFragment(), "home", R.drawable.ic_home_black_24dp)
-    tabAdapter.addFragment(Tab1(), "Dashboard", R.drawable.ic_show_chart_black_24dp)
+    tabAdapter.addFragment(Tab1(), "Analytics", R.drawable.ic_show_chart_black_24dp)
     tabAdapter.addFragment(Tab2(), "Questions", R.drawable.ic_wb_incandescent_black_24dp)
     tabAdapter.addFragment(Tab3(), "Badges", R.drawable.ic_assistant_photo_black_24dp)
 
