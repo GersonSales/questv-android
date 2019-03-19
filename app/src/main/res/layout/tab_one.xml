@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                              xmlns:app="http://schemas.android.com/apk/res-auto"
                                              xmlns:tools="http://schemas.android.com/tools"
+                                             android:id="@+id/cl_pie_chart"
                                              android:layout_width="match_parent"
                                              android:layout_height="match_parent" android:background="@color/colorGray">
+
+
 
   <com.github.mikephil.charting.charts.PieChart
       android:id="@+id/pie_chart"
@@ -31,5 +35,6 @@
       android:orientation="vertical"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content" android:id="@+id/guideline9" app:layout_constraintGuide_percent="0.8"/>
+
 
 </android.support.constraint.ConstraintLayout>

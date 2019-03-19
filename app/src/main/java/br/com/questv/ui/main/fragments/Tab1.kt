@@ -19,8 +19,6 @@ class Tab1 : Fragment() {
     val view = inflater.inflate(R.layout.tab_one, container, false)
     bindAnsweredQuestionsPie(view)
 
-
-
     return view
   }
 
