@@ -8,8 +8,6 @@ import androidx.navigation.Navigation.findNavController
 import br.com.questv.R
 import br.com.questv.resource.Strings
 import br.com.questv.ui.user.UserNavigationFragment
-import com.nostra13.universalimageloader.core.ImageLoader
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), MainView {

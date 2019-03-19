@@ -1,8 +1,9 @@
-package br.com.questv.model.dashboard
+package br.com.questv.model.analytics
 
 import android.content.Context
 import android.graphics.Color
 import android.os.Build
+import android.support.v7.widget.RecyclerView
 import android.view.View
 import br.com.questv.R
 import br.com.questv.util.chart.DecimalDataFormatter
