@@ -1,6 +1,7 @@
 package br.com.questv.model.series
 
 import br.com.questv.contract.SeriesRepository
+import kotlin.random.Random
 
 class SeriesRepositoryImpl private constructor() : SeriesRepository {
   companion object {
@@ -122,5 +123,10 @@ class SeriesRepositoryImpl private constructor() : SeriesRepository {
     for (itemId in itemIdList) {
       deleteById(itemId)
     }
+  }
+
+  override fun getRandomPromoImage(): String {
+    val promoImages = findAllPromoImages()
+    return promoImages[Random.nextInt(promoImages.size)]
   }
 }

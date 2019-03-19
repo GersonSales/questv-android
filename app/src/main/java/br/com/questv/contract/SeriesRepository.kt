@@ -9,5 +9,6 @@ interface SeriesRepository : Repository<SeriesModel> {
   fun findAllCoverImages(): List<String>
   fun findAllPromoImages(): List<String>
   fun findAllCategories(): Set<String>
+  fun getRandomPromoImage(): String
 
 }

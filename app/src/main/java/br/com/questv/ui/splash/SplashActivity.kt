@@ -10,6 +10,8 @@ import br.com.questv.R
 import br.com.questv.ui.AuxActivity
 import br.com.questv.ui.login.LoginActivity
 import br.com.questv.ui.main.MainActivity
+import com.nostra13.universalimageloader.core.ImageLoader
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration
 import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity : AppCompatActivity(), SplashView {
@@ -19,6 +21,7 @@ class SplashActivity : AppCompatActivity(), SplashView {
   override fun onCreate(savedInstanceState: Bundle?) {
     setContentView(R.layout.activity_splash)
     super.onCreate(savedInstanceState)
+    ImageLoader.getInstance().init(ImageLoaderConfiguration.createDefault(this))
     presenter.fetchAllSeries()
   }
 

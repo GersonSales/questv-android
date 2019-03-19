@@ -5,12 +5,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import android.widget.ImageView
 import br.com.questv.R
-import br.com.questv.security.SecurityConstants.AUTH_PREFERENCE
-import br.com.questv.security.SecurityConstants.AUTH_TAG
-import br.com.questv.security.Token
-import br.com.questv.ui.home.HomeFragment
+import br.com.questv.model.series.SeriesRepositoryImpl
 import br.com.questv.ui.main.MainActivity
+import com.nostra13.universalimageloader.core.ImageLoader
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity(), LoginView {
@@ -22,6 +21,7 @@ class LoginActivity : AppCompatActivity(), LoginView {
     setContentView(R.layout.activity_login)
 
     bt_login.setOnClickListener { validateCredentials() }
+    showBackgroundImage()
   }
 
   private fun validateCredentials() {
@@ -62,5 +62,14 @@ class LoginActivity : AppCompatActivity(), LoginView {
 
   override fun getContext(): Context {
     return this
+  }
+
+  private fun showBackgroundImage() {
+
+    val url = "http://10.0.2.2:5000/series/1434/promoImage";
+
+    val imageLoader = ImageLoader.getInstance()
+    imageLoader.displayImage(url, iv_login_bg)
+    iv_login_bg?.scaleType = ImageView.ScaleType.CENTER_CROP
   }
 }

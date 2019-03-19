@@ -23,8 +23,6 @@ class MainActivity : AppCompatActivity(), MainView {
     setContentView(R.layout.activity_main)
     this.tabAdapter = presenter.getTabAdapter(this, supportFragmentManager)
 
-    ImageLoader.getInstance().init(ImageLoaderConfiguration.createDefault(this))
-
     setupTabView()
     setupToolBar()
 
