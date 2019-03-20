@@ -11,7 +11,7 @@ import android.widget.TextView
 import androidx.navigation.fragment.NavHostFragment
 import br.com.questv.R
 import br.com.questv.model.user.UserLocalStorage
-import br.com.questv.ui.login.LoginFragment
+import br.com.questv.ui.signinup.SignInUpActivity
 
 class UserFragment : Fragment(), UserView {
 
@@ -33,7 +33,7 @@ class UserFragment : Fragment(), UserView {
     view.findViewById<TextView>(R.id.tv_switch_acc_opt).setOnClickListener {
       activity!!.finish()
       UserLocalStorage(context!!).logout()
-      startActivity(Intent(context, LoginFragment::class.java))
+      startActivity(Intent(context, SignInUpActivity::class.java))
     }
   }
 
