@@ -35,7 +35,7 @@ class SignUpFragment : Fragment(), SignUpView {
 
   override fun showBackgroundImage() {
 
-    val url = "http://10.0.2.2:5000/series/1/promoImage"
+    val url = "http://10.0.2.2:5000/series/34/promoImage"
 
     val imageLoader = ImageLoader.getInstance()
     imageLoader.displayImage(url, iv_sign_up_bg)

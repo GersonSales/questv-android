@@ -74,7 +74,7 @@ class LoginFragment : Fragment(), LoginView {
 
   private fun showBackgroundImage() {
 
-    val url = "http://10.0.2.2:5000/series/1/promoImage"
+    val url = "http://10.0.2.2:5000/series/34/promoImage"
 
     val imageLoader = ImageLoader.getInstance()
     imageLoader.displayImage(url, iv_login_bg)
