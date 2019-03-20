@@ -11,7 +11,7 @@ import androidx.navigation.fragment.NavHostFragment
 import br.com.questv.R
 import br.com.questv.ui.main.MainActivity
 import com.nostra13.universalimageloader.core.ImageLoader
-import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.fragment_login.*
 
 class LoginFragment : Fragment(), LoginView {
 
@@ -20,7 +20,7 @@ class LoginFragment : Fragment(), LoginView {
   override fun onCreateView(inflater: LayoutInflater,
                             container: ViewGroup?,
                             savedInstanceState: Bundle?)
-      = inflater.inflate(R.layout.activity_login, container, false)!!
+      = inflater.inflate(R.layout.fragment_login, container, false)!!
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     bt_login.setOnClickListener { validateCredentials() }

@@ -56,7 +56,7 @@
       android:backgroundTint="@color/colorWhite"
       android:textColorHighlight="@color/colorWhite"
       android:textColorHint="@color/colorWhite" app:layout_constraintBottom_toTopOf="@+id/et_password"
-      android:layout_marginBottom="32dp"/>
+      android:layout_marginBottom="32dp" android:drawableLeft="@drawable/ic_profile_white"/>
 
   <EditText
       android:layout_width="0dp"
@@ -79,7 +79,7 @@
       android:textColorLink="@color/colorAccent"
       android:textColorHint="@color/colorWhite"
       android:textColorHighlight="@color/colorGreen" app:layout_constraintBottom_toTopOf="@+id/bt_login"
-      android:layout_marginBottom="32dp"/>
+      android:layout_marginBottom="32dp" android:drawableLeft="@drawable/ic_lock_white_18dp"/>
   <Button
       android:text="@string/login"
       android:layout_width="0dp"
