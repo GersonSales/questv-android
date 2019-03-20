@@ -11,6 +11,7 @@ import androidx.navigation.fragment.NavHostFragment
 import br.com.questv.R
 import br.com.questv.ui.main.MainActivity
 import com.nostra13.universalimageloader.core.ImageLoader
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration
 import kotlinx.android.synthetic.main.fragment_login.*
 
 class LoginFragment : Fragment(), LoginView {
@@ -73,7 +74,7 @@ class LoginFragment : Fragment(), LoginView {
 
   private fun showBackgroundImage() {
 
-    val url = "http://10.0.2.2:5000/series/1434/promoImage";
+    val url = "http://10.0.2.2:5000/series/1/promoImage"
 
     val imageLoader = ImageLoader.getInstance()
     imageLoader.displayImage(url, iv_login_bg)

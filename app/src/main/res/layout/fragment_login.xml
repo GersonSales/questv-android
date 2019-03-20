@@ -23,17 +23,6 @@
       android:background="@android:color/background_dark" android:adjustViewBounds="false" android:alpha="0.8"
       app:layout_constraintHorizontal_bias="1.0" app:layout_constraintVertical_bias="0.0"/>
 
-  <TextView
-      android:text="@string/questv"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:id="@+id/tv_questv_logo" android:layout_marginTop="8dp"
-      app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
-      android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
-      app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
-      android:layout_marginStart="8dp" app:fontFamily="monospace" android:textSize="48sp"
-      android:textStyle="bold" android:textAllCaps="false" android:textColor="@color/colorWhite"
-      android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/guideline13"/>
   <EditText
       android:layout_width="0dp"
       android:layout_height="wrap_content"
@@ -47,7 +36,6 @@
       android:layout_marginLeft="32dp"
       android:importantForAutofill="no"
       tools:ignore="LabelFor"
-      android:text="user2"
       android:drawableStart="@drawable/ic_profile_white"
       android:drawableLeft="@drawable/ic_profile_white"
       android:drawablePadding="15dp"
@@ -55,12 +43,13 @@
       android:shadowColor="@color/colorWhite"
       android:backgroundTint="@color/colorGrayLight"
       android:textColorHighlight="@color/colorWhite"
-      android:textColorHint="@color/colorGrayLight" app:layout_constraintBottom_toTopOf="@+id/et_password"
-      android:layout_marginBottom="32dp"  android:hint="Username"/>
+      android:textColorHint="@color/colorGrayLight"
+      android:hint="Username" android:layout_marginTop="8dp"
+      app:layout_constraintTop_toTopOf="@+id/guideline13"/>
 
   <EditText
       android:layout_width="0dp"
-      android:layout_height="wrap_content"
+      android:layout_height="48dp"
       android:inputType="textWebPassword"
       android:ems="10"
       android:id="@+id/et_password"
@@ -72,15 +61,14 @@
       android:drawableStart="@drawable/ic_lock_white_18dp"
       android:drawableLeft="@drawable/ic_lock_white_18dp"
       android:drawablePadding="15dp"
-      android:text="userPassword"
       android:hint="Password"
       android:textColor="@color/colorWhite"
       android:shadowColor="@android:color/background_light"
       android:backgroundTint="@color/colorGrayLight"
       android:textColorLink="@color/colorAccent"
       android:textColorHint="@color/colorGrayLight"
-      android:textColorHighlight="@color/colorGreen" app:layout_constraintBottom_toTopOf="@+id/bt_login"
-      android:layout_marginBottom="32dp" />
+      android:textColorHighlight="@color/colorGreen"
+      android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/et_username"/>
   <Button
       android:text="@string/login"
       android:layout_width="0dp"
@@ -95,8 +83,8 @@
       android:textAllCaps="false"
       android:background="@color/colorAccent"
       android:textColor="@color/colorWhite"
-      android:layout_marginBottom="8dp"
-      app:layout_constraintBottom_toTopOf="@+id/gl_horizontal_65" android:textSize="20sp"/>
+      android:textSize="20sp" android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/et_password"
+      android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/gl_horizontal_65"/>
   <ProgressBar
       style="?android:attr/progressBarStyle"
       android:layout_width="wrap_content"
@@ -223,5 +211,14 @@
       android:orientation="horizontal"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content" android:id="@+id/guideline13"
-      app:layout_constraintGuide_percent="0.25"/>
+      app:layout_constraintGuide_percent="0.3"/>
+  <ImageView
+          android:src="@drawable/questv_logo"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/imageView6" android:layout_marginTop="8dp"
+          app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
+          app:layout_constraintBottom_toTopOf="@+id/guideline13" app:layout_constraintEnd_toEndOf="parent"
+          android:layout_marginEnd="8dp" android:layout_marginRight="8dp" app:layout_constraintStart_toStartOf="parent"
+          android:layout_marginLeft="8dp" android:layout_marginStart="8dp"/>
 </android.support.constraint.ConstraintLayout>

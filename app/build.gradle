@@ -55,7 +55,7 @@ dependencies {
     implementation files('libs/universal-image-loader-1.9.5.jar')
 
 //    ArchNavigation
-    def nav_version = "1.0.0-beta02"
+    def nav_version = "1.0.0"
 
     implementation "android.arch.navigation:navigation-fragment:$nav_version" // use -ktx for Kotlin
     implementation "android.arch.navigation:navigation-ui:$nav_version" // use -ktx for Kotlin
@@ -63,7 +63,7 @@ dependencies {
 //    Auth0
     implementation 'com.auth0.android:jwtdecode:1.2.0'
 
-//    Charts
+//    Chartss
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0-alpha'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 

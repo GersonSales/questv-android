@@ -21,6 +21,7 @@ class SplashInteractor {
       }
 
       override fun onResponse(call: Call<ArrayList<SeriesModel>>, response: Response<ArrayList<SeriesModel>>) {
+        println("ONRESPONSE")
         if (response.isSuccessful) {
           val series: ArrayList<SeriesModel>? = response.body()
           listener.onSeriesConsumptionSuccess(series)
