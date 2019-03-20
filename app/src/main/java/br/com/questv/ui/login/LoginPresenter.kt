@@ -34,7 +34,7 @@ class LoginPresenter(var loginView: LoginView?, private val loginInteractor: Log
   }
 
   private fun storeLoggedUser(token: JWT) {
-    val userLocalStorage = UserLocalStorage(loginView?.getContext()!!)
+    val userLocalStorage = UserLocalStorage(loginView?.getViewContext()!!)
     userLocalStorage.login(token, this)
   }
 

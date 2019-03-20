@@ -9,5 +9,7 @@ interface LoginView {
   fun setUserNameError()
   fun setUserPasswordError()
   fun navigateToHome()
-  fun getContext(): Context
+  fun navigateToSignUp()
+  fun getViewContext(): Context
+
 }

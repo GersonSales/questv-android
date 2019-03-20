@@ -1,27 +1,33 @@
 package br.com.questv.ui.login
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import android.support.v4.app.Fragment
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.navigation.fragment.NavHostFragment
 import br.com.questv.R
-import br.com.questv.model.series.SeriesRepositoryImpl
 import br.com.questv.ui.main.MainActivity
 import com.nostra13.universalimageloader.core.ImageLoader
 import kotlinx.android.synthetic.main.activity_login.*
 
-class LoginActivity : AppCompatActivity(), LoginView {
+class LoginFragment : Fragment(), LoginView {
 
   private val presenter = LoginPresenter(this, LoginInteractor())
 
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_login)
+  override fun onCreateView(inflater: LayoutInflater,
+                            container: ViewGroup?,
+                            savedInstanceState: Bundle?)
+      = inflater.inflate(R.layout.activity_login, container, false)!!
 
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     bt_login.setOnClickListener { validateCredentials() }
+    bt_sign_up.setOnClickListener { navigateToSignUp() }
+
     showBackgroundImage()
+    super.onViewCreated(view, savedInstanceState)
   }
 
   private fun validateCredentials() {
@@ -51,17 +57,18 @@ class LoginActivity : AppCompatActivity(), LoginView {
   }
 
   override fun navigateToHome() {
-    startActivity(Intent(this, MainActivity::class.java))
-    finish()
+    val intent = Intent(context, MainActivity::class.java)
+    activity?.startActivity(intent)
+    activity?.finish()
+  }
+
+  override fun navigateToSignUp() {
+    NavHostFragment.findNavController(this).navigate(R.id.nvi_sign_up)
   }
 
   override fun onDestroy() {
     this.presenter.onDestroy()
     super.onDestroy()
-  }
-
-  override fun getContext(): Context {
-    return this
   }
 
   private fun showBackgroundImage() {
@@ -72,4 +79,6 @@ class LoginActivity : AppCompatActivity(), LoginView {
     imageLoader.displayImage(url, iv_login_bg)
     iv_login_bg?.scaleType = ImageView.ScaleType.CENTER_CROP
   }
+
+  override fun getViewContext() = context!!
 }
