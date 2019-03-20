@@ -93,7 +93,7 @@
       android:layout_marginLeft="32dp"
       android:layout_marginStart="32dp"
       android:textAllCaps="false"
-      android:background="@null"
+      android:background="@color/colorAccent"
       android:textColor="@color/colorWhite"
       android:layout_marginBottom="8dp"
       app:layout_constraintBottom_toTopOf="@+id/gl_horizontal_65" android:textSize="20sp"/>
