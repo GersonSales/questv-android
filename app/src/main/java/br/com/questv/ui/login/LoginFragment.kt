@@ -9,10 +9,15 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.navigation.fragment.NavHostFragment
 import br.com.questv.R
+import br.com.questv.model.series.SeriesRepositoryImpl
 import br.com.questv.ui.main.MainActivity
 import com.nostra13.universalimageloader.core.ImageLoader
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration
 import kotlinx.android.synthetic.main.fragment_login.*
+import android.graphics.Bitmap
+import com.nostra13.universalimageloader.core.DisplayImageOptions
+import com.nostra13.universalimageloader.core.assist.ImageScaleType
+
 
 class LoginFragment : Fragment(), LoginView {
 
@@ -74,7 +79,11 @@ class LoginFragment : Fragment(), LoginView {
 
   private fun showBackgroundImage() {
 
-    val url = "http://10.0.2.2:5000/series/34/promoImage"
+//    val url = "http://10.0.2.2:5000/series/34/promoImage"
+    val url = SeriesRepositoryImpl
+      .instance
+      .getRandomPromoImage()
+      .replace("localhost", "10.0.2.2")
 
     val imageLoader = ImageLoader.getInstance()
     imageLoader.displayImage(url, iv_login_bg)

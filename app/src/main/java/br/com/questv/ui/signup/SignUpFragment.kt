@@ -1,5 +1,6 @@
 package br.com.questv.ui.signup
 
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -8,7 +9,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.navigation.fragment.NavHostFragment
 import br.com.questv.R
+import br.com.questv.contract.SeriesRepository
+import br.com.questv.model.series.SeriesRepositoryImpl
+import com.nostra13.universalimageloader.core.DisplayImageOptions
 import com.nostra13.universalimageloader.core.ImageLoader
+import com.nostra13.universalimageloader.core.assist.ImageScaleType
 import kotlinx.android.synthetic.main.fragment_sign_up.*
 
 class SignUpFragment : Fragment(), SignUpView {
@@ -35,7 +40,14 @@ class SignUpFragment : Fragment(), SignUpView {
 
   override fun showBackgroundImage() {
 
-    val url = "http://10.0.2.2:5000/series/34/promoImage"
+//    SeriesRepositoryImpl.instance.getRandomPromoImage()
+
+
+//    val url = "http://10.0.2.2:5000/series/34/promoImage"
+    val url = SeriesRepositoryImpl
+      .instance
+      .getRandomPromoImage()
+      .replace("localhost", "10.0.2.2")
 
     val imageLoader = ImageLoader.getInstance()
     imageLoader.displayImage(url, iv_sign_up_bg)

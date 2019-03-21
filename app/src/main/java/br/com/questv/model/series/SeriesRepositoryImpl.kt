@@ -129,4 +129,9 @@ class SeriesRepositoryImpl private constructor() : SeriesRepository {
     val promoImages = findAllPromoImages()
     return promoImages[Random.nextInt(promoImages.size)]
   }
+
+  override fun getRandomCoverImage(): String {
+    val promoImages = findAllCoverImages()
+    return promoImages[Random.nextInt(promoImages.size)]
+  }
 }
