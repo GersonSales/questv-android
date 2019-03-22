@@ -3,6 +3,7 @@ package br.com.questv.ui.main
 import android.content.Context
 import android.support.v4.app.FragmentManager
 import android.support.v4.view.ViewPager
+import androidx.navigation.fragment.NavHostFragment
 import br.com.questv.R
 import br.com.questv.ui.analytics.AnalyticsFragment
 import br.com.questv.ui.home.HomeFragment
@@ -10,6 +11,7 @@ import br.com.questv.ui.home.IntroducerFragment
 import br.com.questv.ui.main.fragments.Tab1
 import br.com.questv.ui.main.fragments.Tab2
 import br.com.questv.ui.main.fragments.Tab3
+import kotlinx.android.synthetic.main.fragment_user_navigation.*
 
 class MainPresenter(var mainView: MainView?, private val mainInteractor: MainInteractor) {
 
@@ -18,9 +20,10 @@ class MainPresenter(var mainView: MainView?, private val mainInteractor: MainInt
     mainView = null
   }
 
+  lateinit var tabAdapter: TabAdapter;
 
   fun getTabAdapter(context: Context, fragmentManager: FragmentManager): TabAdapter {
-    val tabAdapter = TabAdapter(context, fragmentManager)
+    tabAdapter = TabAdapter(context, fragmentManager)
 
     tabAdapter.addFragment(IntroducerFragment(), "home", R.drawable.ic_home_black_24dp)
     tabAdapter.addFragment(AnalyticsFragment(), "Analytics", R.drawable.ic_show_chart_black_24dp)

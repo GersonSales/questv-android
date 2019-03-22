@@ -54,4 +54,10 @@ class TabAdapter(private val context: Context, fm: FragmentManager) : FragmentSt
   }
 
 
+  fun resetItemAt(position: Int, fragment: Fragment) {
+    mFragmentList[position] = fragment
+    notifyDataSetChanged()
+  }
+
+
 }

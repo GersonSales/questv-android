@@ -28,7 +28,7 @@ class SplashActivity : AppCompatActivity(), SplashView {
     Handler().postDelayed({
       startActivity(Intent(this@SplashActivity, SignInUpActivity::class.java))
       finish()
-    }, 3000)
+    }, 0)
   }
 
   override fun showProgress() {
