@@ -82,7 +82,7 @@ class LoginFragment : Fragment(), LoginView {
 //    val url = "http://10.0.2.2:5000/series/34/promoImage"
     val url = SeriesRepositoryImpl
       .instance
-      .getRandomPromoImage()
+      .getRandomCoverImage()
       .replace("localhost", "10.0.2.2")
 
     val imageLoader = ImageLoader.getInstance()

@@ -11,8 +11,6 @@
       android:layout_width="0dp"
       android:layout_height="0dp" tools:srcCompat="@tools:sample/backgrounds/scenic"
       android:id="@+id/iv_login_bg"
-      android:tint="@color/colorBlackAlpha"
-      android:tintMode="src_over"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintBottom_toBottomOf="parent"
@@ -26,12 +24,9 @@
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       android:background="@color/colorBlackAlpha"
-      android:backgroundTint="@color/colorBlackAlpha"
-      android:backgroundTintMode="src_over"
       android:adjustViewBounds="false"
       app:layout_constraintHorizontal_bias="1.0"
-      app:layout_constraintVertical_bias="0.0"
-      android:visibility="gone"/>
+      app:layout_constraintVertical_bias="0.0"/>
 
   <EditText
       android:layout_width="0dp"

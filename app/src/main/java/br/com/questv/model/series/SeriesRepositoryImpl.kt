@@ -47,7 +47,8 @@ class SeriesRepositoryImpl private constructor() : SeriesRepository {
   override fun findAllCoverImages(): List<String> {
     val result: MutableList<String> = ArrayList()
     for (seriesModel in findAll()) {
-      result.add(seriesModel.getCoverImageUrl()!!)
+      if (seriesModel.getPromoImageUrl()!!.isNotEmpty())
+        result.add(seriesModel.getCoverImageUrl()!!)
     }
     return result
   }
@@ -55,7 +56,8 @@ class SeriesRepositoryImpl private constructor() : SeriesRepository {
   override fun findAllPromoImages(): List<String> {
     val result: MutableList<String> = ArrayList()
     for (seriesModel in findAll()) {
-      result.add(seriesModel.getPromoImageUrl()!!)
+      if (seriesModel.getPromoImageUrl()!!.isNotEmpty())
+        result.add(seriesModel.getPromoImageUrl()!!)
     }
     return result
   }
