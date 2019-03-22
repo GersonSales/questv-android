@@ -3,6 +3,7 @@ package br.com.questv.ui.splash
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import android.view.View.GONE
 import android.view.View.VISIBLE
@@ -17,15 +18,17 @@ class SplashActivity : AppCompatActivity(), SplashView {
   private val presenter = SplashPresenter(this, SplashInteractor())
 
   override fun onCreate(savedInstanceState: Bundle?) {
-    setContentView(R.layout.activity_splash)
     super.onCreate(savedInstanceState)
+    setContentView(R.layout.activity_splash)
     ImageLoader.getInstance().init(ImageLoaderConfiguration.createDefault(this))
     presenter.fetchAllSeries()
   }
 
   override fun navigateToMainActivity() {
-    startActivity(Intent(this@SplashActivity, SignInUpActivity::class.java))
-    finish()
+    Handler().postDelayed({
+      startActivity(Intent(this@SplashActivity, SignInUpActivity::class.java))
+      finish()
+    }, 3000)
   }
 
   override fun showProgress() {

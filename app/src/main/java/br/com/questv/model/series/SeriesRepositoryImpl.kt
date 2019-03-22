@@ -47,7 +47,7 @@ class SeriesRepositoryImpl private constructor() : SeriesRepository {
   override fun findAllCoverImages(): List<String> {
     val result: MutableList<String> = ArrayList()
     for (seriesModel in findAll()) {
-      if (seriesModel.getPromoImageUrl()!!.isNotEmpty())
+      if (seriesModel.getCoverImageUrl()!!.isNotEmpty())
         result.add(seriesModel.getCoverImageUrl()!!)
     }
     return result
@@ -69,7 +69,12 @@ class SeriesRepositoryImpl private constructor() : SeriesRepository {
   override fun save(item: SeriesModel) {
     val category: String = item.category
     if (this.seriesMap.containsKey(category)) {
-      this.seriesMap[category]?.add(item)
+      val list = this.seriesMap[category]
+      val itemIndex = list?.indexOf(item)
+      if (itemIndex!! > -1)
+        list[itemIndex].update(item)
+      else
+        this.seriesMap[category]?.add(item)
     } else {
       val list: MutableList<SeriesModel> = ArrayList()
       list.add(item)

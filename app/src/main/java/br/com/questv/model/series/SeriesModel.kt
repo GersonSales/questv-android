@@ -4,20 +4,29 @@ import br.com.questv.contract.Questionable
 import br.com.questv.contract.Updatable
 import java.io.Serializable
 
-class SeriesModel(private val id: String,
-                  val name: String,
-                  val abbreviation: String,
-                  val category: String,
-                  val isRelease: Boolean,
+class SeriesModel(private var id: String,
+                  var name: String,
+                  var abbreviation: String,
+                  var category: String,
+                  var isRelease: Boolean,
                   var coverImage: String,
                   private var coverImageUrl: String?,
-                  val promoImage: String,
+                  var promoImage: String,
                   private var promoImageUrl: String?,
-                  val seasons: List<String>,
-                  val questions: List<String>) : Updatable<SeriesModel>, Serializable, Questionable {
+                  var seasons: List<String>,
+                  var questions: List<String>) : Updatable<SeriesModel>, Serializable, Questionable {
 
   override fun update(update: SeriesModel) {
-    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    name = update.name
+    abbreviation = update.abbreviation
+    category = update.category
+    isRelease = update.isRelease
+    coverImage = update.coverImage
+    coverImageUrl = update.coverImageUrl
+    promoImage = update.promoImage
+    promoImageUrl = update.promoImageUrl
+    seasons = update.seasons
+    questions = update.questions
   }
 
   override fun getId() = id
@@ -25,4 +34,21 @@ class SeriesModel(private val id: String,
   override fun getPromoImageUrl() = promoImageUrl
 
   override fun getCoverImageUrl() = coverImageUrl
+
+  override fun equals(other: Any?): Boolean {
+    if (this === other) return true
+    if (javaClass != other?.javaClass) return false
+
+    other as SeriesModel
+
+    if (id != other.id) return false
+
+    return true
+  }
+
+  override fun hashCode(): Int {
+    return id.hashCode()
+  }
+
+
 }
