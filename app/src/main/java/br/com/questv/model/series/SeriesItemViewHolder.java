@@ -25,7 +25,13 @@ import com.nostra13.universalimageloader.core.ImageLoader;
   /*default*/ void bind(final SeriesModel seriesModel, final OnItemClickListener<SeriesModel> onItemClickListener) {
     this.seriesCover.setOnClickListener(v -> onItemClickListener.onClick(seriesModel));
 
-    this.seriesName.setText(seriesModel.getName());
+
+    if (seriesModel.getName().length() > 15) {
+      this.seriesName.setText(seriesModel.getAbbreviation());
+    } else {
+      this.seriesName.setText(seriesModel.getName());
+    }
+
 
     ImageLoader imageLoader = ImageLoader.getInstance();
     String url = seriesModel.getCoverImageUrl();
