@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.NavHostFragment
 import br.com.questv.R
 import br.com.questv.model.user.UserLocalStorage
 import br.com.questv.resource.Strings
@@ -21,6 +22,9 @@ class UserProfile : Fragment() {
     val loggedUser = UserLocalStorage(context!!).getLoggedUserInfo()
     tv_user_first_name.text = loggedUser.firstName
     tv_user_last_name.text = loggedUser.lastName
+    ib_profile_back.setOnClickListener {
+      NavHostFragment.findNavController(this).popBackStack()
+    }
     inflateAnalytics()
     super.onViewCreated(view, savedInstanceState)
   }

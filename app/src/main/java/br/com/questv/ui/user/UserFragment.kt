@@ -38,6 +38,7 @@ class UserFragment : Fragment(), UserView {
   }
 
   override fun exitFromStack() {
+//    NavHostFragment.findNavController(this).popBackStack()
     fragmentManager?.beginTransaction()
       ?.setCustomAnimations(R.animator.slide_in_bottom, R.animator.slide_out_top, 0, 0)
       ?.remove(this)?.commit()
