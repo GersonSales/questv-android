@@ -6,6 +6,7 @@ import com.auth0.android.jwt.JWT
 class LoginPresenter(var loginView: LoginView?, private val loginInteractor: LoginInteractor) :
   LoginInteractor.OnLoginFinishedListener,
   UserLocalStorage.OnUserDetailsConsumptionListener {
+
   fun validateCredentials(username: String, password: String) {
     loginView?.showProgress()
     loginInteractor.login(username, password, this)
@@ -42,6 +43,7 @@ class LoginPresenter(var loginView: LoginView?, private val loginInteractor: Log
     loginView?.apply {
       hideProgress()
       navigateToHome()
+      showToastMessage("Welcome!")
     }
   }
 

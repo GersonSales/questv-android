@@ -11,5 +11,6 @@ interface LoginView {
   fun navigateToHome()
   fun navigateToSignUp()
   fun getViewContext(): Context
+  fun showToastMessage(message: String)
 
 }

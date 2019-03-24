@@ -15,6 +15,7 @@ import com.nostra13.universalimageloader.core.ImageLoader
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration
 import kotlinx.android.synthetic.main.fragment_login.*
 import android.graphics.Bitmap
+import android.widget.Toast
 import com.nostra13.universalimageloader.core.DisplayImageOptions
 import com.nostra13.universalimageloader.core.assist.ImageScaleType
 
@@ -91,4 +92,8 @@ class LoginFragment : Fragment(), LoginView {
   }
 
   override fun getViewContext() = context!!
+
+  override fun showToastMessage(message: String) {
+    Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+  }
 }

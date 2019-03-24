@@ -5,6 +5,7 @@ import br.com.questv.model.question.QuestionModel
 import br.com.questv.model.season.SeasonModel
 import br.com.questv.model.series.SeriesModel
 import br.com.questv.model.user.LoginModel
+import br.com.questv.model.user.SignUpModel
 import br.com.questv.model.user.UserModel
 import okhttp3.Response
 import okhttp3.ResponseBody
@@ -31,6 +32,9 @@ interface ApiRest {
 
   @POST("/login")
   fun login(@Body login: LoginModel): Call<ResponseBody>
+
+  @POST("/users/sign-up")
+  fun signUp(@Body signUpModel: SignUpModel): Call<ResponseBody>
 
 
   @GET("/users/{userId}")
