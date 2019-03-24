@@ -15,7 +15,6 @@ import com.github.mikephil.charting.data.*
 class Tab1 : Fragment() {
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-    setHasOptionsMenu(true)
     val view = inflater.inflate(R.layout.tab_one, container, false)
     bindAnsweredQuestionsPie(view)
 
@@ -57,10 +56,5 @@ class Tab1 : Fragment() {
       pieChart.legend.textColor = context?.getColor(R.color.colorWhite)!!
     }
     pieChart.invalidate()
-  }
-
-  override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
-    inflater?.inflate(R.menu.menu_main, menu)
-    super.onPrepareOptionsMenu(menu)
   }
 }
