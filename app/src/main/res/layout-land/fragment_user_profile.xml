@@ -38,11 +38,11 @@
       android:layout_width="96dp"
       android:layout_height="96dp"
       android:id="@+id/imageView10"
-      app:srcCompat="@drawable/user_profile_image" app:layout_constraintTop_toTopOf="parent"
-      android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/guideline27"
+      app:srcCompat="@drawable/user_profile_image_2" app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintStart_toStartOf="@+id/guideline26" android:layout_marginLeft="8dp"
       android:layout_marginStart="8dp" app:layout_constraintEnd_toStartOf="@+id/guideline30"
-      android:layout_marginEnd="8dp" android:layout_marginRight="8dp"/>
+      android:layout_marginEnd="8dp" android:layout_marginRight="8dp" android:layout_marginBottom="8dp"
+      app:layout_constraintBottom_toTopOf="@+id/guideline38"/>
   <TextView
       android:text="User"
       android:layout_width="wrap_content"
@@ -206,4 +206,9 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content" android:id="@+id/guideline35"
       app:layout_constraintGuide_percent="0.25"/>
+  <androidx.constraintlayout.widget.Guideline
+      android:orientation="horizontal"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content" android:id="@+id/guideline38"
+      app:layout_constraintGuide_percent="0.40"/>
 </android.support.constraint.ConstraintLayout>
