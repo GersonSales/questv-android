@@ -62,7 +62,7 @@
   <ImageButton
       android:layout_width="wrap_content"
       android:layout_height="wrap_content" app:srcCompat="@drawable/ic_arrow_back_white_48dp"
-      android:id="@+id/imageButton5"
+      android:id="@+id/ib_back_from_score"
       app:layout_constraintTop_toTopOf="@+id/imageButton3" app:layout_constraintBottom_toBottomOf="@+id/imageButton3"
       app:layout_constraintStart_toStartOf="@+id/guideline32" android:layout_marginLeft="8dp"
       android:layout_marginStart="8dp" app:layout_constraintEnd_toStartOf="@+id/imageButton3"

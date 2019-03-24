@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.fragment.NavHostFragment
 import br.com.questv.R
 import br.com.questv.resource.Strings
 import br.com.questv.resource.Strings.CORRECT_ANSWERED_QUESTIONS
@@ -35,5 +36,10 @@ class ScoreFragment : Fragment() {
     return view
   }
 
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
 
+    ib_back_from_score.setOnClickListener {NavHostFragment.findNavController(this).popBackStack()}
+
+  }
 }
