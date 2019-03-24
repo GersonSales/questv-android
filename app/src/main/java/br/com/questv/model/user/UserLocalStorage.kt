@@ -81,5 +81,9 @@ class UserLocalStorage(context: Context) {
     return UserModel(id!!, firstName!!, lastName!!, username!!, email!!, password!!, HashMap<String, String>());
   }
 
+  fun isLoggedIn(): Boolean {
+    return this.sharedPreferences.contains("id")
+  }
+
 
 }
