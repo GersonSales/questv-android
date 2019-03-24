@@ -16,6 +16,7 @@ class SignUpInteractor {
     fun onUsernameError(message: String)
     fun onEmailError(message: String)
     fun onPasswordError(message: String)
+    fun onFailure(message: String)
     fun onSuccess()
   }
 
@@ -52,6 +53,8 @@ class SignUpInteractor {
       ) {
         if (response.isSuccessful) {
           listener.onSuccess()
+        }else {
+          listener.onFailure(response.code().toString())
         }
       }
     })

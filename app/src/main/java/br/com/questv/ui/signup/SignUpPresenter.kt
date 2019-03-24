@@ -47,6 +47,13 @@ class SignUpPresenter(private val signUpView: SignUpView)
     }
   }
 
+  override fun onFailure(message: String) {
+    this.signUpView.apply {
+      hideProgress()
+      showToastMessage(message)
+    }
+  }
+
   override fun onSuccess() {
     this.signUpView.apply {
       hideProgress()
