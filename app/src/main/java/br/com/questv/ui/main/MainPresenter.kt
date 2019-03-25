@@ -6,6 +6,7 @@ import androidx.viewpager.widget.ViewPager
 import br.com.questv.R
 import br.com.questv.ui.home.IntroducerFragment
 import br.com.questv.ui.main.fragments.Tab3
+import br.com.questv.ui.ranking.RankingFragment
 
 class MainPresenter(var mainView: MainView?, private val mainInteractor: MainInteractor) {
 
@@ -20,7 +21,7 @@ class MainPresenter(var mainView: MainView?, private val mainInteractor: MainInt
     tabAdapter = TabAdapter(context, fragmentManager)
 
     tabAdapter.addFragment(IntroducerFragment(), "home", R.drawable.ic_home_black_24dp)
-    tabAdapter.addFragment(Tab3(), "Ranking", R.drawable.ic_trophy_black_24dp)
+    tabAdapter.addFragment(RankingFragment(), "Ranking", R.drawable.ic_trophy_black_24dp)
     tabAdapter.addFragment(Tab3(), "Badges", R.drawable.ic_assistant_photo_black_24dp)
 
 
