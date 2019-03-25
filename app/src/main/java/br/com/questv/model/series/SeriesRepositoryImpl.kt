@@ -41,7 +41,7 @@ class SeriesRepositoryImpl private constructor() : SeriesRepository {
     for (category in this.seriesMap.keys) {
       result.addAll(this.seriesMap[category]!!)
     }
-    return result
+    return result.sortedBy { it.questions.size }
   }
 
   override fun findAllCoverImages(): List<String> {
