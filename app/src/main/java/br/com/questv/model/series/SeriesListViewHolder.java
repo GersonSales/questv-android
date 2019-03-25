@@ -1,12 +1,11 @@
 package br.com.questv.model.series;
 
-import android.support.annotation.NonNull;
-import android.support.v4.view.ViewPager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 import br.com.questv.R;
 import br.com.questv.contract.OnItemClickListener;
 
@@ -20,7 +19,7 @@ public class SeriesListViewHolder extends RecyclerView.ViewHolder {
   private final RecyclerView seriesItemRecyclerView;
 
 
-  /*default*/ SeriesListViewHolder(@NonNull final View itemView) {
+  /*default*/ SeriesListViewHolder(final View itemView) {
     super(itemView);
     this.viewPager = itemView.findViewById(R.id.vp_news);
     this.seriesItemRecyclerView = itemView.findViewById(R.id.rv_series_list);

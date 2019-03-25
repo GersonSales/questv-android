@@ -2,22 +2,18 @@ package br.com.questv.ui.login
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
 import br.com.questv.R
 import br.com.questv.model.series.SeriesRepositoryImpl
 import br.com.questv.ui.main.MainActivity
 import com.nostra13.universalimageloader.core.ImageLoader
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration
 import kotlinx.android.synthetic.main.fragment_login.*
-import android.graphics.Bitmap
-import android.widget.Toast
-import com.nostra13.universalimageloader.core.DisplayImageOptions
-import com.nostra13.universalimageloader.core.assist.ImageScaleType
 
 
 class LoginFragment : Fragment(), LoginView {

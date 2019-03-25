@@ -1,8 +1,8 @@
 package br.com.questv.util;
 
 
-import android.support.v4.view.ViewPager;
 import android.view.View;
+import androidx.viewpager.widget.ViewPager;
 
 public class ZoomOutTransformation implements ViewPager.PageTransformer {
 

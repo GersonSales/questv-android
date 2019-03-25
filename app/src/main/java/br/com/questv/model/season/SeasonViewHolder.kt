@@ -1,12 +1,12 @@
 package br.com.questv.model.season
 
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import br.com.questv.R
 import br.com.questv.endpoint.ApiClient
 import br.com.questv.model.episode.EpisodeAdapter

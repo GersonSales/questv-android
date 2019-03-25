@@ -4,9 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import android.support.v7.app.AppCompatActivity
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import androidx.appcompat.app.AppCompatActivity
 import br.com.questv.R
 import br.com.questv.ui.signinup.SignInUpActivity
 import com.nostra13.universalimageloader.core.ImageLoader

@@ -1,9 +1,9 @@
 package br.com.questv.model.episode
 
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import br.com.questv.R
 
 class EpisodeAdapter(private var episodeList: List<EpisodeModel>) :

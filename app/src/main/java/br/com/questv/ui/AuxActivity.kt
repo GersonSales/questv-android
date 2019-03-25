@@ -1,8 +1,8 @@
 package br.com.questv.ui
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.Menu
+import androidx.appcompat.app.AppCompatActivity
 import br.com.questv.R
 import kotlinx.android.synthetic.main.activity_aux.*
 

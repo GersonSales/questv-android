@@ -1,12 +1,12 @@
 package br.com.questv.ui.analytics;
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.view.ViewPager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import androidx.fragment.app.Fragment
+import androidx.viewpager.widget.ViewPager
 import br.com.questv.R
 import br.com.questv.ui.main.fragments.Tab1
 import br.com.questv.ui.main.fragments.Tab2

@@ -1,9 +1,9 @@
 package br.com.questv.model.question.manager
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentStatePagerAdapter
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentStatePagerAdapter
 import br.com.questv.model.question.QuestionModel
 import br.com.questv.resource.Strings.*
 import br.com.questv.ui.question.QuestionFragment

@@ -1,9 +1,9 @@
 package br.com.questv.ui.main
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation.findNavController
 import br.com.questv.R
 import br.com.questv.resource.Strings

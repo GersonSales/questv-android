@@ -1,19 +1,12 @@
 package br.com.questv.ui.main.fragments
 
-import android.graphics.Color
-import android.os.Build
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import br.com.questv.R
-import br.com.questv.util.chart.DecimalDataFormatter
-import com.github.mikephil.charting.animation.Easing
-import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.charts.RadarChart
-import com.github.mikephil.charting.components.AxisBase
-import com.github.mikephil.charting.components.Legend
-import com.github.mikephil.charting.data.*
-import com.github.mikephil.charting.formatter.IAxisValueFormatter
 
 class Tab3: Fragment() {
 

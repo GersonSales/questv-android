@@ -1,8 +1,8 @@
 package br.com.questv.ui.main
 
 import android.content.Context
-import android.support.v4.app.FragmentManager
-import android.support.v4.view.ViewPager
+import androidx.fragment.app.FragmentManager
+import androidx.viewpager.widget.ViewPager
 import br.com.questv.R
 import br.com.questv.ui.home.IntroducerFragment
 import br.com.questv.ui.main.fragments.Tab3

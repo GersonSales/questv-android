@@ -39,7 +39,7 @@
         android:name="preloaded_fonts"
         android:resource="@array/preloaded_fonts"/> <!-- File Provider -->
     <provider
-        android:name="android.support.v4.content.FileProvider"
+        android:name="androidx.core.content.FileProvider"
         android:authorities="br.com.questv"
         android:exported="false"
         android:grantUriPermissions="true">

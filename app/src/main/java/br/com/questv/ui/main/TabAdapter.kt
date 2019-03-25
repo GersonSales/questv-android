@@ -2,14 +2,14 @@ package br.com.questv.ui.main
 
 import android.content.Context
 import android.graphics.PorterDuff
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentStatePagerAdapter
-import android.support.v4.content.ContextCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentStatePagerAdapter
 import br.com.questv.R
 
 class TabAdapter(private val context: Context, fm: FragmentManager) : FragmentStatePagerAdapter(fm) {

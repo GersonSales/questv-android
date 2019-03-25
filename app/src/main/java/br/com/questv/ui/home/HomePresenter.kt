@@ -1,6 +1,6 @@
 package br.com.questv.ui.home
 
-import android.support.v7.widget.SearchView
+import androidx.appcompat.widget.SearchView
 
 class HomePresenter(private var homeView: HomeView?, private val homeInteractor: HomeInteractor) :
   HomeInteractor.OnSeriesConsumptionListener{

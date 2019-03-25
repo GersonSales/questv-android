@@ -1,12 +1,11 @@
 package br.com.questv.model.series;
 
-import android.support.annotation.NonNull;
-import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import androidx.viewpager.widget.PagerAdapter;
 import br.com.questv.R;
 import br.com.questv.contract.OnItemClickListener;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -29,13 +28,13 @@ public class NewsAdapter extends PagerAdapter {
   }
 
   @Override
-  public boolean isViewFromObject(@NonNull final View view, @NonNull final Object object) {
+  public boolean isViewFromObject(final View view, final Object object) {
     return view == object;
   }
 
   @Override
-  public void destroyItem(@NonNull final ViewGroup container, final int position,
-                          @NonNull final Object object) {
+  public void destroyItem(final ViewGroup container, final int position,
+                          final Object object) {
     container.removeView((View) object);
     unbindDrawables((View) object);
   }
@@ -52,9 +51,8 @@ public class NewsAdapter extends PagerAdapter {
     }
   }
 
-  @NonNull
   @Override
-  public Object instantiateItem(@NonNull final ViewGroup container, final int position) {
+  public Object instantiateItem(final ViewGroup container, final int position) {
     final LayoutInflater inflater = LayoutInflater.from(container.getContext());
     final View view = inflater.inflate(R.layout.news_item, container, false);
     if (this.releases.size() == 0) return view;

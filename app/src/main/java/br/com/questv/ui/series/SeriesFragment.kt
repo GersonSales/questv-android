@@ -1,22 +1,21 @@
 package br.com.questv.ui.series
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
 import android.view.*
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.*
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.questv.R
 import br.com.questv.contract.Questionable
 import br.com.questv.model.season.SeasonAdapter
 import br.com.questv.model.season.SeasonModel
 import br.com.questv.model.season.SeasonViewHolder
 import br.com.questv.model.series.SeriesModel
-import br.com.questv.resource.Strings.*
-import br.com.questv.ui.home.HomeFragment
-import br.com.questv.ui.question.manager.QuestionManagerFragment
+import br.com.questv.resource.Strings.QUESTIONABLE_ID
+import br.com.questv.resource.Strings.SERIES_KEY
 import com.nostra13.universalimageloader.core.ImageLoader
 import kotlinx.android.synthetic.main.series_details.*
 

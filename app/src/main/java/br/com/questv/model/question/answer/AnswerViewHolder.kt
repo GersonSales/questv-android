@@ -1,10 +1,10 @@
 package br.com.questv.model.question.answer
 
-import android.support.constraint.ConstraintLayout
-import android.support.v4.content.ContextCompat
-import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.RecyclerView
 import br.com.questv.R
 import br.com.questv.model.user.TempUser
 
