@@ -87,7 +87,7 @@ class SeriesFragment : Fragment(), SeriesView, SeasonViewHolder.OnInteractionLis
 
 
   override fun navigateToSeriesContribution() {
-    println("navigateToSeriesContribution")
+    NavHostFragment.findNavController(this).navigate(R.id.nvi_contribution)
   }
 
   override fun showProgress() {
