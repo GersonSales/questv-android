@@ -36,4 +36,5 @@
   <string name="questv_logo">Questv logo</string>
   <string name="first_name">First Name</string>
   <string name="last_name">Last Name</string>
+  <string name="quiz_contribution">Quiz contribution</string>
 </resources>

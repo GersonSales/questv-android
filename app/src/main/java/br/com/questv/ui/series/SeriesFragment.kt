@@ -74,14 +74,21 @@ class SeriesFragment : Fragment(), SeriesView, SeasonViewHolder.OnInteractionLis
     super.onPrepareOptionsMenu(menu)
   }
 
-  override fun navigateToHome() {
-//    fragmentManager?.beginTransaction()
-//      ?.remove(this)
-//      ?.setCustomAnimations(R.animator.fade_out, R.animator.fade_out, 0, 0)
-//      ?.replace(R.id.fl_main_frame2, HomeFragment())
-//      ?.commit()
+  override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+    when (item!!.itemId) {
+      R.id.mi_contribution -> navigateToSeriesContribution()
+    }
+    return super.onOptionsItemSelected(item)
   }
 
+  override fun navigateToHome() {
+    println("navigateToHome")
+  }
+
+
+  override fun navigateToSeriesContribution() {
+    println("navigateToSeriesContribution")
+  }
 
   override fun showProgress() {
     progressBar.visibility = VISIBLE
@@ -107,18 +114,6 @@ class SeriesFragment : Fragment(), SeriesView, SeasonViewHolder.OnInteractionLis
     bundle.putAll(arguments)
 
     NavHostFragment.findNavController(this).navigate(R.id.questionManagerFragment, bundle)
-//    val questionManagerFragment = QuestionManagerFragment()
-//    val bundle = Bundle()
-//    bundle.putSerializable(QUESTIONABLE_ID, seriesModel)
-//    bundle.putAll(arguments)
-//    questionManagerFragment.arguments = bundle
-//
-//    fragmentManager
-//      ?.beginTransaction()
-//      ?.setCustomAnimations(R.animator.fade_in, R.animator.fade_out, 0, 0)
-//      ?.replace(R.id.fl_main_frame2, questionManagerFragment)
-//      ?.addToBackStack(SERIES_FRAGMENT_TAG)
-//      ?.commit()
   }
 
   override fun onClickPlayListener(seasonModel: SeasonModel) {
