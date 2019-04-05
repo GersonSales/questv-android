@@ -6,6 +6,22 @@
                                                    android:layout_width="match_parent"
                                                    android:layout_height="match_parent">
 
+  <ImageView
+      android:layout_width="0dp"
+      android:layout_height="0dp" app:srcCompat="@drawable/tbbt_cover"
+      android:id="@+id/iv_contribution_bg" app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+      android:scaleType="centerCrop"/>
+  <ImageView
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:background="#000"
+      android:alpha="0.9"
+      android:id="@+id/imageView12" app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
+  />
   <TextView
       android:text="Description"
       android:layout_width="wrap_content"
@@ -13,7 +29,8 @@
       android:id="@+id/textView9"
       app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
       app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
-      android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/editText2"/>
+      android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/editText2"
+      android:textColor="@android:color/white"/>
   <EditText
       android:layout_width="0dp"
       android:layout_height="wrap_content"
@@ -24,82 +41,36 @@
       android:layout_marginBottom="8dp"
       app:layout_constraintBottom_toTopOf="@+id/guideline41" android:layout_marginTop="8dp"
       app:layout_constraintTop_toTopOf="parent" android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
-      android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:maxLines="3" android:maxLength="100"/>
+      android:layout_marginLeft="8dp" android:layout_marginStart="8dp" android:maxLines="3" android:maxLength="100"
+      android:shadowColor="@android:color/white" android:textColor="@android:color/white"
+      android:textColorHighlight="@android:color/white" android:textColorHint="@android:color/white"/>
   <androidx.constraintlayout.widget.Guideline
       android:orientation="horizontal"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content" android:id="@+id/guideline41"
       app:layout_constraintGuide_percent="0.5"/>
 
-  <Button
-      android:text="Button"
-      android:layout_width="wrap_content"
-      android:layout_height="47dp"
-      app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" android:id="@+id/button"
-      app:layout_constraintHorizontal_bias="0.498"
-      app:layout_constraintTop_toBottomOf="@+id/nestedScrollView2"/>
   <TextView
-      android:text="TextView"
+      android:text="Answers"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:id="@+id/textView37" app:layout_constraintTop_toTopOf="@+id/guideline41"
       app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="182dp"
       android:layout_marginStart="182dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="171dp"
-      android:layout_marginRight="171dp"/>
-  <androidx.core.widget.NestedScrollView
-      android:layout_width="395dp"
-      android:layout_height="166dp" android:fillViewport="true"
-      app:layout_constraintStart_toStartOf="parent"
-      android:layout_marginLeft="8dp" android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
-      android:layout_marginEnd="8dp" android:layout_marginRight="8dp" android:id="@+id/nestedScrollView2"
-      app:layout_constraintHorizontal_bias="0.0" app:layout_constraintTop_toBottomOf="@+id/textView37">
-    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
-                  android:orientation="vertical">
-      <TextView
-          android:text="TextView"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content" android:id="@+id/textView36"/>
-      <TextView
-          android:text="TextView"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content" android:id="@+id/textView35"/>
-      <TextView
-          android:text="TextView"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content" android:id="@+id/textView34"/>
-      <TextView
-          android:text="TextView"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content" android:id="@+id/textView33"/>
-      <TextView
-          android:text="TextView"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content" android:id="@+id/textView32"/>
-      <TextView
-          android:text="TextView"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content" android:id="@+id/textView31"/>
-      <TextView
-          android:text="TextView"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content" android:id="@+id/textView30"/>
-      <TextView
-          android:text="TextView"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content" android:id="@+id/textView29"/>
-      <TextView
-          android:text="TextView"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content" android:id="@+id/textView28"/>
-      <TextView
-          android:text="TextView"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content" android:id="@+id/textView26"/>
-      <TextView
-          android:text="TextView"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content" android:id="@+id/textView27"/>
-    </LinearLayout>
-  </androidx.core.widget.NestedScrollView>
+      android:layout_marginRight="171dp" android:textColor="@android:color/white"/>
+  <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical" android:id="@+id/ll_contribution_answers"
+                tools:layout_editor_absoluteX="8dp"
+                android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="@+id/imageView12"
+                android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textView37"
+                app:layout_constraintVertical_bias="0.0"/>
+  <Button
+      android:text="Button"
+      android:layout_width="wrap_content"
+      android:layout_height="47dp"
+      app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+      android:id="@+id/bt_add_answer"
+      app:layout_constraintHorizontal_bias="0.498"
+      android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/ll_contribution_answers"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
