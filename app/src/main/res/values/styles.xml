@@ -24,4 +24,12 @@
     <item name="android:textSize">0sp</item>
   </style>
 
+  <style name="qtvSpinnerTheme" parent="AppTheme">
+    <item name="android:spinnerDropDownItemStyle">@style/qtvSpinnerItemStyle</item>
+  </style>
+
+  <style name="qtvSpinnerItemStyle" parent="@android:style/Widget.Holo.DropDownItem.Spinner">
+    <item name="android:textColor">@color/colorWhite</item>
+  </style>
+
 </resources>

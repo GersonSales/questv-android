@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string-array name="answer_type">
+    <item>Correct</item>
+    <item>Wrong</item>
+  </string-array>
+</resources>
