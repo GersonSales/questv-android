@@ -14,6 +14,13 @@
       android:cropToPadding="false" android:scaleType="centerCrop" app:layout_constraintVertical_bias="0.0"/>
   <ImageView
       android:layout_width="0dp"
+      android:layout_height="0dp" app:srcCompat="@android:color/black"
+      android:id="@+id/imageView11" app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintBottom_toBottomOf="@+id/imageView5"
+      app:layout_constraintTop_toTopOf="parent" android:alpha="0.5"/>
+  <ImageView
+      android:layout_width="0dp"
       android:layout_height="200dp" app:srcCompat="@drawable/gradient_background_dark"
       android:id="@+id/imageView5"
       app:layout_constraintEnd_toEndOf="parent"
