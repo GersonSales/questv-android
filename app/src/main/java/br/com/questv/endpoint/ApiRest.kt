@@ -49,5 +49,5 @@ interface ApiRest {
   @POST("/questionable/{questionableId}/questions")
   fun postQuestion(@Path("questionableId") id: String,
                    @Header("authorization") auth: String,
-                   @Body contribution: ContributionModel): Call<ResponseBody>
+                   @Body questionModel: QuestionModel): Call<ResponseBody>
 }

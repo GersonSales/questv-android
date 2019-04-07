@@ -25,6 +25,12 @@ class QuestionModel(
       return result
     }
 
+  fun isDescriptionValid() = description.trim().length >= 10
+  fun getInvalidDescriptionCauseMessage() = when {
+    isDescriptionValid() -> ""
+    else -> "Description must have 10 characters at least!"
+  }
+
 
   /**
    * Returns a string representation of the object.
@@ -32,6 +38,4 @@ class QuestionModel(
   override fun toString(): String {
     return "Question{id: $id, description: $description, isAnswered: $isAnswered answers: $answers}"
   }
-
-
 }

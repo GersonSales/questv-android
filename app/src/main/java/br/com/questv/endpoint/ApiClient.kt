@@ -8,7 +8,8 @@ class ApiClient private constructor() {
 
 //    @JvmStatic private val BASE_URL: String = "http://10.0.2.2:5000"
 //    @JvmStatic private val BASE_URL: String = "http://192.168.25.43:5000"
-    @JvmStatic private val BASE_URL: String = "http://192.168.25.18:5000"
+//    @JvmStatic private val BASE_URL: String = "http://192.168.25.18:5000"
+    @JvmStatic private val BASE_URL: String = "http://192.168.0.100:5000"
 
     @JvmStatic private val retrofit: Retrofit = Retrofit
       .Builder()

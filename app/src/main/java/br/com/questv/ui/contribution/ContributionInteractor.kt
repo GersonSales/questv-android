@@ -1,6 +1,7 @@
 package br.com.questv.ui.contribution
 
 import br.com.questv.endpoint.ApiClient
+import br.com.questv.model.question.QuestionModel
 import br.com.questv.ui.contribution.model.ContributionModel
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -16,13 +17,12 @@ class ContributionInteractor {
 
 
   fun submitContribution(
-    questionableId: String,
     auth: String,
-    contribution: ContributionModel,
+    questionModel: QuestionModel,
     listener: OnPostContributionListener
   ) {
 
-    val postCall = ApiClient.instance.postQuestion(questionableId, auth, contribution)
+    val postCall = ApiClient.instance.postQuestion(questionModel.ownerId, auth, questionModel)
     postCall.enqueue(object : Callback<ResponseBody> {
       override fun onFailure(
         call: Call<ResponseBody>,
