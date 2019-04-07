@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment
 import br.com.questv.R
 import br.com.questv.model.series.SeriesModel
+import br.com.questv.model.user.UserLocalStorage
 import br.com.questv.resource.Strings.SERIES_KEY
 import br.com.questv.ui.contribution.model.ContributionAnswerModel
 import br.com.questv.ui.contribution.model.ContributionModel
@@ -21,12 +23,13 @@ class ContributionFragment:
   ContributionView {
 
   private val presenter = ContributionPresenter(this)
-
+  private  lateinit var seriesModel: SeriesModel
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
     return inflater.inflate(R.layout.contribution_fragment, container, false)
   }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    seriesModel = arguments?.getSerializable(SERIES_KEY) as SeriesModel
     initBgImage()
     bindSubmitListener()
     super.onViewCreated(view, savedInstanceState)
@@ -39,14 +42,14 @@ class ContributionFragment:
       val answer3 = ContributionAnswerModel(et_cont_answer_3.text.toString(), cb_is_correct_a3.isChecked)
       val answer4 = ContributionAnswerModel(et_cont_answer_4.text.toString(), cb_is_correct_a4.isChecked)
 
-      val contribution = ContributionModel(et_cont_description.text.toString(), answer1, answer2, answer3, answer4)
+      val contribution = ContributionModel(et_cont_description.text.toString(), 1, answer1, answer2, answer3, answer4)
 
-      presenter.submitContribution(contribution)
+      val auth = UserLocalStorage(context!!).getLoggedUserToken()
+      presenter.submitContribution(seriesModel.getId(), auth, contribution)
     }
   }
 
   private fun initBgImage() {
-    val seriesModel = arguments?.getSerializable(SERIES_KEY) as SeriesModel
     val url = seriesModel.getCoverImageUrl()?.replace("localhost", "10.0.2.2")
 
     val imageLoader = ImageLoader.getInstance()
@@ -60,5 +63,9 @@ class ContributionFragment:
 
   override fun showToast(message: String) {
     Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+  }
+
+  override fun navigateToBack() {
+    NavHostFragment.findNavController(this).popBackStack()
   }
 }

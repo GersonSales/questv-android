@@ -1,7 +1,10 @@
 package br.com.questv.ui.contribution.model
 
+import com.google.gson.annotations.SerializedName
+
 class ContributionModel(
-  val description: String,
+  @SerializedName("description") val description: String,
+  @SerializedName("difficult") private val difficult: Int,
   private val answer1: ContributionAnswerModel,
   private val answer2: ContributionAnswerModel,
   private val answer3: ContributionAnswerModel,

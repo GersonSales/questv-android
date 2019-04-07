@@ -7,6 +7,7 @@ import br.com.questv.model.series.SeriesModel
 import br.com.questv.model.user.LoginModel
 import br.com.questv.model.user.SignUpModel
 import br.com.questv.model.user.UserModel
+import br.com.questv.ui.contribution.model.ContributionModel
 import br.com.questv.ui.user.RankableModel
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -43,4 +44,10 @@ interface ApiRest {
 
   @GET("/users?ranked=true")
   fun getRankedUsers(@Header("Authorization") auth: String): Call<List<RankableModel>>
+
+
+  @POST("/questionable/{questionableId}/questions")
+  fun postQuestion(@Path("questionableId") id: String,
+                   @Header("authorization") auth: String,
+                   @Body contribution: ContributionModel): Call<ResponseBody>
 }
