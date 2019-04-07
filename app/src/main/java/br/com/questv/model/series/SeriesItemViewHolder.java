@@ -6,6 +6,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import br.com.questv.R;
 import br.com.questv.contract.OnItemClickListener;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 /*default*/ final class SeriesItemViewHolder extends RecyclerView.ViewHolder {
@@ -31,11 +32,17 @@ import com.nostra13.universalimageloader.core.ImageLoader;
       this.seriesName.setText(seriesModel.getName());
     }
 
+    DisplayImageOptions imageOptions = new DisplayImageOptions.Builder()
+        .cacheInMemory(true)
+        .cacheOnDisk(true)
+        .considerExifParams(true)
+        .build();
+
 
     ImageLoader imageLoader = ImageLoader.getInstance();
     String url = seriesModel.getCoverImageUrl();
     if (url != null && !url.isEmpty()) {
-      imageLoader.displayImage(url.replace("localhost", "10.0.2.2"), this.seriesCover);
+      imageLoader.displayImage(url.replace("localhost", "10.0.2.2"), this.seriesCover, imageOptions);
       this.seriesCover.setScaleType(ImageView.ScaleType.CENTER_CROP);
     }
 

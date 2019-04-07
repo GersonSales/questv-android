@@ -12,6 +12,7 @@ import androidx.navigation.fragment.NavHostFragment
 import br.com.questv.R
 import br.com.questv.model.series.SeriesRepositoryImpl
 import br.com.questv.ui.main.MainActivity
+import com.nostra13.universalimageloader.core.DisplayImageOptions
 import com.nostra13.universalimageloader.core.ImageLoader
 import kotlinx.android.synthetic.main.fragment_login.*
 
@@ -82,8 +83,15 @@ class LoginFragment : Fragment(), LoginView {
       .getRandomCoverImage()
       .replace("localhost", "10.0.2.2")
 
+
+    val imageOptions = DisplayImageOptions.Builder()
+      .cacheInMemory(true)
+      .cacheOnDisk(true)
+      .considerExifParams(true)
+      .build()
+
     val imageLoader = ImageLoader.getInstance()
-    imageLoader.displayImage(url, iv_login_bg)
+    imageLoader.displayImage(url, iv_login_bg, imageOptions)
     iv_login_bg?.scaleType = ImageView.ScaleType.CENTER_CROP
   }
 

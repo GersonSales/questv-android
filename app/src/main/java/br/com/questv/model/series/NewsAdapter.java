@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.viewpager.widget.PagerAdapter;
 import br.com.questv.R;
 import br.com.questv.contract.OnItemClickListener;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.List;
@@ -62,10 +63,16 @@ public class NewsAdapter extends PagerAdapter {
     imageView.setOnClickListener((i) -> onItemClickListener.onClick(seriesModel));
     imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
+    DisplayImageOptions imageOptions = new DisplayImageOptions.Builder()
+        .cacheInMemory(true)
+        .cacheOnDisk(true)
+        .considerExifParams(true)
+        .build();
+
     final ImageLoader imageLoader = ImageLoader.getInstance();
     final String url = seriesModel.getPromoImageUrl();
     if (url != null)
-      imageLoader.displayImage(url.replace("localhost", "10.0.2.2"), imageView);
+      imageLoader.displayImage(url.replace("localhost", "10.0.2.2"), imageView, imageOptions);
 
     final TextView textView = view.findViewById(R.id.tv_news_desc);
     textView.setText(seriesModel.getName());

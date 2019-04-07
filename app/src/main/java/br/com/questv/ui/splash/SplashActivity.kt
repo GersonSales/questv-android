@@ -9,8 +9,11 @@ import android.view.View.VISIBLE
 import androidx.appcompat.app.AppCompatActivity
 import br.com.questv.R
 import br.com.questv.ui.signinup.SignInUpActivity
+import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiskCache
+import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache
 import com.nostra13.universalimageloader.core.ImageLoader
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration
+import com.nostra13.universalimageloader.utils.StorageUtils
 import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity : AppCompatActivity(), SplashView {
@@ -20,6 +23,7 @@ class SplashActivity : AppCompatActivity(), SplashView {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_splash)
+
     ImageLoader.getInstance().init(ImageLoaderConfiguration.createDefault(this))
     presenter.fetchAllSeries()
   }

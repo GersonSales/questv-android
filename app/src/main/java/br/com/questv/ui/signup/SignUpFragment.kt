@@ -13,6 +13,7 @@ import androidx.navigation.fragment.NavHostFragment
 import br.com.questv.R
 import br.com.questv.model.series.SeriesRepositoryImpl
 import br.com.questv.model.user.SignUpModel
+import com.nostra13.universalimageloader.core.DisplayImageOptions
 import com.nostra13.universalimageloader.core.ImageLoader
 import kotlinx.android.synthetic.main.fragment_sign_up.*
 
@@ -53,8 +54,14 @@ class SignUpFragment : Fragment(), SignUpView {
       .getRandomCoverImage()
       .replace("localhost", "10.0.2.2")
 
+    val imageOptions = DisplayImageOptions.Builder()
+      .cacheInMemory(true)
+      .cacheOnDisk(true)
+      .considerExifParams(true)
+      .build()
+
     val imageLoader = ImageLoader.getInstance()
-    imageLoader.displayImage(url, iv_sign_up_bg)
+    imageLoader.displayImage(url, iv_sign_up_bg, imageOptions)
     iv_sign_up_bg?.scaleType = ImageView.ScaleType.CENTER_CROP
   }
 
