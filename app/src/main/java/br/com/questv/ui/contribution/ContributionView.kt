@@ -1,5 +1,7 @@
 package br.com.questv.ui.contribution
 
-class ContributionView {
+interface ContributionView {
+  fun setDescriptionError(message: String)
+  fun showToast(message: String)
   
 }
