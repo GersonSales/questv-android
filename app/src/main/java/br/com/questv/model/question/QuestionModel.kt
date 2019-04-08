@@ -7,7 +7,7 @@ class QuestionModel(
   val id: String,
   val questionableId: String,
   val description: String,
-  val difficult: Long,
+  var difficult: Int,
   val reward: Long,
   var rate: Double,
   private val _answers: Map<Long, Map<String, Boolean>>,
@@ -33,8 +33,8 @@ class QuestionModel(
   }
 
   fun getDifficultText() = when {
-    difficult < 4 -> "Easy"
-    difficult >= 4 -> "Medium"
+    difficult < 2 -> "Easy"
+    difficult < 4 -> "Medium"
     else -> "Hard"
   }
 

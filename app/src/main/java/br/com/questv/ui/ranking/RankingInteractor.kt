@@ -18,7 +18,7 @@ class RankingInteractor {
     val rankedCall = ApiClient.instance.getRankedUsers(auth)
     rankedCall.enqueue(object : Callback<List<RankableModel>> {
       override fun onFailure(call: Call<List<RankableModel>>, t: Throwable) {
-        listener.onFailure("onFailure $t.message.toString()")
+        listener.onFailure("onRateSendFailure $t.message.toString()")
       }
 
       override fun onResponse(

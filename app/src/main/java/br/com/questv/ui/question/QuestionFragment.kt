@@ -1,5 +1,6 @@
 package br.com.questv.ui.question
 
+import android.opengl.Visibility
 import android.os.Bundle
 import android.text.Editable
 import android.view.KeyEvent
@@ -70,19 +71,43 @@ class QuestionFragment :
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     bindQuestionRateBehavior()
-
-
-
-
+    bindQuestionDifficultyBehavior()
     super.onViewCreated(view, savedInstanceState)
+  }
+
+  private fun bindQuestionDifficultyBehavior() {
+    val difficultText = this.questionModel.getDifficultText()
+    val difficulty = this.questionModel.difficult.toString()
+    tv_question_difficulty.text = difficultText
+    et_question_difficulty.setText(difficulty)
+
+    tv_question_difficulty.setOnClickListener {
+      tv_question_difficulty.visibility = GONE
+      et_question_difficulty.visibility = VISIBLE
+    }
+
+    et_question_difficulty.setOnKeyListener(object : View.OnKeyListener {
+      override fun onKey(v: View?, keyCode: Int, event: KeyEvent?): Boolean {
+        if (et_question_difficulty.text.isEmpty()) {
+          et_question_difficulty.error = "Must be between 0 and 10."
+          return false
+        }
+
+        if (keyCode == KeyEvent.KEYCODE_ENTER) {
+          val difficultyInput = et_question_difficulty.text.toString().toInt()
+          val auth = UserLocalStorage(context!!).getLoggedUserToken()
+          presenter.sendQuestionDifficulty("", questionModel, difficultyInput, auth!!)
+          return true
+        }
+        return false
+      }
+    })
   }
 
   private fun bindQuestionRateBehavior() {
     val questionRate = String.format("%.1f", this.questionModel.rate).replace(",", ".")
     tv_question_rate.text = questionRate
     et_question_rate.setText(questionRate)
-
-    tv_question_difficulty.text = this.questionModel.getDifficultText()
 
 
     tv_question_rate.setOnClickListener {
@@ -136,6 +161,12 @@ class QuestionFragment :
   override fun showRateText() {
     tv_question_rate.visibility = VISIBLE
     et_question_rate.visibility = GONE
+  }
+
+
+  override fun showDifficultyText() {
+    tv_question_difficulty.visibility = VISIBLE
+    et_question_difficulty.visibility = GONE
   }
 
   override fun setRateError(message: String) {

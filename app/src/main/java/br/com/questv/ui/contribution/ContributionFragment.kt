@@ -59,7 +59,7 @@ class ContributionFragment :
       _answers[4L] = answer4
 
       val description = et_cont_description.text.toString()
-      val question = QuestionModel("", seriesModel.getId(), description, 1L, 1L, 1.0, _answers, false)
+      val question = QuestionModel("", seriesModel.getId(), description, 1, 1L, 1.0, _answers, false)
 
       val auth = UserLocalStorage(context!!).getLoggedUserToken()
       presenter.submitContribution(auth!!, question)
