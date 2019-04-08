@@ -5,10 +5,11 @@ import java.io.Serializable
 
 class QuestionModel(
   val id: String,
-  val ownerId: String,
+  val questionableId: String,
   val description: String,
   val difficult: Long,
   val reward: Long,
+  var rate: Double,
   private val _answers: Map<Long, Map<String, Boolean>>,
   var isAnswered: Boolean
 ) : Serializable {
@@ -29,6 +30,12 @@ class QuestionModel(
   fun getInvalidDescriptionCauseMessage() = when {
     isDescriptionValid() -> ""
     else -> "Description must have 10 characters at least!"
+  }
+
+  fun getDifficultText() = when {
+    difficult < 4 -> "Easy"
+    difficult >= 4 -> "Medium"
+    else -> "Hard"
   }
 
 

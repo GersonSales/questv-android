@@ -53,16 +53,16 @@ class ContributionFragment :
       val answer4: HashMap<String, Boolean> = HashMap()
       answer4[et_cont_answer_4.text.toString()] = cb_is_correct_a4.isChecked
 
-      _answers.put(1L, answer1)
-      _answers.put(2L, answer2)
-      _answers.put(3L, answer3)
-      _answers.put(4L, answer4)
+      _answers[1L] = answer1
+      _answers[2L] = answer2
+      _answers[3L] = answer3
+      _answers[4L] = answer4
 
       val description = et_cont_description.text.toString()
-      val question = QuestionModel("", seriesModel.getId(), description, 1L, 1L, _answers, false)
+      val question = QuestionModel("", seriesModel.getId(), description, 1L, 1L, 1.0, _answers, false)
 
       val auth = UserLocalStorage(context!!).getLoggedUserToken()
-      presenter.submitContribution(auth, question)
+      presenter.submitContribution(auth!!, question)
     }
   }
 

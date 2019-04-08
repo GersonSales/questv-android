@@ -1,4 +1,4 @@
-package br.com.questv.ui.contribution
+package br.com.questv.ui.question
 
 import br.com.questv.endpoint.ApiClient
 import br.com.questv.model.question.QuestionModel
@@ -7,22 +7,15 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ContributionInteractor {
-  interface OnPostContributionListener {
+class QuestionInteractor {
+  interface OnRateSendListener {
     fun onSuccess()
     fun onFailure(message: String)
-
   }
 
-
-  fun submitContribution(
-    auth: String,
-    questionModel: QuestionModel,
-    listener: OnPostContributionListener
-  ) {
-
-    val postCall = ApiClient.instance.postQuestion(questionModel.questionableId, auth, questionModel)
-    postCall.enqueue(object : Callback<ResponseBody> {
+  fun sendQuestionRate(userId: String, questionModel: QuestionModel, auth: String, listener: OnRateSendListener) {
+    val putCall = ApiClient.instance.putQuestion(questionModel.questionableId, questionModel.id, questionModel, auth)
+    putCall.enqueue(object : Callback<ResponseBody> {
       override fun onFailure(
         call: Call<ResponseBody>,
         t: Throwable
@@ -42,6 +35,7 @@ class ContributionInteractor {
       }
     })
 
-
   }
+
+
 }

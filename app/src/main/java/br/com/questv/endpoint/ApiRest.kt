@@ -18,12 +18,12 @@ interface ApiRest {
   @GET("/series")
   fun getAllSeries(): Call<ArrayList<SeriesModel>>
 
-  @GET("/series/{ownerId}/seasons")
-  fun getAllSeasonsBySeries(@Path("ownerId") seriesId: String): Call<ArrayList<SeasonModel>>
+  @GET("/series/{questionableId}/seasons")
+  fun getAllSeasonsBySeries(@Path("questionableId") seriesId: String): Call<ArrayList<SeasonModel>>
 
 
-  @GET("/series/{ownerId}/seasons/{seasonNumber}/episodes")
-  fun getAllEpisodesBySeason(@Path("ownerId") seriesId: String,
+  @GET("/series/{questionableId}/seasons/{seasonNumber}/episodes")
+  fun getAllEpisodesBySeason(@Path("questionableId") seriesId: String,
                              @Path("seasonNumber") seasonNumber: String,
                              @Header("Authorization") auth: String): Call<ArrayList<EpisodeModel>>
 
@@ -50,4 +50,11 @@ interface ApiRest {
   fun postQuestion(@Path("questionableId") id: String,
                    @Header("authorization") auth: String,
                    @Body questionModel: QuestionModel): Call<ResponseBody>
+
+
+  @PUT("/questionable/{questionableId}/questions/{questionId}")
+  fun putQuestion(@Path("questionableId") questionableId: String,
+                  @Path("questionId") questionId: String,
+                  @Body questionModel: QuestionModel,
+                  @Header("Authorization") auth: String): Call<ResponseBody>
 }

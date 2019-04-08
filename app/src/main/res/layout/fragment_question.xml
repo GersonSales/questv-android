@@ -5,7 +5,7 @@
                                                    android:layout_width="match_parent"
                                                    android:layout_height="match_parent"
                                                    android:id="@+id/cl_question_fragment"
->
+                                                   android:background="@color/colorGray">
 
   <ImageView
       android:layout_width="0dp"
@@ -57,7 +57,7 @@
         android:text="Easy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView13"
+        android:id="@+id/tv_question_difficulty"
         android:textSize="18sp"
         android:textColor="@android:color/white" android:textStyle="bold" android:layout_marginLeft="10dp"/>
   </LinearLayout>
@@ -96,7 +96,7 @@
       android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
       android:layout_marginRight="8dp"
       app:layout_constraintBottom_toBottomOf="@+id/linearLayout3" app:layout_constraintTop_toTopOf="@+id/linearLayout3"
-      android:paddingRight="10dp">
+      android:paddingRight="10dp" android:id="@+id/ll_question_rate">
     <TextView
         android:text="User rate"
         android:drawableStart="@drawable/ic_star_gold_24dp"
@@ -110,8 +110,15 @@
         android:text="8.6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView11"
+        android:id="@+id/tv_question_rate"
         android:textStyle="bold" android:textSize="18sp" android:textColor="@android:color/white"
         tools:layout_editor_absoluteY="581dp" tools:layout_editor_absoluteX="16dp" android:layout_marginLeft="10dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/et_question_rate" android:visibility="gone" android:maxLength="3"
+        android:textColor="@android:color/white"/>
   </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
