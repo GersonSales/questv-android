@@ -9,24 +9,25 @@
   <ImageView
       android:src="@drawable/tbbt_slide"
       android:layout_width="0dp"
-      android:layout_height="200dp"
+      android:layout_height="0dp"
       android:id="@+id/iv_series_details_promo2" app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-      android:cropToPadding="false" android:scaleType="centerCrop" app:layout_constraintVertical_bias="0.0"/>
+      app:layout_constraintEnd_toEndOf="parent"
+      android:cropToPadding="false" android:scaleType="centerCrop"
+      app:layout_constraintBottom_toTopOf="@+id/guideline47"/>
   <RatingBar
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:id="@+id/rb_series_details_rating"
-      app:layout_constraintEnd_toEndOf="parent"
-      android:layout_marginEnd="8dp"
-      android:layout_marginRight="8dp"
-      app:layout_constraintStart_toStartOf="parent"
-      android:layout_marginLeft="8dp" android:layout_marginStart="8dp"
-      app:layout_constraintHorizontal_bias="0.037" android:rating="4.5"
-      style="@android:style/Widget.Material.RatingBar.Indicator"
-      app:layout_constraintTop_toBottomOf="@+id/iv_series_details_promo_gradient"
-      tools:ignore="NewApi"/>
+      android:rating="4.5"
+      tools:ignore="NewApi"
+      style="@android:style/Widget.DeviceDefault.RatingBar.Indicator"
+      android:layout_marginStart="8dp"
+      app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp" android:layout_marginEnd="8dp"
+      app:layout_constraintEnd_toStartOf="@+id/guideline44" android:layout_marginRight="8dp"
+      android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="@+id/guideline47"
+      android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/guideline46" android:scaleX="0.7"
+      android:scaleY="0.7"/>
   <View
       android:id="@+id/divider2"
       android:layout_width="395dp"
@@ -52,17 +53,17 @@
       app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       android:id="@+id/rv_series_seasons_details"
-      android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/rb_series_details_rating"/>
+      app:layout_constraintTop_toTopOf="@+id/guideline46"/>
   <ImageView
       android:src="@drawable/gradient_background_dark"
       android:layout_width="0dp"
-      android:layout_height="200dp"
+      android:layout_height="0dp"
       android:id="@+id/iv_series_details_promo_gradient"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintVertical_bias="0.0" android:contentDescription="@string/gradient_background"/>
+      android:contentDescription="@string/gradient_background"
+      app:layout_constraintBottom_toTopOf="@+id/guideline47"/>
   <TextView
       android:text="@string/comedy"
       android:layout_width="wrap_content"
@@ -91,20 +92,75 @@
       android:layout_height="wrap_content"
       android:id="@+id/imageView2" app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintBottom_toBottomOf="@+id/iv_series_details_promo_gradient"
       app:layout_constraintTop_toTopOf="@+id/iv_series_details_promo_gradient"
-      android:contentDescription="@string/play_background"/>
+      android:contentDescription="@string/play_background" android:layout_marginBottom="8dp"
+      app:layout_constraintBottom_toTopOf="@+id/tv_series_details_name" android:layout_marginTop="8dp"/>
   <ImageButton
       app:srcCompat="@drawable/ic_videogame_asset_black_56dp"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:id="@+id/ib_play_series_questions"
       android:background="@null"
-      app:layout_constraintTop_toTopOf="@+id/iv_series_details_promo_gradient"
-      app:layout_constraintBottom_toBottomOf="@+id/iv_series_details_promo_gradient"
-      app:layout_constraintEnd_toEndOf="@+id/iv_series_details_promo_gradient"
-      app:layout_constraintStart_toStartOf="@+id/iv_series_details_promo_gradient"
-      android:contentDescription="@string/play_series_questions"/>
+      android:contentDescription="@string/play_series_questions"
+      app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+      app:layout_constraintEnd_toEndOf="@+id/imageView2"
+      app:layout_constraintStart_toStartOf="@+id/imageView2" android:layout_marginLeft="8dp"
+      android:layout_marginStart="8dp" android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
+      app:layout_constraintTop_toTopOf="@+id/imageView2"/>
+  <androidx.constraintlayout.widget.Guideline
+      android:orientation="vertical"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content" android:id="@+id/guideline44" app:layout_constraintGuide_percent="0.4"/>
+  <LinearLayout
+      android:orientation="horizontal"
+      android:layout_width="0dp"
+      android:layout_height="0dp"
+      android:visibility="visible"
+      android:gravity="center"
+      android:id="@+id/linearLayout4"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="@+id/guideline44"
+      app:layout_constraintTop_toTopOf="@+id/guideline47"
+      android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/guideline46"
+      android:layout_marginTop="8dp">
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_like_white_24dp"
+        android:id="@+id/ib_series_like"
+        android:background="@null"
+        android:layout_marginLeft="5dp" android:layout_marginRight="15dp"/>
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_dislike_white_24dp"
+        android:id="@+id/ib_series_dislike"
+        android:background="@null"
+        android:layout_marginLeft="15dp" android:layout_marginRight="15dp"/>
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_share_white_24dp"
+        android:id="@+id/ib_series_share"
+        android:background="@null" android:layout_marginLeft="15dp" android:layout_marginRight="15dp"/>
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_add_white_24dp"
+        android:id="@+id/ib_series_save"
+        android:background="@null" android:layout_marginLeft="15dp" android:layout_marginRight="0dp"
+    />
+  </LinearLayout>
+  <androidx.constraintlayout.widget.Guideline
+      android:orientation="horizontal"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content" android:id="@+id/guideline46"
+      app:layout_constraintGuide_percent="0.4"/>
+  <androidx.constraintlayout.widget.Guideline
+      android:orientation="horizontal"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content" android:id="@+id/guideline47"
+      app:layout_constraintGuide_percent="0.3"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
     
     

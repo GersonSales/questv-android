@@ -11,4 +11,5 @@ interface SeriesView {
   fun initSeasonRecycler(seasonList: ArrayList<SeasonModel>)
   fun navigateToQuestionManager(questionable: Questionable)
   fun navigateToSeriesContribution()
+  fun showToast(message: String)
 }

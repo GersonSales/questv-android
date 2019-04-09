@@ -1,5 +1,6 @@
 package br.com.questv.ui.series
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.*
 import android.view.View.GONE
@@ -14,6 +15,7 @@ import br.com.questv.model.season.SeasonAdapter
 import br.com.questv.model.season.SeasonModel
 import br.com.questv.model.season.SeasonViewHolder
 import br.com.questv.model.series.SeriesModel
+import br.com.questv.model.user.UserLocalStorage
 import br.com.questv.resource.Strings.QUESTIONABLE_ID
 import br.com.questv.resource.Strings.SERIES_KEY
 import com.nostra13.universalimageloader.core.ImageLoader
@@ -68,6 +70,27 @@ class SeriesFragment : Fragment(), SeriesView, SeasonViewHolder.OnInteractionLis
     seriesPromo.scaleType = ImageView.ScaleType.CENTER_CROP
   }
 
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
+    ib_series_like.setOnClickListener {
+      ib_series_like.setImageResource(R.drawable.ic_like_green_24dp)
+      ib_series_dislike.setImageResource(R.drawable.ic_dislike_white_24dp)
+
+      val auth = UserLocalStorage(context!!).getLoggedUserToken()
+      seriesModel.rate = 5.0
+      presenter.likeSeries(seriesModel, auth!!)
+    }
+
+    ib_series_dislike.setOnClickListener {
+      ib_series_like.setImageResource(R.drawable.ic_like_white_24dp)
+      ib_series_dislike.setImageResource(R.drawable.ic_dislike_red_24dp)
+      val auth = UserLocalStorage(context!!).getLoggedUserToken()
+      seriesModel.rate = 0.0
+      presenter.likeSeries(seriesModel, auth!!)
+    }
+
+    rb_series_details_rating.rating = seriesModel.rate.toFloat()
+  }
 
   override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
     inflater?.inflate(R.menu.menu_series_details, menu)
@@ -120,5 +143,9 @@ class SeriesFragment : Fragment(), SeriesView, SeasonViewHolder.OnInteractionLis
 
   override fun onClickPlayListener(seasonModel: SeasonModel) {
     navigateToQuestionManager(seasonModel)
+  }
+
+  override fun showToast(message: String) {
+    Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
   }
 }

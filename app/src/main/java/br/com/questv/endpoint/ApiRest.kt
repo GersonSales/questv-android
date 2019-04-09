@@ -57,4 +57,9 @@ interface ApiRest {
                   @Path("questionId") questionId: String,
                   @Body questionModel: QuestionModel,
                   @Header("Authorization") auth: String): Call<ResponseBody>
+
+  @PUT("/series/{seriesId}")
+  fun putSeries(@Path("seriesId") seriesId: String,
+                @Body seriesModel: SeriesModel,
+                @Header("Authorization") auth: String): Call<ResponseBody>
 }
