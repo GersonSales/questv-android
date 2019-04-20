@@ -1,6 +1,6 @@
 package br.com.questv.endpoint
 
-import br.com.questv.model.analytics.AnalyticsModel
+import br.com.questv.ui.analytics.model.AnalyticsModel
 import br.com.questv.model.episode.EpisodeModel
 import br.com.questv.model.question.QuestionModel
 import br.com.questv.model.season.SeasonModel
@@ -8,7 +8,6 @@ import br.com.questv.model.series.SeriesModel
 import br.com.questv.model.user.LoginModel
 import br.com.questv.model.user.SignUpModel
 import br.com.questv.model.user.UserModel
-import br.com.questv.ui.contribution.model.ContributionModel
 import br.com.questv.ui.user.RankableModel
 import okhttp3.ResponseBody
 import retrofit2.Call

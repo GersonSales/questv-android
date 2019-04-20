@@ -8,11 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import br.com.questv.R
-import br.com.questv.model.analytics.AnalyticsModel
+import br.com.questv.ui.analytics.model.AnalyticsModel
 import br.com.questv.resource.Strings
 import br.com.questv.util.chart.DecimalDataFormatter
 import com.github.mikephil.charting.animation.Easing
-import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry

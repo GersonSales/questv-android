@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import br.com.questv.R
-import br.com.questv.model.analytics.AnalyticsModel
+import br.com.questv.ui.analytics.model.AnalyticsModel
 import br.com.questv.resource.Strings
 import br.com.questv.util.chart.DecimalDataFormatter
 import com.github.mikephil.charting.animation.Easing
@@ -50,9 +50,11 @@ class RadarChartUserAnswers : Fragment() {
     xAxis.textSize = 18f
     xAxis.yOffset = 0f
     xAxis.xOffset = 0f
+    this.analyticsModel.getAllAnsweredCategories()
+
     xAxis.valueFormatter = object : IAxisValueFormatter {
 
-      private val mActivities = arrayOf("Comedy", "Action", "Anime", "Terror", "Sy-fy")
+      private val mActivities = this@RadarChartUserAnswers.analyticsModel.getAllAnsweredCategories()//arrayOf("Comedy", "Action", "Anime", "Terror", "Sy-fy")
 
       override fun getFormattedValue(value: Float, axis: AxisBase?): String {
         return mActivities[value.toInt() % mActivities.size]
@@ -98,12 +100,14 @@ class RadarChartUserAnswers : Fragment() {
 
     // NOTE: The order of the entries when being added to the entries array determines their position around the center of
     // the chart.
-    for (i in 0 until cnt) {
-      val val1 = (Math.random() * mul).toFloat() + min
-      entries1.add(RadarEntry(val1))
 
-      val val2 = (Math.random() * mul).toFloat() + min
-      entries2.add(RadarEntry(val2))
+    val categories = this.analyticsModel.answeredCategories
+    for (item in categories) {
+      val correctAnswered = item.correctAnsweredQuestions.toFloat()
+      entries1.add(RadarEntry(correctAnswered))
+
+      val wrongAnswered = item.wrongAnsweredQuestions.toFloat()
+      entries2.add(RadarEntry(wrongAnswered))
     }
 
     val set1 = RadarDataSet(entries1, "Correct")

@@ -1,6 +1,6 @@
 package br.com.questv.ui.analytics
 
-import br.com.questv.model.analytics.AnalyticsModel
+import br.com.questv.ui.analytics.model.AnalyticsModel
 
 interface AnalyticsView {
   fun showProgress()

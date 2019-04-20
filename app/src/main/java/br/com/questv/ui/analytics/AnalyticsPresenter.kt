@@ -1,6 +1,6 @@
 package br.com.questv.ui.analytics
 
-import br.com.questv.model.analytics.AnalyticsModel
+import br.com.questv.ui.analytics.model.AnalyticsModel
 
 class AnalyticsPresenter(private val itemView: AnalyticsView) : AnalyticsInteractor.OnAnalyticsGathering {
   private var interactor = AnalyticsInteractor()

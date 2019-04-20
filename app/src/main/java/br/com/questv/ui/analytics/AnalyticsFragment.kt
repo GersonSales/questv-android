@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import br.com.questv.R
-import br.com.questv.model.analytics.AnalyticsModel
+import br.com.questv.ui.analytics.model.AnalyticsModel
 import br.com.questv.model.user.UserLocalStorage
 import br.com.questv.resource.Strings.ANALYTICS_BUNDLE
 import br.com.questv.ui.main.fragments.*
@@ -40,6 +40,9 @@ class AnalyticsFragment : Fragment(), AnalyticsView {
     analyticsAdapter.addFragment(radarChartFragment)
 
     vp_analytics_charts.adapter = analyticsAdapter
+
+
+    println("Model: $analyticsModel")
 
     bindButtons()
   }
