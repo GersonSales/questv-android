@@ -42,16 +42,24 @@ class ContributionFragment :
       val _answers: HashMap<Long, HashMap<String, Boolean>> = HashMap()
 
       val answer1: HashMap<String, Boolean> = HashMap()
-      answer1[et_cont_answer_1.text.toString()] = cb_is_correct_a1.isChecked
+      val answer1Text = et_cont_answer_1.text.toString()
+      if (answer1Text.isNotEmpty())
+        answer1[answer1Text] = cb_is_correct_a1.isChecked
 
       val answer2: HashMap<String, Boolean> = HashMap()
-      answer2[et_cont_answer_2.text.toString()] = cb_is_correct_a2.isChecked
+      val answer2Text = et_cont_answer_2.text.toString()
+      if (answer2Text.isNotEmpty())
+        answer2[answer2Text] = cb_is_correct_a2.isChecked
 
       val answer3: HashMap<String, Boolean> = HashMap()
-      answer3[et_cont_answer_3.text.toString()] = cb_is_correct_a3.isChecked
+      val answer3Text = et_cont_answer_3.text.toString()
+      if (answer3Text.isNotEmpty())
+        answer3[answer3Text] = cb_is_correct_a3.isChecked
 
       val answer4: HashMap<String, Boolean> = HashMap()
-      answer4[et_cont_answer_4.text.toString()] = cb_is_correct_a4.isChecked
+      val answer4Text = et_cont_answer_4.text.toString()
+      if (answer3Text.isNotEmpty())
+        answer4[answer3Text] = cb_is_correct_a4.isChecked
 
       _answers[1L] = answer1
       _answers[2L] = answer2

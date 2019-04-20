@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
   <domain-config cleartextTrafficPermitted="true">
+    <base-config cleartextTrafficPermitted="true"/>
     <domain includeSubdomains="true">localhost</domain>
     <domain includeSubdomains="true">10.0.2.2</domain>
+    <domain includeSubdomains="true">200.129.69.129</domain>
     <domain includeSubdomains="true">192.168.25.43</domain>
-    <domain includeSubdomains="true">192.168.0.121</domain>
+    <!--<domain includeSubdomains="true">192.168.0.121</domain>-->
+    <domain includeSubdomains="true">10.0.3.170</domain><!--Virtus-->
     <domain includeSubdomains="true">192.168.25.44</domain>
+    <domain includeSubdomains="true">questv-api.herokuapp.com</domain><!--Home-->
+    <domain includeSubdomains="true">192.168.131.48</domain>
+    <domain includeSubdomains="true">192.168.43.74</domain>
     <domain includeSubdomains="true">192.168.25.18</domain>
     <domain includeSubdomains="true">192.168.0.100</domain>
   </domain-config>
