@@ -1,5 +1,6 @@
 package br.com.questv.endpoint
 
+import br.com.questv.model.analytics.AnalyticsModel
 import br.com.questv.model.episode.EpisodeModel
 import br.com.questv.model.question.QuestionModel
 import br.com.questv.model.season.SeasonModel
@@ -65,5 +66,5 @@ interface ApiRest {
 
   @GET("/users/{userId}/analytics")
   fun getUserAnalytics(@Path("userId") userId: String,
-                       @Header("Authorization") auth: String): Call<ResponseBody>
+                       @Header("Authorization") auth: String): Call<AnalyticsModel>
 }
