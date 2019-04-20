@@ -3,68 +3,80 @@ package br.com.questv.ui.analytics;
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
-import android.widget.ImageButton
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.viewpager.widget.ViewPager
 import br.com.questv.R
 import br.com.questv.model.analytics.AnalyticsModel
 import br.com.questv.model.user.UserLocalStorage
-import br.com.questv.ui.main.fragments.Tab1
-import br.com.questv.ui.main.fragments.Tab2
+import br.com.questv.resource.Strings.ANALYTICS_BUNDLE
+import br.com.questv.ui.main.fragments.*
+import kotlinx.android.synthetic.main.fragment_analytics.*
 
 class AnalyticsFragment : Fragment(), AnalyticsView {
 
-  private lateinit var viewPager: ViewPager
   private var presenter = AnalyticsPresenter(this)
 
-  override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-    val view = inflater.inflate(R.layout.fragment_analytics, container, false)
-
-    bindChartsViewPager(view)
-
+  override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
     val user = UserLocalStorage(context!!)
     val auth = user.getLoggedUserToken();
     val userId = user.getLoggedUserInfo().id
     this.presenter.gatheringUserAnalytics(userId, auth!!)
-
-
-
-
-    return view
+    return inflater.inflate(R.layout.fragment_analytics, container, false)
   }
 
-  private fun bindChartsViewPager(view: View) {
+  private fun bindChartsViewPager(analyticsModel: AnalyticsModel) {
     val analyticsAdapter = AnalyticsAdapter(context!!, fragmentManager!!)
-    analyticsAdapter.addFragment(Tab1())
-    analyticsAdapter.addFragment(Tab2())
-    analyticsAdapter.addFragment(Tab1())
-    analyticsAdapter.addFragment(Tab2())
+    val pieChartFragment = PieChartUserAnswers()
+    val radarChartFragment = RadarChartUserAnswers()
+    val bundle = Bundle()
+    bundle.putSerializable(ANALYTICS_BUNDLE, analyticsModel)
+    pieChartFragment.arguments = bundle
+    radarChartFragment.arguments = bundle
 
-    viewPager = view.findViewById(R.id.vp_analytics_charts)
-    viewPager.adapter = analyticsAdapter
+    analyticsAdapter.addFragment(pieChartFragment)
+    analyticsAdapter.addFragment(radarChartFragment)
 
-    bindButtons(view)
+    vp_analytics_charts.adapter = analyticsAdapter
+
+    bindButtons()
   }
 
-  private fun bindButtons(view: View) {
-    view.findViewById<ImageButton>(R.id.ib_previous_chart).setOnClickListener { goToPreviousChart() }
-    view.findViewById<ImageButton>(R.id.ib_next_chart).setOnClickListener { goToNextChart() }
+  private fun bindButtons() {
+    updateButtonsVisibility()
+    ib_previous_chart.setOnClickListener { goToPreviousChart() }
+    ib_next_chart.setOnClickListener { goToNextChart() }
+  }
+
+  private fun updateButtonsVisibility() {
+    ib_previous_chart.visibility = when {
+      vp_analytics_charts.currentItem <= 0 -> GONE
+      else -> VISIBLE
+    }
+
+    ib_next_chart.visibility = when {
+      vp_analytics_charts.currentItem >= vp_analytics_charts.adapter!!.count - 1 -> GONE
+      else -> VISIBLE
+    }
+
   }
 
   private fun goToNextChart() {
-    viewPager.currentItem = when {
-      viewPager.currentItem < viewPager.adapter!!.count -> viewPager.currentItem + 1
-      else -> viewPager.currentItem
+    vp_analytics_charts.currentItem = when {
+      vp_analytics_charts.currentItem < vp_analytics_charts.adapter!!.count -> vp_analytics_charts.currentItem + 1
+      else -> vp_analytics_charts.currentItem
     }
+    updateButtonsVisibility()
   }
 
   private fun goToPreviousChart() {
-    viewPager.currentItem = when {
-      viewPager.currentItem > 0 -> viewPager.currentItem - 1
-      else -> viewPager.currentItem
+    vp_analytics_charts.currentItem = when {
+      vp_analytics_charts.currentItem > 0 -> vp_analytics_charts.currentItem - 1
+      else -> vp_analytics_charts.currentItem
     }
+    updateButtonsVisibility()
   }
 
   override fun showProgress() {
@@ -76,8 +88,7 @@ class AnalyticsFragment : Fragment(), AnalyticsView {
   }
 
   override fun populateCharts(analyticsModel: AnalyticsModel) {
-    println(analyticsModel)
-    showErrorMessage("populateCharts")
+    bindChartsViewPager(analyticsModel)
   }
 
   override fun showErrorMessage(message: String) {

@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import br.com.questv.R
+import br.com.questv.model.analytics.AnalyticsModel
+import br.com.questv.resource.Strings
 import br.com.questv.util.chart.DecimalDataFormatter
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.RadarChart
@@ -19,12 +21,17 @@ import com.github.mikephil.charting.data.RadarEntry
 import com.github.mikephil.charting.formatter.IAxisValueFormatter
 
 
-class Tab2 : Fragment() {
+class RadarChartUserAnswers : Fragment() {
 
+  private lateinit var analyticsModel: AnalyticsModel
   private lateinit var radarChart: RadarChart
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
     val view = inflater.inflate(R.layout.tab_two, container, false)
+
+    analyticsModel = arguments?.getSerializable(Strings.ANALYTICS_BUNDLE) as AnalyticsModel
+
+
     radarChart = view.findViewById(R.id.radar_chart)
     radarChart.webLineWidth = 1f
     radarChart.webColor = Color.LTGRAY

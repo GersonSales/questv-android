@@ -14,13 +14,9 @@ class AnalyticsAdapter(private val context: Context,
   private val mFragmentList = mutableListOf<Fragment>()
 
 
-  override fun getItem(position: Int) = mFragmentList[getRealPosition(position)]
+  override fun getItem(position: Int) = mFragmentList[position]
 
-  private fun getRealPosition(position: Int) = position%mFragmentList.size
-
-
-  override fun getCount() = 1000
-
+  override fun getCount() = mFragmentList.size
 
   fun addFragment(fragment: Fragment) {
     mFragmentList.add(fragment)
