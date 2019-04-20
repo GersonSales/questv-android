@@ -1,6 +1,7 @@
 package br.com.questv.ui.analytics
 
-simport br.com.questv.endpoint.ApiClient
+import br.com.questv.endpoint.ApiClient
+
 import br.com.questv.model.analytics.AnalyticsModel
 import retrofit2.Call
 import retrofit2.Callback

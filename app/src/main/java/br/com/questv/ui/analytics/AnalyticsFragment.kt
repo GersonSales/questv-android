@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
 import br.com.questv.R
 import br.com.questv.model.analytics.AnalyticsModel
+import br.com.questv.model.user.UserLocalStorage
 import br.com.questv.ui.main.fragments.Tab1
 import br.com.questv.ui.main.fragments.Tab2
 
@@ -22,6 +23,14 @@ class AnalyticsFragment : Fragment(), AnalyticsView {
     val view = inflater.inflate(R.layout.fragment_analytics, container, false)
 
     bindChartsViewPager(view)
+
+    val user = UserLocalStorage(context!!)
+    val auth = user.getLoggedUserToken();
+    val userId = user.getLoggedUserInfo().id
+    this.presenter.getheringUserAnalytics(userId, auth)
+
+
+
 
     return view
   }
@@ -59,15 +68,15 @@ class AnalyticsFragment : Fragment(), AnalyticsView {
   }
 
   override fun showProgress() {
-    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    showErrorMessage("showProgress")
   }
 
   override fun hideProgress() {
-    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    showErrorMessage("hideProgress")
   }
 
   override fun populateCharts(analyticsModel: AnalyticsModel) {
-    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    showErrorMessage("populateCharts")
   }
 
   override fun showErrorMessage(message: String) {

@@ -64,7 +64,7 @@ interface ApiRest {
                 @Body seriesModel: SeriesModel,
                 @Header("Authorization") auth: String): Call<ResponseBody>
 
-  @GET("/users/{userId}/analytics")
+  @GET("/user/{userId}/analytics")
   fun getUserAnalytics(@Path("userId") userId: String,
                        @Header("Authorization") auth: String): Call<AnalyticsModel>
 }
