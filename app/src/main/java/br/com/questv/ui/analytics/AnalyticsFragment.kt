@@ -27,7 +27,7 @@ class AnalyticsFragment : Fragment(), AnalyticsView {
     val user = UserLocalStorage(context!!)
     val auth = user.getLoggedUserToken();
     val userId = user.getLoggedUserInfo().id
-    this.presenter.getheringUserAnalytics(userId, auth)
+    this.presenter.gatheringUserAnalytics(userId, auth!!)
 
 
 
@@ -76,6 +76,7 @@ class AnalyticsFragment : Fragment(), AnalyticsView {
   }
 
   override fun populateCharts(analyticsModel: AnalyticsModel) {
+    println(analyticsModel)
     showErrorMessage("populateCharts")
   }
 

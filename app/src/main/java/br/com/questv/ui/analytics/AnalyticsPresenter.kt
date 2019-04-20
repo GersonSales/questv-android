@@ -6,7 +6,7 @@ class AnalyticsPresenter(private val itemView: AnalyticsView) : AnalyticsInterac
   private var interactor = AnalyticsInteractor()
 
 
-  fun getheringUserAnalytics(userId: String, auth: String) {
+  fun gatheringUserAnalytics(userId: String, auth: String){
     this.itemView.showProgress()
     this.interactor.gatheringAnalytics(userId, auth, this)
   }
