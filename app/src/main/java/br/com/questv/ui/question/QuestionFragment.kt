@@ -22,6 +22,7 @@ import br.com.questv.model.question.answer.AnswerViewHolder
 import br.com.questv.model.user.UserLocalStorage
 import br.com.questv.resource.Strings
 import br.com.questv.resource.Strings.QUESTION_KEY
+import br.com.questv.ui.question.model.AnsweredQuestionModel
 import kotlinx.android.synthetic.main.fragment_question.*
 
 
@@ -156,6 +157,13 @@ class QuestionFragment :
 
       childAt?.isEnabled = false
     }
+  }
+
+  override fun onAnswered(answerId: Long) {
+    val userId = UserLocalStorage(context!!).getLoggedUserInfo().id
+    val auth = UserLocalStorage(context!!).getLoggedUserToken()
+
+    presenter.attachAnsweredQuestion(userId, auth, AnsweredQuestionModel(questionModel.id, answerId))
   }
 
   override fun showRateText() {

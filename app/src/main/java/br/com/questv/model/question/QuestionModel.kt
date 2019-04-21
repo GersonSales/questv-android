@@ -4,7 +4,7 @@ import br.com.questv.model.question.answer.AnswerModel
 import java.io.Serializable
 
 class QuestionModel(
-  val id: String,
+  val id: Long,
   val questionableId: String,
   val description: String,
   var difficult: Int,

@@ -8,6 +8,7 @@ import br.com.questv.model.series.SeriesModel
 import br.com.questv.model.user.LoginModel
 import br.com.questv.model.user.SignUpModel
 import br.com.questv.model.user.UserModel
+import br.com.questv.ui.question.model.AnsweredQuestionModel
 import br.com.questv.ui.user.RankableModel
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -54,7 +55,7 @@ interface ApiRest {
 
   @PUT("/questionable/{questionableId}/questions/{questionId}")
   fun putQuestion(@Path("questionableId") questionableId: String,
-                  @Path("questionId") questionId: String,
+                  @Path("questionId") questionId: Long,
                   @Body questionModel: QuestionModel,
                   @Header("Authorization") auth: String): Call<ResponseBody>
 
@@ -66,4 +67,9 @@ interface ApiRest {
   @GET("/user/{userId}/analytics")
   fun getUserAnalytics(@Path("userId") userId: String,
                        @Header("Authorization") auth: String): Call<AnalyticsModel>
+
+  @POST("/users/{userId}/answeredQuestion")
+  fun postAnsweredQuestion(@Path("userId") userId: String,
+                           @Body answeredQuestionModel: AnsweredQuestionModel,
+                           @Header("Authorization") auth: String): Call<Void>
 }

@@ -12,6 +12,7 @@ class AnswerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
   interface OnAnsweredQuestionListener {
     fun onCorrectAnswer()
     fun onWrongAnswer()
+    fun onAnswered(answerId: Long)
   }
 
   fun bind(answerModel: AnswerModel, listener: OnAnsweredQuestionListener) {
@@ -20,7 +21,6 @@ class AnswerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val answerRow: ConstraintLayout = itemView.findViewById(R.id.cl_answer_row)
 
     val userHasAnswered = TempUser.hasAnswered(answerModel)
-
 
     if (userHasAnswered) {
 
@@ -46,8 +46,9 @@ class AnswerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
           val colorWrong = ContextCompat.getColor(itemView.context, R.color.colorRed)
           answerRow.setBackgroundColor(colorWrong)
           listener.onWrongAnswer()
-
         }
+
+        listener.onAnswered(answerModel.id)
       }
     }
   }

@@ -1,10 +1,12 @@
 package br.com.questv.ui.question
 
 import br.com.questv.model.question.QuestionModel
+import br.com.questv.ui.question.model.AnsweredQuestionModel
 
 class QuestionPresenter(val view: QuestionView) :
   QuestionInteractor.OnRateSendListener,
-  QuestionInteractor.OnDificultySendListener {
+  QuestionInteractor.OnDificultySendListener, QuestionInteractor.OnAttachAnsweredQuestionListener {
+
 
   private val interactor = QuestionInteractor()
   fun sendQuestionRate(userId: String, questionModel: QuestionModel, rate: Double, auth: String) {
@@ -40,8 +42,28 @@ class QuestionPresenter(val view: QuestionView) :
     view.showDifficultyText()
   }
 
-  override fun onDificultySendFailure(message: String) {
+  override fun onDificultySendFailure(
+    message: String
+  ) {
     view.showToast(message)
     view.showDifficultyText()
   }
+
+  fun attachAnsweredQuestion(
+    userId: String,
+    auth: String,
+    answeredQuestionModel: AnsweredQuestionModel
+  ) {
+    this.interactor.attachAnsweredQuestion(userId, auth, answeredQuestionModel, this)
+  }
+
+  override fun onAttachmentSuccess() {
+    this.view.showToast("Next question")
+  }
+
+  override fun onAttachmentFailure(message: String) {
+    this.view.showToast("Error")
+  }
+
+
 }
