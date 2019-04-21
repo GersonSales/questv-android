@@ -20,11 +20,15 @@ class AnalyticsFragment : Fragment(), AnalyticsView {
   private var presenter = AnalyticsPresenter(this)
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    return inflater.inflate(R.layout.fragment_analytics, container, false)
+  }
+
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     val user = UserLocalStorage(context!!)
     val auth = user.getLoggedUserToken();
     val userId = user.getLoggedUserInfo().id
     this.presenter.gatheringUserAnalytics(userId, auth!!)
-    return inflater.inflate(R.layout.fragment_analytics, container, false)
+    super.onViewCreated(view, savedInstanceState)
   }
 
   private fun bindChartsViewPager(analyticsModel: AnalyticsModel) {
@@ -83,11 +87,11 @@ class AnalyticsFragment : Fragment(), AnalyticsView {
   }
 
   override fun showProgress() {
-    showErrorMessage("showProgress")
+    pb_profile_analytics.visibility = VISIBLE
   }
 
   override fun hideProgress() {
-    showErrorMessage("hideProgress")
+    pb_profile_analytics.visibility = GONE
   }
 
   override fun populateCharts(analyticsModel: AnalyticsModel) {
