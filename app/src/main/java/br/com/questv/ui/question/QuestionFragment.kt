@@ -1,20 +1,16 @@
 package br.com.questv.ui.question
 
-import android.opengl.Visibility
 import android.os.Bundle
-import android.text.Editable
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import br.com.questv.R
 import br.com.questv.model.question.QuestionModel
 import br.com.questv.model.question.answer.AnswerAdapter
@@ -38,7 +34,6 @@ class QuestionFragment :
 
   private lateinit var listener: OnAnswerListener
   private lateinit var questionModel: QuestionModel
-  private lateinit var questionAnswers: RecyclerView
   private var positionOnManager = 0
   private val presenter = QuestionPresenter(this)
 
@@ -53,24 +48,20 @@ class QuestionFragment :
     this.listener = arguments!!.get(Strings.QUESTION_MANAGER_FRAGMENT_KEY) as OnAnswerListener
     this.positionOnManager = arguments!!.getInt(Strings.QUESTION_FRAGMENT_POSITION)
 
-
-    val view = inflater.inflate(R.layout.fragment_question, container, false)
-    initView(this.questionModel, view)
-    return view
+    return inflater.inflate(R.layout.fragment_question, container, false)
   }
 
-  private fun initView(questionModel: QuestionModel, view: View) {
-    val questionDescription: TextView = view.findViewById(R.id.tv_question_description)
-    questionDescription.text = questionModel.description
+  private fun initView() {
+    tv_question_description.text = questionModel.description
 
-    questionAnswers = view.findViewById(R.id.rv_question_answers)
-    questionAnswers.layoutManager = LinearLayoutManager(context)
+    rv_question_answers.layoutManager = LinearLayoutManager(context)
     val answers = questionModel.answers
 
-    questionAnswers.adapter = AnswerAdapter(answers, this)
+    rv_question_answers.adapter = AnswerAdapter(answers, this)
   }
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    initView()
     bindQuestionRateBehavior()
     bindQuestionDifficultyBehavior()
     super.onViewCreated(view, savedInstanceState)
@@ -144,7 +135,7 @@ class QuestionFragment :
   }
 
   override fun onWrongAnswer() {
-    questionAnswers.isLayoutFrozen = true
+    rv_question_answers.isLayoutFrozen = true
     markThisAsAnswered()
     this.listener.onWrongAnswered(this.positionOnManager)
   }

@@ -32,7 +32,7 @@ class UserLocalStorage(context: Context) {
 
       override fun onResponse(call: Call<UserModel>, response: Response<UserModel>) {
         if (response.isSuccessful) {
-          sharedPreferences.edit().apply() {
+          sharedPreferences.edit().apply {
             putString("auth", auth)
             apply()
           }
@@ -66,6 +66,26 @@ class UserLocalStorage(context: Context) {
       clear()
       apply()
     }
+  }
+
+
+  fun getAnsweredQuestions(): MutableMap<Long, Long> {
+    //"{112=117, 18=23, 52=54, 70=72, 136=139}"
+    val answeredQuestionList = this.sharedPreferences.getString("answeredQuestions", "")!!
+      .replace(",", "")
+      .replace("{", "")
+      .replace("}", "")
+      .split(" ")
+
+    val result = mutableMapOf<Long, Long>()
+    for (questionPair in answeredQuestionList) {
+      val questionAnswer = questionPair.split("=")
+      val question = questionAnswer[0].toLong()
+      val answer = questionAnswer[1].toLong()
+      result[question] = answer
+    }
+
+    return result
   }
 
   fun getLoggedUserInfo(): UserModel {

@@ -42,9 +42,6 @@ class QuestionManagerFragment : Fragment(), QuestionManagerView {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     questionable = arguments!!.get(QUESTIONABLE_ID) as Questionable
 
-    initViewImageView(view)
-    initNavigatorButtons(view)
-
     val auth = UserLocalStorage(context!!).getLoggedUserToken()
 
     presenter.fetchAllQuestions(questionable.getId(), auth!!)
@@ -52,16 +49,22 @@ class QuestionManagerFragment : Fragment(), QuestionManagerView {
     super.onViewCreated(view, savedInstanceState)
   }
 
-  private fun initViewImageView(view: View) {
-    val seriesPromo: ImageView = view.findViewById(R.id.iv_series_details_promo3)
+  override fun onActivityCreated(savedInstanceState: Bundle?) {
+    super.onActivityCreated(savedInstanceState)
+    initImageView()
+    initNavigatorButtons()
+
+  }
+
+  private fun initImageView() {
     val imageLoader = ImageLoader.getInstance()
     val imageUrl = when {
-      !questionable.getPromoImageUrl()!!.isEmpty() -> questionable.getPromoImageUrl()
+      questionable.getPromoImageUrl()!!.isNotEmpty() -> questionable.getPromoImageUrl()
       else -> questionable.getCoverImageUrl()
     }
 
-    imageLoader.displayImage(imageUrl!!.replace("localhost", "10.0.2.2"), seriesPromo)
-    seriesPromo.scaleType = ImageView.ScaleType.CENTER_CROP
+    imageLoader.displayImage(imageUrl!!, iv_series_details_promo3)
+    iv_series_details_promo3.scaleType = ImageView.ScaleType.CENTER_CROP
   }
 
   override fun initViewPager(questions: List<QuestionModel>) {
@@ -75,12 +78,14 @@ class QuestionManagerFragment : Fragment(), QuestionManagerView {
     tv_questions_count.text = questionManagerAdapter.count.toString()
   }
 
-  private fun initNavigatorButtons(view: View) {
-    val previousQuestionButton: ImageButton = view.findViewById(R.id.ib_previous_question)
-    previousQuestionButton.setOnClickListener { navigateToPreviousQuestion(vp_question_swapper.currentItem, false) }
+  private fun initNavigatorButtons() {
+    ib_previous_question.setOnClickListener {
+      navigateToPreviousQuestion(vp_question_swapper.currentItem, false)
+    }
 
-    val nextQuestionButton: ImageButton = view.findViewById(R.id.ib_next_question)
-    nextQuestionButton.setOnClickListener { navigateToNextQuestion(vp_question_swapper.currentItem, false) }
+    ib_next_question.setOnClickListener {
+      navigateToNextQuestion(vp_question_swapper.currentItem, false)
+    }
   }
 
   override fun showProgress() {
@@ -153,7 +158,7 @@ class QuestionManagerFragment : Fragment(), QuestionManagerView {
   private fun isAValidIndex(index: Int): Boolean {
     val count = this.questionManagerAdapter.count
     return count > 0
-        && (index in 0..(count - 1))
+        && (index in 0 until count)
   }
 
   private fun disableInteraction() {

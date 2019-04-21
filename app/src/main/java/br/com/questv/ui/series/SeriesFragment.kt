@@ -1,6 +1,5 @@
 package br.com.questv.ui.series
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.*
 import android.view.View.GONE
@@ -19,7 +18,7 @@ import br.com.questv.model.user.UserLocalStorage
 import br.com.questv.resource.Strings.QUESTIONABLE_ID
 import br.com.questv.resource.Strings.SERIES_KEY
 import com.nostra13.universalimageloader.core.ImageLoader
-import kotlinx.android.synthetic.main.series_details.*
+import kotlinx.android.synthetic.main.fragment_series_details.*
 
 class SeriesFragment : Fragment(), SeriesView, SeasonViewHolder.OnInteractionListener {
 
@@ -33,7 +32,7 @@ class SeriesFragment : Fragment(), SeriesView, SeasonViewHolder.OnInteractionLis
     container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View? {
-    val view = inflater.inflate(R.layout.series_details, container, false)
+    val view = inflater.inflate(R.layout.fragment_series_details, container, false)
     seriesModel = arguments?.get(SERIES_KEY) as SeriesModel
     initView(view, seriesModel)
     this.presenter.fetchAllSeasons(seriesModel)
