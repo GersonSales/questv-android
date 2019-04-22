@@ -21,6 +21,6 @@ class RankingAdapter(private val users: List<Rankable>) : RecyclerView.Adapter<R
     holder: RankingViewHolder,
     position: Int
   ) {
-    holder.bind(users[position])
+    holder.bind(users[position], position)
   }
 }
