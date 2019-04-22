@@ -15,6 +15,7 @@ import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.RadarChart
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.Legend
+import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.RadarData
 import com.github.mikephil.charting.data.RadarDataSet
 import com.github.mikephil.charting.data.RadarEntry
@@ -66,8 +67,12 @@ class RadarChartUserAnswers : Fragment() {
     yAxis.setLabelCount(5, false)
     yAxis.textSize = 18f
     yAxis.axisMinimum = 0f
-    yAxis.axisMaximum = 80f
+    yAxis.axisMaximum = getMax().toFloat()
     yAxis.setDrawLabels(false)
+
+
+
+
 
     val l = radarChart.legend
     l.verticalAlignment = Legend.LegendVerticalAlignment.BOTTOM
@@ -87,6 +92,22 @@ class RadarChartUserAnswers : Fragment() {
     }
 
     return view
+  }
+
+
+  private fun getMax(): Int {
+    val allAnsweredCategories = this.analyticsModel.answeredCategories
+    var result = 0
+    for (item in allAnsweredCategories) {
+      if (item.correctAnsweredQuestions > result) {
+        result = item.correctAnsweredQuestions
+      }
+
+      if (item.wrongAnsweredQuestions > result) {
+        result = item.wrongAnsweredQuestions
+      }
+    }
+    return result
   }
 
   private fun setData() {
@@ -109,6 +130,7 @@ class RadarChartUserAnswers : Fragment() {
       val wrongAnswered = item.wrongAnsweredQuestions.toFloat()
       entries2.add(RadarEntry(wrongAnswered))
     }
+
 
     val set1 = RadarDataSet(entries1, "Correct")
     set1.color = Color.GREEN
@@ -137,6 +159,7 @@ class RadarChartUserAnswers : Fragment() {
     data.setValueTextSize(18f)
     data.setValueFormatter(DecimalDataFormatter())
     data.setValueTextColor(Color.WHITE)
+
 
     radarChart.data = data
     radarChart.invalidate()
