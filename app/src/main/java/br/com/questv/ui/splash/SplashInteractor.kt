@@ -10,14 +10,15 @@ class SplashInteractor {
   interface OnSeriesConsumptionListener {
     fun onSeriesConsumptionSuccess(series: List<SeriesModel>?)
     fun onSeriesConsumptionFail()
+    fun onUnavailableService(message: String)
   }
 
-  fun consumeSeriesApi(listener: SplashInteractor.OnSeriesConsumptionListener) {
+  fun consumeSeriesApi(listener: OnSeriesConsumptionListener) {
     val consumptionCall: Call<ArrayList<SeriesModel>> = ApiClient.instance.getAllSeries()
     consumptionCall.enqueue(object : Callback<ArrayList<SeriesModel>> {
       override fun onFailure(call: Call<ArrayList<SeriesModel>>, t: Throwable) {
         t.printStackTrace()
-        listener.onSeriesConsumptionFail()
+        listener.onUnavailableService(t.message.toString())
       }
 
       override fun onResponse(call: Call<ArrayList<SeriesModel>>, response: Response<ArrayList<SeriesModel>>) {
@@ -26,7 +27,11 @@ class SplashInteractor {
           listener.onSeriesConsumptionSuccess(series)
 
         } else {
-          listener.onSeriesConsumptionFail()
+          listener.apply {
+            when(response.code()) {
+              503 -> onUnavailableService(response.message())
+            }
+          }
         }
       }
     })

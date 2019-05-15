@@ -23,4 +23,10 @@ class SplashPresenter(
     this.splashView?.hideProgress()
     this.splashView?.navigateToErrorPage()
   }
+
+  override fun onUnavailableService(message: String) {
+    this.splashView?.hideProgress()
+    this.splashView?.showToastMessage(message)
+    this.splashView?.navigateToUnavailableServicePage()
+  }
 }
