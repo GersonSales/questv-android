@@ -7,6 +7,7 @@ import br.com.questv.R
 import br.com.questv.ui.home.IntroducerFragment
 import br.com.questv.ui.main.fragments.Tab3
 import br.com.questv.ui.ranking.RankingFragment
+import br.com.questv.ui.store.StoreFragment
 
 class MainPresenter(var mainView: MainView?, private val mainInteractor: MainInteractor) {
 
@@ -22,7 +23,7 @@ class MainPresenter(var mainView: MainView?, private val mainInteractor: MainInt
 
     tabAdapter.addFragment(IntroducerFragment(), "home", R.drawable.ic_home_black_24dp)
     tabAdapter.addFragment(RankingFragment(), "Ranking", R.drawable.ic_trophy_black_24dp)
-    tabAdapter.addFragment(Tab3(), "Badges", R.drawable.ic_assistant_photo_black_24dp)
+    tabAdapter.addFragment(StoreFragment(), "Store", R.drawable.ic_store_mall_directory_black_24dp)
 
 
     return tabAdapter
